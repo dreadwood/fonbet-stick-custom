@@ -1,0 +1,72 @@
+@mixin retina {
+  @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+    @content;
+  }
+}
+
+@mixin breakpoint-sm {
+  @media (min-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin breakpoint-md {
+  @media (min-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin breakpoint-lg {
+  @media (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin breakpoint-xl {
+  @media (min-width: $breakpoint-xl) {
+    @content;
+  }
+}
+
+@mixin breakpoint-xxl {
+  @media (min-width: $breakpoint-xxl) {
+    @content;
+  }
+}
+
+@mixin list-reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@mixin hide-scroll {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin transition($args...) {
+  transition-timing-function: ease-out;
+  transition-duration: 0.2s;
+  transition-property: $args;
+}
+
+@mixin word-break {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+@mixin text-truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@mixin text-truncate-multiline($row-count: 3) {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $row-count;
+  display: -webkit-box;
+  overflow: hidden;
+}

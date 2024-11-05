@@ -1,0 +1,16 @@
+.b-header {
+  width: 100%;
+  max-width: $container-max;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: $padding-sm;
+  padding-left: $padding-sm;
+  @include breakpoint-lg {
+    padding-right: $padding-lg;
+    padding-left: $padding-lg;
+  }
+  @include breakpoint-xl {
+    padding-right: $padding-xl;
+    padding-left: $padding-xl;
+  }
+}

@@ -1,0 +1,51 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: $container-min;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: $font-default;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 400;
+  font-style: normal;
+  text-align: left;
+  color: $color-black;
+  word-break: break-word;
+  background-color: $color-white;
+}
+main {
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+picture {
+  flex-shrink: 0;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img,
+svg {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+button {
+  font: inherit;
+  color: inherit;
+  &:not([disabled]) {
+    cursor: pointer;
+  }
+}

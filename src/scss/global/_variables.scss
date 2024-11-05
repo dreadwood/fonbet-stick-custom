@@ -1,0 +1,26 @@
+// fonts
+$font-default: "Inter", sans-serif;
+$font-title: "Open Sans", sans-serif;
+
+// retina
+$retina-dpi: 144dpi;
+$retina-dppx: 1.5dppx;
+
+// container
+$container-max: 1140px;
+$container-min: 375px;
+
+// breakpoints
+// $breakpoint-xs: 320px;
+$breakpoint-sm: $container-min;
+$breakpoint-md: 576px;
+$breakpoint-lg: 768px;
+$breakpoint-xl: 1024px;
+$breakpoint-xxl: $container-max;
+
+// padding
+$padding-sm: 8px;
+$padding-md: 10px;
+$padding-lg: 15px;
+$padding-xl: 15px;
+$padding-xxl: 30px;
