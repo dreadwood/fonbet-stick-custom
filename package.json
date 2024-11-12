@@ -1,5 +1,5 @@
 {
-  "name": "gulp-templates",
+  "name": "fonbet-stick-custom",
   "scripts": {
     "dev": "gulp dev",
     "build": "gulp build",

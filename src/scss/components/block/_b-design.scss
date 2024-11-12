@@ -1,0 +1,65 @@
+.b-design {
+  font-family: $font-default;
+  font-size: $apx-30;
+  line-height: $apx-40;
+  font-weight: 700;
+  text-align: left;
+  color: $color-green-blue;
+  text-transform: uppercase;
+  @include mobile {
+    font-size: $apx-m-30;
+    line-height: $apx-m-30;
+  }
+}
+.b-design__title {
+  font-family: $font-title;
+  font-size: $apx-137;
+  line-height: 1.1;
+  color: $color-black;
+  @include mobile {
+    font-size: $apx-m-137;
+    line-height: 1.1;
+  }
+}
+.b-design__text {
+  margin-top: $apx-3;
+  @include mobile {
+    margin-top: $apx-m-28;
+  }
+}
+.b-design__field {
+  height: $apx-375;
+  margin-top: $apx-65;
+  background-image: $gradient-red;
+  border-radius: $apx-27;
+  @include mobile {
+    position: relative;
+    width: $apx-m-756;
+    height: $apx-m-558 * 2;
+    margin-top: $apx-m-46;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: $apx-m-38;
+  }
+}
+.b-design__stick {
+  width: $apx-1520;
+  height: $apx-375;
+  margin: 0 auto;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  @include mobile {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    // width: $apx-m-274;
+    // height: 100%;
+    width: $apx-m-556 * 2;
+    height: $apx-m-274;
+    rotate: -90deg;
+    translate: -50% -50%;
+  }
+}

@@ -1,0 +1,14 @@
+include /components/button/btn-default
+
+mixin m-share({ isShow, className })
+  .overlay(class=isShow && "show")
+    .m-white.share(class=className)
+      .m-white__title.desktop #[span Поделись своим] #[br] дизайном
+      .m-white__title.mobile #[span Поделись] #[br] своим дизайном
+      .m-white__text Чтобы принять участие в розыгрыше!
+      +btn-default({
+        text: "Поделиться",
+        className: "m-white__btn"
+      })
+      button.m-white__link Вернуться в Великую Погоню
+

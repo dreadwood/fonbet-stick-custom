@@ -1,0 +1,43 @@
+include /components/button/btn-default
+
+mixin b-customizer({ className })
+  .b-customizer(class=className)
+    .b-customizer__dialog
+      .b-customizer__title Создай свой #[span дизайн]
+      .b-customizer__subtitle Используй инструменты из панели справа и&nbsp;создай свой дизайн клюшки!
+      .b-customizer__content
+        .b-customizer__field
+          .b-customizer__controls
+            button.b-customizer__btn-control.in
+              +svg({ name: 'zoom-in', width: 59, height: 59 })
+            button.b-customizer__btn-control.out
+              +svg({ name: 'zoom-out', width: 59, height: 59 })
+            button.b-customizer__btn-control.prev
+              +svg({ name: 'arrow-prev', width: 59, height: 59 })
+            button.b-customizer__btn-control.next(disabled)
+              +svg({ name: 'arrow-next', width: 59, height: 59 })
+            button.b-customizer__btn-control.refresh
+              +svg({ name: 'refresh', width: 59, height: 59 })
+          .b-customizer__colors
+            button.b-customizer__btn-color.red
+            button.b-customizer__btn-color.white
+            button.b-customizer__btn-color.black
+            button.b-customizer__btn-color.chrome
+            button.b-customizer__btn-color.reflective
+        .b-customizer__figures
+            button.b-customizer__btn-figure.square
+              +svg({ name: 'square', width: 70, height: 70 })
+            button.b-customizer__btn-figure.circle
+              +svg({ name: 'circle', width: 70, height: 70 })
+            button.b-customizer__btn-figure.triangle
+              +svg({ name: 'triangle', width: 70, height: 70 })
+            button.b-customizer__btn-figure.start
+              +svg({ name: 'start', width: 70, height: 70 })
+            button.b-customizer__btn-figure.text
+              +svg({ name: 'text', width: 70, height: 70 })
+      .b-customizer__nav
+        +btn-default({ text: "Назад", color: "black" })
+        +btn-default({
+          text: "Сохранить",
+          className: "b-customizer__nav-next"
+        })

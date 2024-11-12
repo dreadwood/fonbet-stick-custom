@@ -1,18 +1,17 @@
 include /elements/head
-include /components/block/b-header
-include /components/block/b-footer
+include /elements/images
 
 - let title = ""
+- let startData = "<ДАТА>"
+- let endData = "// ДАТА //"
+- let startCount = "<КОЛИЧЕСТВО>"
 
 block data
 
 doctype html
-html(lang="en")
+html(lang="ru")
   +head({ title })
   body
-    +b-header({})
-    main
-      block content
-    +b-footer({})
+    block content
     block modal
     include /elements/script

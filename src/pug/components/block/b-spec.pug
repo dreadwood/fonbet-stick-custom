@@ -1,0 +1,56 @@
+mixin b-spec-btn({ text, name, id, value, checked })
+  div.b-spec__btn
+    input.visually-hidden(type="radio" id=id name=name value=value checked=checked)
+    label(for=id)=text
+
+mixin b-spec({ className })
+  form.b-spec(class=className)
+    .b-spec__row
+      .b-spec__name Хват
+      .b-spec__grid
+        +b-spec-btn({
+          text: "Левый",
+          name: "grip",
+          id: "gripLeft",
+          value: "left"
+        })
+        +b-spec-btn({
+          text: "Правый",
+          name: "grip",
+          id: "gripRight",
+          value: "right",
+          checked: true
+        })
+    .b-spec__row
+      .b-spec__name Флекс
+      .b-spec__grid
+        each it in [70, 75, 80, 85, 90, 95, 100]
+          +b-spec-btn({
+            text: it,
+            name: "flex",
+            id: "flex" + it,
+            value: it,
+            checked: it === 90
+          })
+    .b-spec__row
+      .b-spec__name Точка прогиба
+      .b-spec__grid
+        +b-spec-btn({
+          text: "Нижняя",
+          name: "point",
+          id: "pointBottom",
+          value: "bottom"
+        })
+        +b-spec-btn({
+          text: "Средняя",
+          name: "point",
+          id: "pointMiddle",
+          value: "middle",
+          checked: true
+        })
+        +b-spec-btn({
+          text: "Верхняя",
+          name: "point",
+          id: "pointTop",
+          value: "top"
+        })

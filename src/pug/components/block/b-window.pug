@@ -1,0 +1,16 @@
+mixin b-window({ step, className })
+  .b-window(class=className)
+    .b-window__field
+      if step === 1
+        img.b-window__img.first(src="/img/demo-step-1.png")
+      if step === 2
+        img.b-window__img.second(src="/img/demo-step-2.png")
+      if step === 3
+        img.b-window__img.third(src="/img/demo-step-3.png")
+      if step === 4
+        img.b-window__img.fourth(src="/img/demo-step-4.png")
+    .b-window__control
+    button.b-window__nav.prev
+      +svg({ name: 'nav-arrow-prev', width: 65, height: 88 })
+    button.b-window__nav.next
+      +svg({ name: 'nav-arrow-next', width: 65, height: 88 })

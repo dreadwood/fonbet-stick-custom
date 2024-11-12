@@ -1,0 +1,645 @@
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  &:hover,
+  &:focus-visible {
+    // .bg__line {
+    //   translate: 0 0;
+    // }
+  }
+}
+.bg__line {
+  position: absolute;
+  transform: skewX(-45deg);
+  transform-origin: bottom left;
+  // animation: bg-line 0.8s ease-in-out forwards;
+  animation-name: bg-line;
+  animation-duration: 0.8s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+//
+// START
+//
+.bg__line.start-1 {
+  top: 0;
+  left: -#{$apx-172};
+  width: $apx-170;
+  height: $apx-160;
+  background-color: $color-white;
+  translate: $apx-160 -#{$apx-160};
+  @include mobile {
+    left: -#{$apx-m-260};
+    width: $apx-m-250;
+    height: $apx-m-260;
+    translate: $apx-m-260 -#{$apx-m-260};
+  }
+}
+.bg__line.start-2 {
+  bottom: $apx-301;
+  left: -#{$apx-366};
+  width: $apx-360;
+  height: $apx-340;
+  background-color: $color-black;
+  translate: -#{$apx-340} $apx-340;
+  animation-delay: 0.3s;
+  @include mobile {
+    bottom: 0;
+    left: -#{$apx-m-228};
+    width: $apx-m-342;
+    height: $apx-m-377;
+    translate: -#{$apx-m-377} $apx-m-377;
+  }
+}
+.bg__line.start-3 {
+  bottom: 0;
+  left: $apx-688;
+  width: $apx-170;
+  height: $apx-98;
+  background-color: $color-white;
+  translate: -#{$apx-98} $apx-98;
+  animation-delay: 0.4s;
+  @include mobile {
+    left: $apx-m-50;
+    width: $apx-m-142;
+    height: $apx-m-94;
+    translate: -#{$apx-m-94} $apx-m-94;
+  }
+}
+.bg__line.start-4 {
+  top: $apx-176;
+  right: $apx-20;
+  right: 0;
+  width: $apx-248;
+  height: $apx-252;
+  background-color: $color-black;
+  translate: $apx-252 -#{$apx-252};
+  animation-delay: 0.5s;
+  @include mobile {
+    top: $apx-m-150;
+    right: 0;
+    width: $apx-m-298;
+    height: $apx-m-302;
+    translate: $apx-m-302 -#{$apx-m-302};
+  }
+}
+.bg__line.start-5 {
+  top: $apx-240;
+  right: $apx-260;
+  width: $apx-274;
+  height: $apx-540;
+  background-color: $color-white;
+  translate: $apx-540 -#{$apx-540};
+  animation-delay: 0.7s;
+  @include mobile {
+    top: $apx-m-218;
+    right: 0;
+    width: $apx-m-272;
+    height: $apx-m-340;
+    translate: $apx-m-340 -#{$apx-m-340};
+  }
+}
+
+//
+// FIRST
+//
+.bg__line.first-1 {
+  top: $apx-54;
+  left: -#{$apx-224};
+  width: $apx-103;
+  height: $apx-334;
+  background-color: $color-carmine-red;
+  translate: -#{$apx-334} $apx-334;
+  @include mobile {
+    display: none;
+  }
+}
+.bg__line.first-2 {
+  bottom: $apx-139;
+  left: -#{$apx-70};
+  width: $apx-378;
+  height: $apx-150;
+  background-color: $color-black;
+  translate: -#{$apx-500};
+  @include mobile {
+    display: none;
+  }
+}
+.bg__line.first-3 {
+  bottom: 0;
+  left: -#{$apx-200};
+  width: $apx-230;
+  height: $apx-289;
+  background-color: $color-black;
+  translate: -#{$apx-290} $apx-290;
+  @include mobile {
+    display: none;
+  }
+}
+.bg__line.first-4 {
+  bottom: 0;
+  left: $apx-126;
+  width: $apx-286;
+  height: $apx-75;
+  background-color: $color-carmine-red;
+  translate: -#{$apx-75} $apx-75;
+  @include mobile {
+    display: none;
+  }
+}
+.bg__line.first-5 {
+  top: 0;
+  right: 0;
+  right: -#{$apx-6};
+  width: $apx-360;
+  height: $apx-166;
+  background-color: $color-carmine-red;
+  translate: $apx-380;
+  @include mobile {
+    display: none;
+  }
+}
+.bg__line.first-6 {
+  top: 0;
+  right: $apx-280;
+  width: $apx-100;
+  height: $apx-190;
+  background-color: $color-black;
+  translate: $apx-190 -#{$apx-190};
+  @include mobile {
+    display: none;
+  }
+}
+.bg__line.first-7 {
+  top: 0;
+  right: $apx-280;
+  width: $apx-146;
+  height: $apx-320;
+  background-color: $color-black;
+  translate: $apx-320 -#{$apx-320};
+  @include mobile {
+    display: none;
+  }
+}
+
+//
+// SECOND
+//
+.bg__line.second-1 {
+  bottom: 0;
+  left: -#{$apx-346};
+  width: $apx-420;
+  height: $apx-383;
+  background-color: $color-carmine-red;
+  translate: -#{$apx-383} $apx-383;
+  @include mobile {
+    display: none;
+  }
+}
+.bg__line.second-2 {
+  top: 0;
+  left: $apx-560;
+  width: $apx-120;
+  height: $apx-217;
+  background-color: $color-black;
+  translate: $apx-217 -#{$apx-217};
+  @include mobile {
+    display: none;
+  }
+}
+.bg__line.second-3 {
+  top: 0;
+  left: $apx-556;
+  width: $apx-124;
+  height: $apx-322;
+  background-color: $color-black;
+  translate: $apx-322 -#{$apx-322};
+  @include mobile {
+    display: none;
+  }
+}
+.bg__line.second-4 {
+  top: 0;
+  right: $apx-56;
+  width: $apx-124;
+  height: $apx-386;
+  background-color: $color-carmine-red;
+  translate: $apx-386 -#{$apx-386};
+  @include mobile {
+    display: none;
+  }
+}
+.bg__line.second-5 {
+  right: $apx-198;
+  bottom: $apx-221;
+  width: $apx-164;
+  height: $apx-362;
+  background-color: $color-black;
+  translate: $apx-362 -#{$apx-362};
+  @include mobile {
+    display: none;
+  }
+}
+.bg__line.second-6 {
+  right: $apx-158;
+  bottom: 0;
+  width: $apx-280;
+  height: $apx-462;
+  background-color: $color-black;
+  translate: -#{$apx-462} $apx-462;
+  @include mobile {
+    display: none;
+  }
+}
+
+//
+// THIRD
+//
+.bg__line.third-1 {
+  bottom: 0;
+  left: 0;
+  width: $apx-492;
+  height: $apx-255;
+  background-color: $color-black;
+  translate: -#{$apx-255} $apx-255;
+  @include mobile {
+    bottom: $apx-m-286;
+    left: -#{$apx-m-437};
+    width: $apx-m-582;
+    height: $apx-m-506;
+    translate: -#{$apx-m-700};
+  }
+}
+.bg__line.third-2 {
+  bottom: $apx-145;
+  left: $apx-60;
+  width: $apx-400;
+  height: $apx-110;
+  background-color: $color-black;
+  animation-duration: 0.4s;
+  animation-delay: 0.6s;
+  translate: -#{$apx-600};
+  @include mobile {
+    bottom: $apx-m-145;
+    left: -#{$apx-m-248};
+    width: $apx-m-200;
+    height: $apx-m-160;
+    animation-delay: 0;
+    translate: -#{$apx-m-200} $apx-m-200;
+  }
+}
+.bg__line.third-3 {
+  bottom: 0;
+  left: $apx-190;
+  width: $apx-200;
+  height: $apx-408;
+  background-color: $color-carmine-red;
+  translate: -#{$apx-408} $apx-408;
+  @include mobile {
+    bottom: $apx-m-390;
+    left: -#{$apx-m-230};
+    width: $apx-m-200;
+    height: $apx-m-454;
+    translate: -#{$apx-m-454} $apx-m-454;
+  }
+}
+.bg__line.third-4 {
+  top: $apx-70;
+  right: $apx-800;
+  width: $apx-270;
+  height: $apx-620;
+  background-color: $color-carmine-red;
+  translate: $apx-620 -#{$apx-620};
+  @include mobile {
+    top: $apx-m-162;
+    right: $apx-m-250;
+    // display: none;
+    width: $apx-m-220;
+    height: $apx-m-420;
+    translate: $apx-m-600 -#{$apx-m-600};
+  }
+}
+.bg__line.third-5 {
+  top: 0;
+  right: $apx-316;
+  width: $apx-210;
+  height: $apx-310;
+  background-color: $color-black;
+  translate: $apx-310 -#{$apx-310};
+  @include mobile {
+    top: $apx-m-322;
+    right: $apx-m-370;
+    width: $apx-m-150;
+    height: $apx-m-260;
+    background-color: $color-carmine-red;
+    translate: $apx-m-700 -#{$apx-m-700};
+  }
+}
+.bg__line.third-6 {
+  top: 0;
+  right: $apx-46;
+  width: $apx-110;
+  height: $apx-130;
+  background-color: $color-black;
+  translate: $apx-130 -#{$apx-130};
+  @include mobile {
+    top: $apx-m-222;
+    right: -#{$apx-m-14};
+    width: $apx-m-230;
+    height: $apx-m-250;
+    translate: $apx-m-250 -#{$apx-m-250};
+  }
+}
+
+//
+// FOURTH
+//
+.bg__line.fourth-1 {
+  bottom: 0;
+  left: -#{$apx-50};
+  width: $apx-290;
+  height: $apx-134;
+  background-color: $color-carmine-red;
+  translate: -#{$apx-134} $apx-134;
+  @include mobile {
+    bottom: $apx-m-344;
+    left: $apx-m-50;
+    width: $apx-m-370;
+    height: $apx-m-94;
+    translate: -#{$apx-m-500} 0;
+  }
+}
+.bg__line.fourth-2 {
+  bottom: 0;
+  left: $apx-60;
+  width: $apx-266;
+  height: $apx-354;
+  background-color: $color-carmine-red;
+  translate: -#{$apx-354} $apx-354;
+  @include mobile {
+    bottom: 0;
+    left: -#{$apx-m-170};
+    width: $apx-m-246;
+    height: $apx-m-400;
+    translate: -#{$apx-m-400} $apx-m-400;
+  }
+}
+.bg__line.fourth-3 {
+  bottom: 0;
+  left: $apx-206;
+  width: $apx-176;
+  height: $apx-218;
+  background-color: $color-black;
+  translate: -#{$apx-218} $apx-218;
+  @include mobile {
+    bottom: 0;
+    left: $apx-m-20;
+    width: $apx-m-176;
+    height: $apx-m-94;
+    translate: -#{$apx-m-94} $apx-m-94;
+  }
+}
+.bg__line.fourth-4 {
+  top: 0;
+  right: $apx-288;
+  width: $apx-296;
+  height: $apx-442;
+  background-color: $color-carmine-red;
+  translate: $apx-354 -#{$apx-354};
+  @include mobile {
+    right: $apx-m-208;
+    width: $apx-m-296;
+    height: $apx-m-586;
+    translate: $apx-m-586 -#{$apx-m-586};
+  }
+}
+.bg__line.fourth-5 {
+  top: 0;
+  right: $apx-80;
+  width: $apx-200;
+  height: $apx-352;
+  background-color: $color-carmine-red;
+  translate: $apx-352 -#{$apx-352};
+  @include mobile {
+    right: 0;
+    width: $apx-m-200;
+    height: $apx-m-494;
+    translate: $apx-m-494 -#{$apx-m-494};
+  }
+}
+.bg__line.fourth-6 {
+  top: 0;
+  right: $apx-66;
+  width: $apx-196;
+  height: $apx-272;
+  background-color: $color-black;
+  translate: $apx-218 -#{$apx-218};
+  @include mobile {
+    right: $apx-m-1;
+    width: $apx-m-178;
+    height: $apx-m-412;
+    translate: $apx-m-412 -#{$apx-m-412};
+  }
+}
+
+//
+// FIFTH
+//
+.bg__line.fifth-1 {
+  bottom: 0;
+  left: $apx-268;
+  width: $apx-450;
+  height: $apx-53;
+  background-color: $color-black;
+  translate: -#{$apx-53} $apx-53;
+  @include mobile {
+    left: $apx-m-215;
+    width: $apx-m-168;
+    height: $apx-m-432;
+    translate: -#{$apx-m-432} $apx-m-432;
+  }
+}
+.bg__line.fifth-2 {
+  bottom: 0;
+  left: $apx-383;
+  width: $apx-462;
+  height: $apx-204;
+  background-color: $color-black;
+  translate: -#{$apx-204} $apx-204;
+  @include mobile {
+    left: -#{$apx-m-140};
+    width: $apx-m-510;
+    height: $apx-m-121;
+    translate: -#{$apx-m-510} 0;
+  }
+}
+.bg__line.fifth-3 {
+  bottom: 0;
+  left: $apx-558;
+  width: $apx-197;
+  height: $apx-120;
+  background-color: $color-carmine-red;
+  translate: -#{$apx-120} $apx-120;
+  @include mobile {
+    bottom: $apx-m-243;
+    left: $apx-m-406;
+    width: $apx-m-120;
+    height: $apx-m-274;
+    translate: -#{$apx-m-274} $apx-m-274;
+  }
+}
+.bg__line.fifth-4 {
+  top: 0;
+  right: $apx-162;
+  width: $apx-156;
+  height: $apx-166;
+  background-color: $color-carmine-red;
+  translate: $apx-166 -#{$apx-166};
+  @include mobile {
+    right: $apx-m-42;
+    width: $apx-m-96;
+    height: $apx-m-410;
+    translate: $apx-m-410 -#{$apx-m-410};
+  }
+}
+.bg__line.fifth-5 {
+  top: 0;
+  right: $apx-467;
+  width: $apx-300;
+  height: $apx-320;
+  background-color: $color-black;
+  translate: $apx-208 -#{$apx-208};
+  @include mobile {
+    right: $apx-m-176;
+    width: $apx-m-96;
+    height: $apx-m-457;
+    translate: $apx-m-457 -#{$apx-m-457};
+  }
+}
+.bg__line.fifth-6 {
+  top: $apx-93;
+  right: $apx-379;
+  width: $apx-72;
+  height: $apx-164;
+  background-color: $color-gray-961;
+  animation-duration: 1s;
+  translate: $apx-400 -#{$apx-400};
+  @include mobile {
+    top: 0;
+    right: $apx-m-326;
+    width: $apx-m-178;
+    height: $apx-m-549;
+    background-color: $color-black;
+    translate: $apx-m-549 -#{$apx-m-549};
+  }
+}
+
+//
+// FINISH
+//
+.bg__line.finish-1 {
+  bottom: $apx-145;
+  left: -#{$apx-110};
+  width: $apx-225;
+  height: $apx-108;
+  background-color: $color-black;
+  translate: -#{$apx-225};
+  @include mobile {
+    bottom: $apx-m-297;
+    left: -#{$apx-m-160};
+    width: $apx-m-300;
+    height: $apx-m-267;
+    translate: -#{$apx-m-400};
+  }
+}
+.bg__line.finish-2 {
+  bottom: 0;
+  left: -#{$apx-263};
+  width: $apx-150;
+  height: $apx-160;
+  background-color: $color-black;
+  translate: -#{$apx-160} $apx-160;
+  @include mobile {
+    bottom: $apx-m-200;
+    left: -#{$apx-m-318};
+    width: $apx-m-300;
+    height: $apx-m-366;
+    translate: -#{$apx-m-366} $apx-m-366;
+  }
+}
+.bg__line.finish-3 {
+  bottom: $apx-239;
+  left: -#{$apx-110};
+  width: $apx-103;
+  height: $apx-134;
+  background-color: $color-carmine-red;
+  translate: -#{$apx-134} $apx-134;
+  @include mobile {
+    bottom: 0;
+    left: -#{$apx-m-40};
+    width: $apx-m-416;
+    height: $apx-m-124;
+    translate: -#{$apx-124} $apx-124;
+  }
+}
+.bg__line.finish-4 {
+  top: 0;
+  right: 0;
+  width: $apx-300;
+  height: $apx-111;
+  background-color: $color-carmine-red;
+  translate: $apx-300 0;
+  @include mobile {
+    top: 0;
+    right: -#{$apx-m-16};
+    width: $apx-m-260;
+    height: $apx-m-157;
+    translate: $apx-111 -#{$apx-111};
+  }
+}
+.bg__line.finish-5 {
+  top: 0;
+  right: 0;
+  width: $apx-282;
+  height: $apx-208;
+  background-color: $color-black;
+  translate: $apx-208 -#{$apx-208};
+  @include mobile {
+    top: 0;
+    right: -#{$apx-m-14};
+    width: $apx-m-320;
+    height: $apx-m-320;
+    translate: $apx-320 -#{$apx-320};
+  }
+}
+.bg__line.finish-6 {
+  top: $apx-133;
+  right: $apx-88;
+  width: $apx-72;
+  height: $apx-78;
+  background-color: $color-gray-961;
+  animation-duration: 1.4s;
+  translate: $apx-300 -#{$apx-300};
+  @include mobile {
+    top: $apx-m-246;
+    right: -#{$apx-m-24};
+    width: $apx-m-140;
+    height: $apx-m-79;
+    translate: $apx-m-200;
+    animation-duration: 0.8s;
+  }
+}
+
+@keyframes bg-line {
+  0% {
+    // translate: $apx-160 -#{$apx-160};
+  }
+  100% {
+    translate: 0 0;
+  }
+}

@@ -1,0 +1,12 @@
+@keyframes modal-show {
+  0% {
+    translate: 0 5%;
+    opacity: 0;
+    scale: 0.95;
+  }
+  100% {
+    translate: 0 0;
+    opacity: 1;
+    scale: 1;
+  }
+}

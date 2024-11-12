@@ -1,0 +1,81 @@
+.b-spec {
+  font-family: $font-default;
+  font-size: $apx-30;
+  line-height: $apx-40;
+  font-weight: 900;
+  text-align: left;
+  color: $color-green-blue;
+  text-transform: uppercase;
+  @include mobile {
+    font-size: $apx-m-60;
+    line-height: $apx-m-40;
+  }
+}
+.b-spec__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $apx-20;
+  max-width: $apx-1317;
+  &:not(:first-child) {
+    margin-top: $apx-31;
+  }
+  @include mobile {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $apx-m-25;
+    // width: 100%;
+    max-width: $apx-m-770;
+    &:not(:first-child) {
+      margin-top: $apx-m-152;
+    }
+  }
+}
+.b-spec__name {
+  flex-shrink: 0;
+}
+.b-spec__grid {
+  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  gap: $apx-13;
+  width: $apx-904;
+  @include mobile {
+    gap: $apx-m-11;
+    width: 100%;
+  }
+}
+.b-spec__btn {
+  label {
+    @include transition(background-color, color);
+    display: grid;
+    place-items: center;
+    // width: max-content;
+    padding: $apx-19 $apx-20;
+    font-family: $font-default;
+    font-size: $apx-30;
+    line-height: $apx-40;
+    font-weight: 900;
+    text-align: center;
+    color: $color-green-blue;
+    white-space: nowrap;
+    text-transform: uppercase;
+    background-color: $color-gray-961;
+    border: $apx-6 solid $color-green-blue;
+    border-radius: $apx-27;
+    cursor: pointer;
+  }
+  input:checked + label {
+    color: $color-white;
+    background-color: $color-green-blue;
+  }
+  @include mobile {
+    label {
+      padding: $apx-m-19 $apx-m-20;
+      font-size: $apx-m-30;
+      line-height: $apx-m-40;
+      border-width: $apx-m-6;
+      border-radius: $apx-m-27;
+    }
+  }
+}

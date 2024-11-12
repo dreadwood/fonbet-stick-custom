@@ -1,0 +1,23 @@
+include /components/button/btn-default
+include /components/background/bg-second
+include /components/block/b-window
+
+mixin b-second({ isHide, className })
+  .b-first(hidden=isHide class=className)
+    +bg-second({})
+    .b-first__content
+      .b-first__left
+        .b-first__step 2
+        .b-first__wrp
+          .b-first__title Шафт
+          .b-first__text Создай свой дизайн для шафта клюшки — или воспользуйся одним из готовых вариантов.
+      +b-window({ step: 2, className: "b-first__window" })
+      +btn-default({
+        text: "Назад",
+        color: "black",
+        className: "b-first__btn-prev"
+      })
+      +btn-default({
+        text: "Далее",
+        className: "b-first__btn-next"
+      })

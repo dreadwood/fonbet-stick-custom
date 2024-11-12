@@ -1,0 +1,36 @@
+include /components/background/bg-start
+include /components/button/btn-default
+
+mixin b-start({ isHide, className })
+  .b-start(hidden=isHide class=className)
+    +bg-start({})
+    .b-start__content
+      a.b-start__logo(href="#")
+        +svg({ name: 'logo-fonbet', width: 326, height: 35 })
+      h1.b-start__title Верная подруга!
+      .b-start__wrp
+        .b-start__text
+          p C какой клюшкой овечкин должен поставить великий рекорд?
+          p Cоздай свой дизайн — и&nbsp;прими&nbsp;участие в розыгрыше своей верной подруги!
+        .b-start__info
+          .b-start__img
+            +picture2x({
+              image: '/img/ovechkin-shadow@1x.png',
+              width: 1550,
+              height: 1041
+            })
+          .b-start__ribbon
+            .b-start__ribbon-num 1
+            .b-start__ribbon__wrp
+              .b-start__ribbon-title Создай дизайн
+              .b-start__ribbon-text с помощью кастомизатора и&nbsp;поделись&nbsp;им в социальных сетях
+          .b-start__ribbon.second
+            .b-start__ribbon-num 2
+            .b-start__ribbon__wrp
+              .b-start__ribbon-title Сделай ставку от 500 рублей
+              .b-start__ribbon-text на хоккей и участвуй в розыгрыше. #{startData} Александр выберет #{startCount} авторов лучшего дизайна, которым достанется клюшка Великой Погони!
+          +btn-default({
+            text: "За подругой!",
+            color: "white",
+            className: "b-start__btn js-b-start-btn"
+          })

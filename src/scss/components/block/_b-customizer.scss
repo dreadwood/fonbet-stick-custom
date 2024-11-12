@@ -1,0 +1,241 @@
+.b-customizer {
+  --box-shadow-blur: $apx-20;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100%;
+  padding: $apx-20;
+  font-family: $font-default;
+  font-size: $apx-30;
+  line-height: 1.2;
+  font-weight: 700;
+  text-align: center;
+  color: $color-black;
+  text-transform: uppercase;
+  background-color: transparentize($color-black, 0.5);
+  @include mobile {
+    --box-shadow-blur: $apx-m-20;
+    padding: $apx-m-20;
+    padding-top: $apx-m-79;
+    font-size: $apx-m-30;
+    line-height: 1.2;
+  }
+}
+.b-customizer__dialog {
+  width: $apx-1644;
+  margin: auto;
+  padding: $apx-92 $apx-13 $apx-60 $apx-13;
+  background-color: $color-white;
+  border: $apx-15 solid $color-green-blue;
+  border-radius: $apx-41;
+  @include mobile {
+    width: $apx-m-938;
+    margin-top: 0;
+    padding: $apx-m-95 $apx-m-70 $apx-m-47 $apx-m-70;
+    border-width: $apx-m-15;
+    border-radius: $apx-m-41;
+  }
+}
+.b-customizer__title {
+  font-family: $font-title;
+  font-size: $apx-137;
+  line-height: 0.82;
+  span {
+    color: $color-carmine-red;
+  }
+  @include mobile {
+    font-size: $apx-m-100;
+    line-height: 0.82;
+  }
+}
+.b-customizer__subtitle {
+  max-width: $apx-750;
+  margin: $apx-6 auto $apx-26 auto;
+  @include mobile {
+    max-width: none;
+    margin-top: $apx-m-20;
+    margin-bottom: $apx-m-40;
+  }
+}
+.b-customizer__content {
+  position: relative;
+  display: flex;
+  gap: $apx-18;
+  @include mobile {
+    gap: 0;
+  }
+}
+.b-customizer__field {
+  position: relative;
+  flex-grow: 1;
+  background-color: $color-gray-655;
+  border-radius: $apx-27;
+  @include mobile {
+    height: $apx-m-635 * 2;
+    border-radius: $apx-m-29;
+  }
+}
+.b-customizer__controls {
+  position: absolute;
+  top: $apx-15;
+  left: $apx-15;
+  display: flex;
+  gap: $apx-12;
+  @include mobile {
+    top: $apx-m-15;
+    right: $apx-m-15;
+    left: auto;
+    gap: $apx-m-7;
+  }
+}
+.b-customizer__btn-control {
+  @include transition(scale, box-shadow);
+  display: block;
+  flex-shrink: 0;
+  width: $apx-59;
+  margin: 0;
+  padding: 0;
+  background-color: $color-white;
+  border: 0;
+  border-radius: $apx-20;
+  aspect-ratio: 1 / 1;
+  &:not([disabled]):hover,
+  &:not([disabled]):focus-visible {
+    scale: 1.04;
+    box-shadow: 0 0 var(--box-shadow-blur) 0 transparentize($color-black, 0.8);
+  }
+  &[disabled] {
+    svg {
+      opacity: 0.5;
+    }
+  }
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+  @include mobile {
+    width: $apx-m-54;
+    border-radius: $apx-m-18;
+  }
+}
+.b-customizer__colors {
+  position: absolute;
+  top: $apx-15;
+  right: $apx-15;
+  display: flex;
+  gap: $apx-8;
+  @include mobile {
+    top: $apx-m-14;
+    right: auto;
+    left: $apx-m-14;
+    gap: $apx-m-11;
+  }
+}
+.b-customizer__btn-color {
+  @include transition(scale, box-shadow);
+  display: block;
+  flex-shrink: 0;
+  width: $apx-59;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: $apx-2 solid transparent;
+  border-radius: $apx-20;
+  aspect-ratio: 1 / 1;
+  &:not([disabled]):hover,
+  &:not([disabled]):focus-visible {
+    scale: 1.04;
+    box-shadow: 0 0 var(--box-shadow-blur) 0 0 transparentize($color-black, 0.8);
+  }
+  &.red {
+    background-color: $color-carmine-red;
+    border-color: $color-carmine-red;
+  }
+  &.white {
+    background-color: $color-white;
+    border-color: $color-white;
+  }
+  &.black {
+    background-color: $color-black;
+    border-color: $color-black;
+  }
+  &.chrome {
+    background-image: $gradient-chrome;
+    border-color: $color-white;
+  }
+  &.reflective {
+    background-image: $gradient-reflective;
+    border-color: $color-white;
+  }
+  @include mobile {
+    width: $apx-m-54;
+    border-width: $apx-2;
+    border-radius: $apx-m-18;
+  }
+}
+.b-customizer__figures {
+  display: grid;
+  flex-shrink: 0;
+  gap: $apx-11;
+  padding: $apx-15 $apx-16;
+  background-color: $color-gray-655;
+  border-radius: $apx-27;
+  @include mobile {
+    position: absolute;
+    right: $apx-m-34;
+    bottom: $apx-m-38;
+    gap: $apx-m-12;
+    padding: 0;
+    background-color: transparent;
+    border-radius: 0;
+  }
+}
+.b-customizer__btn-figure {
+  @include transition(scale, box-shadow);
+  display: block;
+  width: $apx-70;
+  margin: 0;
+  padding: 0;
+  background-color: $color-white;
+  border: 0;
+  border-radius: $apx-21;
+  aspect-ratio: 1 / 1;
+  &:not([disabled]):hover,
+  &:not([disabled]):focus-visible {
+    scale: 1.04;
+    box-shadow: 0 0 var(--box-shadow-blur) 0 transparentize($color-black, 0.8);
+  }
+  &[disabled] {
+    svg {
+      opacity: 0.5;
+    }
+  }
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+  @include mobile {
+    width: $apx-m-82;
+    border-radius: $apx-m-24;
+  }
+}
+.b-customizer__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $apx-20;
+  margin-top: $apx-38;
+  @include mobile {
+    gap: $apx-m-20;
+    margin-top: $apx-m-33;
+  }
+}
+.b-customizer__nav-next {
+  min-width: $apx-408;
+  @include mobile {
+    min-width: $apx-m-384;
+  }
+}

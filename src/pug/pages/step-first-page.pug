@@ -1,0 +1,8 @@
+extends /elements/layout-page
+include /components/block/b-first
+
+block data
+  - title = "Template"
+
+block content
+  +b-first({ isHide: false })

@@ -27,7 +27,7 @@ const copy = () => {
     .src(
       [
         'src/fonts/**/*.{woff,woff2}',
-        'src/img/*.{webm,webp}',
+        'src/img/*.{webm,webp,avif,jpg,jpeg,png,svg}',
         'src/favicon/**/*',
         'src/favicon.ico',
         'src/robots.txt'
@@ -140,7 +140,7 @@ const server = () => {
   })
 
   gulp.watch('src/pug/**/*.{pug,js}', gulp.series(html, refresh))
-  gulp.watch('src/icon/**/*.svg', gulp.series(sprite, html, refresh))
+  gulp.watch('src/icons/**/*.svg', gulp.series(sprite, html, refresh))
   gulp.watch('src/scss/**/*.scss', gulp.series(css))
   gulp.watch('src/js/**/*.js', gulp.series(js, refresh))
 }

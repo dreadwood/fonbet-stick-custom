@@ -1,6 +1,11 @@
 extends /elements/layout-page
+include /components/block/b-start
+include /components/block/b-first
+include /components/block/b-fifth
 
 block data
   - title = "Template"
 
 block content
+  +b-first({ isHide: false, className: 'js-b-first' })
+  +b-fifth({ isHide: true, className: 'js-b-fifth' })

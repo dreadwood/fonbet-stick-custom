@@ -1,0 +1,19 @@
+include /components/button/btn-default
+include /components/background/bg-first
+include /components/block/b-window
+
+mixin b-first({ isHide, className })
+  .b-first(hidden=isHide class=className)
+    +bg-first({})
+    .b-first__content
+      .b-first__left
+        .b-first__step 1
+        .b-first__wrp
+          .b-first__title Цвет
+          .b-first__color.red красный
+          .b-first__text Выбери основной цвет клюшки для кастомизации. #[br] #[br] Если ты потом захочешь его поменять, воспользуйся кнопкой «Назад» на следующих экранах.
+      +b-window({ step: 1, className: "b-first__window" })
+      +btn-default({
+        text: "Далее",
+        className: "b-first__btn-next"
+      })

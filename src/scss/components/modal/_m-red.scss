@@ -1,0 +1,101 @@
+.m-red {
+  --box-shadow-blur: $apx-20;
+  position: relative;
+  flex-shrink: 0;
+  width: $apx-978;
+  margin: auto;
+  padding: $apx-178 $apx-50 $apx-76 $apx-50;
+  font-family: $font-default;
+  font-size: $apx-23;
+  line-height: 1.2;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  background-image: $gradient-red;
+  border: $apx-15 solid $color-white;
+  border-radius: $apx-41;
+  opacity: 0;
+  animation-name: modal-show;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0.15s;
+  animation-fill-mode: forwards;
+  translate: 0 5%;
+  scale: 0.95;
+  @include mobile {
+    --box-shadow-blur: $apx-m-20;
+    width: $apx-m-818;
+    padding: $apx-m-290 $apx-m-20 $apx-m-56 $apx-m-20;
+    font-size: $apx-m-23;
+    line-height: 1.2;
+    border-width: $apx-m-15;
+    border-radius: $apx-m-41;
+  }
+}
+.m-red__close {
+  @include transition(scale, box-shadow, rotate);
+  position: absolute;
+  top: $apx-15;
+  right: $apx-15;
+  display: block;
+  width: $apx-50;
+  aspect-ratio: 1 / 1;
+  margin: 0;
+  padding: 0;
+  background-color: $color-white;
+  border: 0;
+  border-radius: 50%;
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    display: block;
+    width: $apx-34;
+    height: $apx-3;
+    background-color: $color-black;
+  }
+  &::before {
+    rotate: 45deg;
+  }
+  &::after {
+    rotate: -45deg;
+  }
+  &:hover,
+  &:focus-visible {
+    rotate: 90deg;
+    scale: 1.04;
+    box-shadow: 0 0 var(--box-shadow-blur) 0 transparentize($color-black, 0.8);
+  }
+  @include mobile {
+    top: $apx-m-15;
+    right: $apx-m-15;
+    width: $apx-m-50;
+    &::before,
+    &::after {
+      width: $apx-m-34;
+      height: $apx-m-3;
+    }
+  }
+}
+.m-red__title {
+  font-family: $font-title;
+  font-size: $apx-111;
+  line-height: 0.99;
+  color: $color-white;
+  span {
+    color: $color-black;
+  }
+  @include mobile {
+    font-size: $apx-m-111;
+    line-height: 0.95;
+  }
+}
+.m-red__text {
+  margin-top: $apx-23;
+  @include mobile {
+    margin-top: $apx-m-178;
+  }
+}

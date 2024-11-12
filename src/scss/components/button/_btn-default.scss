@@ -1,0 +1,37 @@
+.btn-default {
+  @include transition(box-shadow, scale);
+  display: block;
+  width: max-content;
+  min-width: $apx-248;
+  margin: 0;
+  padding: $apx-22 $apx-40 $apx-20 $apx-40;
+  font-family: $font-default;
+  font-size: $apx-37;
+  line-height: $apx-46;
+  font-weight: 700;
+  text-align: center;
+  color: $color-white;
+  text-transform: uppercase;
+  background-color: $color-carmine-red;
+  border: 0;
+  border-radius: $apx-27;
+  &.white {
+    color: $color-black;
+    background-color: $color-white;
+  }
+  &.black {
+    background-color: $color-green-blue;
+  }
+  &:not([disabled]):hover,
+  &:not([disabled]):focus-visible {
+    scale: 1.02;
+    box-shadow: 0 0 $apx-20 0 transparentize($color-black, 0.8);
+  }
+  @include mobile {
+    min-width: $apx-230;
+    padding: $apx-m-22 $apx-m-40 $apx-m-20 $apx-m-40;
+    font-size: $apx-m-37;
+    line-height: $apx-m-46;
+    border-radius: $apx-m-27;
+  }
+}

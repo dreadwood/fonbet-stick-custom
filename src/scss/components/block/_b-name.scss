@@ -1,0 +1,79 @@
+.b-name {
+  font-family: $font-default;
+  font-size: $apx-30;
+  line-height: $apx-40;
+  font-weight: 700;
+  text-align: left;
+  color: $color-green-blue;
+  text-transform: uppercase;
+  @include mobile {
+    font-size: $apx-m-30;
+    line-height: $apx-m-40;
+  }
+}
+.b-name__label {
+  display: block;
+  margin: 0;
+  margin-bottom: $apx-11;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  @include mobile {
+    margin-bottom: 0;
+  }
+}
+.b-name__field {
+  @include transition(color, border-color);
+  display: block;
+  width: 100%;
+  max-width: $apx-582;
+  padding: $apx-15 $apx-24 $apx-13 $apx-24;
+  font-family: $font-default;
+  font-size: $apx-37;
+  line-height: $apx-50;
+  font-weight: 700;
+  text-align: left;
+  color: $color-black;
+  text-transform: uppercase;
+  background-color: $color-gray-961;
+  border: $apx-5 solid $color-black;
+  border-radius: $apx-27;
+  outline: none;
+  appearance: none;
+  &::placeholder {
+    font: inherit;
+    color: $color-gray-522;
+  }
+  &::-webkit-credentials-auto-fill-button {
+    // for hidden key icon in safari
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+  &:hover,
+  &:focus-visible {
+    // border-color: $color-hero;
+  }
+  @include mobile {
+    max-width: $apx-m-620;
+    padding: $apx-m-6 $apx-m-29 $apx-m-2 $apx-m-29;
+    font-size: $apx-m-37;
+    line-height: $apx-m-50;
+    border-width: $apx-m-5;
+    border-radius: $apx-m-27;
+  }
+}
+.b-name__subfield {
+  margin-top: $apx-11;
+  font-size: $apx-19;
+  line-height: 1.1;
+  text-transform: none;
+  @include mobile {
+    margin-top: $apx-m-14;
+    font-size: $apx-m-19;
+    line-height: 1.1;
+  }
+}

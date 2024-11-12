@@ -1,0 +1,8 @@
+extends /elements/layout-page
+include /components/modal/m-bet
+
+block data
+  - title = "Template"
+
+block content
+  +m-bet({ isShow: true })

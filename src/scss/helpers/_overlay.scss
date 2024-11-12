@@ -4,11 +4,25 @@
   z-index: 9;
   display: none;
   flex-direction: column;
-  padding: 10px;
+  padding: $apx-20;
   overflow: scroll;
-  background-color: transparentize($color-black, 0.8);
+  background-color: transparentize($color-black, 0.5);
   inset: 0;
+  opacity: 0;
+  animation-name: overlay-show;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
   &.show {
     display: flex;
+  }
+}
+
+@keyframes overlay-show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

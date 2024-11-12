@@ -1,0 +1,24 @@
+include /components/button/btn-default
+include /components/background/bg-fourth
+include /components/block/b-name
+include /components/block/b-window
+
+mixin b-fourth({ isHide, className })
+  .b-first(hidden=isHide class=className)
+    +bg-fourth({})
+    .b-first__content
+      .b-first__left
+        .b-first__step 4
+        .b-first__wrp
+          .b-first__title Персонализация
+          +b-name({ className: "b-first__name" })
+      +b-window({ step: 4, className: "b-first__window" })
+      +btn-default({
+        text: "Назад",
+        color: "black",
+        className: "b-first__btn-prev"
+      })
+      +btn-default({
+        text: "Далее",
+        className: "b-first__btn-next"
+      })

@@ -16,12 +16,12 @@ body {
   margin: 0;
   padding: 0;
   font-family: $font-default;
-  font-size: 16px;
-  line-height: 22px;
+  font-size: $apx-30;
+  line-height: 110%;
   font-weight: 400;
   font-style: normal;
   text-align: left;
-  color: $color-black;
+  color: $color-green-blue;
   word-break: break-word;
   background-color: $color-white;
 }
@@ -48,4 +48,8 @@ button {
   &:not([disabled]) {
     cursor: pointer;
   }
+}
+[hidden] {
+  /* stylelint-disable-next-line declaration-no-important */
+  display: none !important;
 }

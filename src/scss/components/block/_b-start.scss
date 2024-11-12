@@ -1,0 +1,300 @@
+.b-start {
+  position: relative;
+  display: flex;
+  flex-grow: 1;
+  width: 100%;
+  height: 100%;
+  font-family: $font-default;
+  font-size: $apx-38;
+  line-height: 1.2;
+  font-weight: 700;
+  text-align: left;
+  color: $color-white;
+  text-transform: uppercase;
+  background-color: $color-carmine-red;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-image: $gradient-red;
+    animation: start-gradient 1s ease-in-out forwards;
+  }
+  @include mobile {
+    font-size: $apx-m-38;
+    line-height: 1.2;
+  }
+}
+.b-start__img {
+  position: absolute;
+  bottom: -#{$apx-2};
+  left: 50%;
+  z-index: 2;
+  // width: $apx-1550;
+  width: max-content;
+  // height: $apx-1041;
+  transform-origin: center bottom;
+  opacity: 0;
+  animation-name: start-img;
+  animation-duration: 0.7s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
+  translate: -50.5%;
+  img {
+    // width: 100%;
+    // height: 100%;
+    width: max($apx-1550, 110vh);
+    object-fit: contain;
+    object-position: center bottom;
+  }
+  @include mobile {
+    position: absolute;
+    bottom: calc(100% - #{$apx-m-230});
+    translate: -52%;
+    img {
+      width: $apx-m-660 * 2;
+    }
+  }
+}
+.b-start__content {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  max-height: $apx-1097;
+  padding: $apx-75 $apx-165;
+  transform-origin: center bottom;
+  @include mobile {
+    max-height: none;
+    margin: auto;
+    padding: $apx-m-156 $apx-m-123 $apx-m-117 $apx-m-123;
+    overflow: hidden;
+  }
+}
+.b-start__logo {
+  position: relative;
+  display: block;
+  width: $apx-326;
+  height: $apx-35;
+  margin-right: auto;
+  margin-left: auto;
+  opacity: 0;
+  animation-name: start-text;
+  animation-duration: 0.7s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0.7s;
+  animation-fill-mode: forwards;
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+  @include mobile {
+    width: $apx-m-325;
+    height: $apx-m-34;
+    margin-left: 0;
+  }
+}
+.b-start__title {
+  position: relative;
+  width: 100%;
+  margin-top: $apx-60;
+  margin-bottom: 0;
+  font-family: $font-title;
+  font-size: $apx-274;
+  line-height: 0.85;
+  text-align: center;
+  opacity: 0;
+  animation-name: start-text;
+  animation-duration: 0.7s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0.7s;
+  animation-fill-mode: forwards;
+  @include mobile {
+    margin-top: $apx-m-76;
+    font-size: $apx-m-200;
+    line-height: 0.85;
+    text-align: left;
+  }
+}
+.b-start__wrp {
+  display: flex;
+  justify-content: space-between;
+  gap: $apx-20;
+  margin-top: auto;
+  @include mobile {
+    flex-direction: column;
+    gap: $apx-m-453;
+    padding: 0;
+  }
+}
+.b-start__text {
+  position: relative;
+  z-index: 4;
+  width: $apx-692;
+  margin-top: auto;
+  opacity: 0;
+  animation-name: start-text;
+  animation-duration: 0.7s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0.7s;
+  animation-fill-mode: forwards;
+  p {
+    margin: 0;
+    &:not(:first-child) {
+      margin-top: $apx-46;
+    }
+  }
+  @include mobile {
+    width: auto;
+    margin-top: 0;
+    p {
+      &:not(:first-child) {
+        margin-top: $apx-m-46;
+      }
+    }
+  }
+}
+.b-start__info {
+  @include mobile {
+    position: relative;
+    padding-left: $apx-m-187;
+  }
+}
+.b-start__ribbon {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: flex-end;
+  column-gap: $apx-26;
+  width: max-content;
+  margin-right: -#{$apx-165};
+  padding: $apx-16 $apx-150 $apx-31 $apx-32;
+  background-color: $color-green-blue;
+  border-radius: $apx-27 0 0 $apx-27;
+  animation-name: start-ribbon;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0.3s;
+  translate: 100%;
+  animation-fill-mode: forwards;
+  &.second {
+    margin-top: $apx-26;
+    animation-delay: 0.6s;
+  }
+  @include mobile {
+    column-gap: $apx-m-28;
+    width: auto;
+    margin-right: -#{$apx-m-123};
+    padding: $apx-m-16 $apx-m-120 $apx-m-18 $apx-m-32;
+    border-radius: $apx-m-27 0 0 $apx-m-27;
+    &.second {
+      margin-top: $apx-m-16;
+    }
+  }
+}
+.b-start__ribbon-num {
+  flex-shrink: 0;
+  margin-bottom: -#{$apx-42};
+  font-family: $font-title;
+  font-size: $apx-137;
+  line-height: 1.1;
+  @include mobile {
+    margin-bottom: -#{$apx-m-42};
+    font-size: $apx-m-137;
+    line-height: 1.1;
+  }
+}
+.b-start__ribbon__wrp {
+  width: $apx-454;
+  @include mobile {
+    width: auto;
+  }
+}
+.b-start__ribbon-title {
+  font-family: $font-title;
+  font-size: $apx-30;
+  line-height: 1.1;
+  color: $color-carmine-red;
+  @include mobile {
+    font-size: $apx-m-38;
+    line-height: 1.1;
+  }
+}
+.b-start__ribbon-text {
+  font-size: $apx-19;
+  line-height: 1.2;
+  @include mobile {
+    font-size: $apx-m-22;
+    line-height: 1.2;
+  }
+}
+.b-start__btn {
+  min-width: $apx-466;
+  margin-top: $apx-37;
+  animation-name: start-btn;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0.8s;
+  translate: 200%;
+  animation-fill-mode: forwards;
+  @include mobile {
+    min-width: $apx-m-462;
+    margin-top: $apx-m-18;
+    padding-top: $apx-m-32;
+    padding-bottom: $apx-m-32;
+  }
+}
+
+@keyframes start-gradient {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes start-img {
+  0% {
+    opacity: 0;
+    scale: 0.98;
+  }
+  100% {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+@keyframes start-text {
+  0% {
+    opacity: 0;
+    scale: 0.98;
+  }
+  100% {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+@keyframes start-ribbon {
+  0% {
+    translate: 100%;
+  }
+  100% {
+    translate: 0;
+  }
+}
+
+@keyframes start-btn {
+  0% {
+    translate: 200%;
+    opacity: 0;
+  }
+  100% {
+    translate: 0;
+    opacity: 1;
+  }
+}
