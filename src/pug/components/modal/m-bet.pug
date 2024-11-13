@@ -1,4 +1,4 @@
-include /components/button/btn-default
+include /components/button/btn
 
 mixin m-bet({ isShow, className })
   .overlay(class=isShow && "show")
@@ -6,7 +6,7 @@ mixin m-bet({ isShow, className })
       .m-white__title Выиграй #[br] #[span клюшку!]
       .m-white__text.desktop Сделай ставку на хоккей от 500 рублей, поделись своим дизайном в соцсетях — и получи шанс выиграть свою кастомизированную клюшкУ! #[br] Мы подведем итоги розыгрыша #{endData}!
       .m-white__text.mobile СДЕЛАЙ СТАВКУ на хоккей от 500 рублей и получи шанс&nbsp;выиграть свою кастомизированную клюшкУ! #[br] Мы подведем итоги розыгрыша #{endData}!
-      +btn-default({
+      +btn({
         text: "Сделать ставку",
         className: "m-white__btn"
       })

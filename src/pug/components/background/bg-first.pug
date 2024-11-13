@@ -1,5 +1,5 @@
-mixin bg-first({})
-  .bg
+mixin bg-first({ isHide, className })
+  .bg(hidden=isHide class=className)
     .bg__line.first-1
     .bg__line.first-2
     .bg__line.first-3

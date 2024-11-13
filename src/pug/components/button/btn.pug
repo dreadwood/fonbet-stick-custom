@@ -1,0 +1,8 @@
+mixin btn({ text, isDisabled, color, className, isHide })
+  button.btn(
+    class=color
+    class=className
+    type="button"
+    hidden=isHide
+    disabled=isDisabled
+  )=text

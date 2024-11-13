@@ -1,5 +1,5 @@
-mixin bg-finish({})
-  .bg
+mixin bg-finish({ isHide, className })
+  .bg(hidden=isHide class=className)
     .bg__line.finish-1
     .bg__line.finish-2
     .bg__line.finish-3

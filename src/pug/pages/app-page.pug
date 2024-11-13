@@ -1,0 +1,64 @@
+extends /elements/layout-page
+
+include /components/background/bg-first
+include /components/background/bg-second
+include /components/background/bg-third
+include /components/background/bg-fourth
+include /components/background/bg-fifth
+
+include /components/block/b-start
+include /components/block/b-name
+include /components/block/b-window
+include /components/block/b-spec
+
+block data
+  - title = "Template"
+
+block content
+  .b-set(hidden=isHide class=className)
+    +bg-first({ isHide: false, className: "js-bg first" })
+    +bg-second({ isHide: true, className: "js-bg second" })
+    +bg-third({ isHide: true, className: "js-bg third" })
+    +bg-fourth({ isHide: true, className: "js-bg fourth" })
+    +bg-fifth({ isHide: true, className: "js-bg fifth" })
+
+    .b-set__content
+      .b-set__left
+        .b-set__step.js-set-step 1
+        .b-set__wrp.js-set-wrp.first
+          .b-set__title.js-set-title Цвет
+
+          .js-set-content.js-set-content.first
+            .b-set__color.red красный
+            .b-set__text Выбери основной цвет клюшки для кастомизации. #[br] #[br] Если ты потом захочешь его поменять, воспользуйся кнопкой «Назад» на следующих экранах.
+
+          .js-set-content.js-set-content.second(hidden)
+            .b-set__text Создай свой дизайн для шафта клюшки — или воспользуйся одним из готовых вариантов.
+
+          .js-set-content.js-set-content.third(hidden)
+            .b-set__color.red Глянцевое
+
+          .js-set-content.js-set-content.fourth(hidden)
+            +b-name({ className: "b-set__name" })
+
+          .js-set-content.js-set-content.fifth(hidden)
+            .b-set__text Последний шаг — настраиваем клюшку под&nbsp;твои предпочтения и стиль игры!
+
+        .b-set__spec.js-set-content.fifth(hidden)
+          +b-spec({})
+
+      +b-window({ step: 1, isHide: false, className: "b-set__window js-set-content first" })
+      +b-window({ step: 2, isHide: true, className: "b-set__window js-set-content second" })
+      +b-window({ step: 3, isHide: true, className: "b-set__window js-set-content third" })
+      +b-window({ step: 4, isHide: true, className: "b-set__window js-set-content fourth" })
+
+      +btn({
+        text: "Назад",
+        color: "black",
+        isHide: true,
+        className: "b-set__btn-prev js-set-btn-prev"
+      })
+      +btn({
+        text: "Далее",
+        className: "b-set__btn-next js-set-btn-next"
+      })

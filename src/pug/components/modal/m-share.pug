@@ -1,4 +1,4 @@
-include /components/button/btn-default
+include /components/button/btn
 
 mixin m-share({ isShow, className })
   .overlay(class=isShow && "show")
@@ -6,7 +6,7 @@ mixin m-share({ isShow, className })
       .m-white__title.desktop #[span Поделись своим] #[br] дизайном
       .m-white__title.mobile #[span Поделись] #[br] своим дизайном
       .m-white__text Чтобы принять участие в розыгрыше!
-      +btn-default({
+      +btn({
         text: "Поделиться",
         className: "m-white__btn"
       })

@@ -1,5 +1,35 @@
-mixin b-window({ step, className })
-  .b-window(class=className)
+mixin b-window-pag-1({})
+  .b-window__pag.color
+    .b-window__pag-list
+      button.b-window__pag-color.red
+      button.b-window__pag-color.white
+      button.b-window__pag-color.black
+      button.b-window__pag-color.carbon
+    .b-window__pag-name Цвет
+
+mixin b-window-pag-2({})
+  .b-window__pag
+    .b-window__pag-list
+      button.b-window__pag-btn.actv
+      button.b-window__pag-btn
+      button.b-window__pag-btn
+      button.b-window__pag-btn
+      button.b-window__pag-btn
+      button.b-window__pag-btn
+      button.b-window__pag-btn.clear
+    .b-window__pag-name Текстура шафта
+
+mixin b-window-pag-3({})
+  .b-window__pag
+    .b-window__pag-list
+      button.b-window__pag-btn.actv
+      button.b-window__pag-btn
+      button.b-window__pag-btn
+      button.b-window__pag-btn
+    .b-window__pag-name ПОКРЫТИЕ КРЮКА 1/4
+
+mixin b-window({ step, isHide, className })
+  .b-window(hidden=isHide, class=className)
     .b-window__field
       if step === 1
         img.b-window__img.first(src="/img/demo-step-1.png")
@@ -10,6 +40,13 @@ mixin b-window({ step, className })
       if step === 4
         img.b-window__img.fourth(src="/img/demo-step-4.png")
     .b-window__control
+      if step === 1
+        +b-window-pag-1({})
+      if step === 2
+        +b-window-pag-2({})
+      if step === 3
+        +b-window-pag-3({})
+
     button.b-window__nav.prev
       +svg({ name: 'nav-arrow-prev', width: 65, height: 88 })
     button.b-window__nav.next

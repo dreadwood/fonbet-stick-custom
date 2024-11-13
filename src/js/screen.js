@@ -2,6 +2,7 @@
  * screen.js
  */
 ;(() => {
+  return
   /** @type {HTMLDivElement | null} */
   const startScreen = document.querySelector('.js-b-start')
   /** @type {HTMLDivElement | null} */

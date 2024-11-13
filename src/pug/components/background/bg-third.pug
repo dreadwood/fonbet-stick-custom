@@ -1,5 +1,5 @@
-mixin bg-third({})
-  .bg
+mixin bg-third({ isHide, className })
+  .bg(hidden=isHide class=className)
     .bg__line.third-1
     .bg__line.third-2
     .bg__line.third-3

@@ -1,5 +1,5 @@
 include /components/background/bg-start
-include /components/button/btn-default
+include /components/button/btn
 
 mixin b-start({ isHide, className })
   .b-start(hidden=isHide class=className)
@@ -29,7 +29,7 @@ mixin b-start({ isHide, className })
             .b-start__ribbon__wrp
               .b-start__ribbon-title Сделай ставку от 500 рублей
               .b-start__ribbon-text на хоккей и участвуй в розыгрыше. #{startData} Александр выберет #{startCount} авторов лучшего дизайна, которым достанется клюшка Великой Погони!
-          +btn-default({
+          +btn({
             text: "За подругой!",
             color: "white",
             className: "b-start__btn js-b-start-btn"

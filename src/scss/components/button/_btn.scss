@@ -1,5 +1,5 @@
-.btn-default {
-  @include transition(box-shadow, scale);
+.btn {
+  @include transition(box-shadow, scale, opacity, left, right);
   display: block;
   width: max-content;
   min-width: $apx-248;
@@ -26,6 +26,9 @@
   &:not([disabled]):focus-visible {
     scale: 1.02;
     box-shadow: 0 0 $apx-20 0 transparentize($color-black, 0.8);
+  }
+  &[disabled] {
+    opacity: 0.5;
   }
   @include mobile {
     min-width: $apx-230;

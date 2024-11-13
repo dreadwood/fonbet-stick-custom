@@ -1,20 +1,20 @@
-include /components/button/btn-default
+include /components/button/btn
 include /components/background/bg-finish
 include /components/block/b-design
 
 mixin b-finish({ isHide, className })
-  .b-first(hidden=isHide class=className)
+  .b-set(hidden=isHide class=className)
     - let onclick = "this.classList.toggle('actv')"
     +bg-finish({})
-    .b-first__content
+    .b-set__content
       +b-design({})
 
-      +btn-default({
+      +btn({
         text: "Назад",
         color: "black",
-        className: "b-first__btn-prev"
+        className: "b-set__btn-prev"
       })
-      +btn-default({
+      +btn({
         text: "Сохранить дизайн",
-        className: "b-first__btn-next finish"
+        className: "b-set__btn-next finish"
       })

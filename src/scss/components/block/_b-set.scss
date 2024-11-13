@@ -1,4 +1,4 @@
-.b-first {
+.b-set {
   position: relative;
   display: flex;
   flex-grow: 1;
@@ -11,7 +11,7 @@
     padding-bottom: $apx-m-159; // TODO: 2024-11-12 /
   }
 }
-.b-first__content {
+.b-set__content {
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -28,7 +28,7 @@
     // padding: 0 $apx-m-130 0 $apx-m-130; // TODO: 2024-11-12 /
   }
 }
-.b-first__left {
+.b-set__left {
   padding-top: $apx-52;
   @include mobile {
     display: flex;
@@ -38,7 +38,7 @@
     padding-left: $apx-m-46;
   }
 }
-.b-first__step {
+.b-set__step {
   margin-bottom: -#{$apx-42};
   font-family: $font-title;
   font-size: $apx-274;
@@ -50,7 +50,7 @@
     line-height: 1.1;
   }
 }
-.b-first__wrp {
+.b-set__wrp {
   width: $apx-650;
   &.fifth {
     width: auto;
@@ -62,7 +62,7 @@
     }
   }
 }
-.b-first__title {
+.b-set__title {
   font-size: $apx-55;
   line-height: 1.1;
   @include mobile {
@@ -70,7 +70,7 @@
     line-height: 1.1;
   }
 }
-.b-first__color {
+.b-set__color {
   margin-top: $apx-16;
   font-size: $apx-109;
   line-height: 1.1;
@@ -81,7 +81,7 @@
     line-height: 1.1;
   }
 }
-.b-first__text {
+.b-set__text {
   margin-top: $apx-8;
   font-family: $font-default;
   font-size: $apx-30;
@@ -96,19 +96,19 @@
     line-height: 1.1;
   }
 }
-.b-first__name {
+.b-set__name {
   margin-top: $apx-46;
   @include mobile {
     margin-top: $apx-m-3;
   }
 }
-.b-first__spec {
+.b-set__spec {
   margin-top: $apx-46;
   @include mobile {
     margin-top: $apx-m-151;
   }
 }
-.b-first__window {
+.b-set__window {
   margin-right: $apx-300;
   @include mobile {
     margin-top: -#{$apx-m-26};
@@ -116,10 +116,14 @@
     margin-left: auto;
   }
 }
-.b-first__btn-prev {
+.b-set__btn-prev {
   position: absolute;
   right: $apx-820;
   bottom: 0;
+  animation-name: b-set-btn;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
   &.fifth {
     left: 0;
   }
@@ -132,7 +136,7 @@
     width: $apx-m-230;
   }
 }
-.b-first__btn-next {
+.b-set__btn-next {
   position: absolute;
   right: 0;
   bottom: 0;
@@ -141,5 +145,14 @@
     &.finish {
       width: max-content;
     }
+  }
+}
+
+@keyframes b-set-btn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

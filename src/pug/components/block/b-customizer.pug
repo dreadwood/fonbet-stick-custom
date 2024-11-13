@@ -1,4 +1,4 @@
-include /components/button/btn-default
+include /components/button/btn
 
 mixin b-customizer({ className })
   .b-customizer(class=className)
@@ -36,8 +36,8 @@ mixin b-customizer({ className })
             button.b-customizer__btn-figure.text
               +svg({ name: 'text', width: 70, height: 70 })
       .b-customizer__nav
-        +btn-default({ text: "Назад", color: "black" })
-        +btn-default({
+        +btn({ text: "Назад", color: "black" })
+        +btn({
           text: "Сохранить",
           className: "b-customizer__nav-next"
         })

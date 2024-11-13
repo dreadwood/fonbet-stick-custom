@@ -1,25 +1,25 @@
-include /components/button/btn-default
+include /components/button/btn
 include /components/block/b-spec
 include /components/background/bg-fifth
 
 mixin b-fifth({ isHide, className })
-  .b-first(hidden=isHide class=className)
+  .b-set(hidden=isHide class=className)
     +bg-fifth({})
-    .b-first__content
-      .b-first__left
-        .b-first__step 5
-        .b-first__wrp.fifth
-          .b-first__title Технические характеристики
-          .b-first__text Последний шаг — настраиваем клюшку под&nbsp;твои предпочтения и стиль игры!
-      .b-first__spec
+    .b-set__content
+      .b-set__left
+        .b-set__step 5
+        .b-set__wrp.fifth
+          .b-set__title Технические характеристики
+          .b-set__text Последний шаг — настраиваем клюшку под&nbsp;твои предпочтения и стиль игры!
+      .b-set__spec
         +b-spec({})
 
-      +btn-default({
+      +btn({
         text: "Назад",
         color: "black",
-        className: "b-first__btn-prev fifth"
+        className: "b-set__btn-prev fifth"
       })
-      +btn-default({
+      +btn({
         text: "Далее",
-        className: "b-first__btn-next"
+        className: "b-set__btn-next"
       })

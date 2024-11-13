@@ -1,5 +1,5 @@
-mixin bg-second({})
-  .bg
+mixin bg-second({ isHide, className })
+  .bg(hidden=isHide class=className)
     .bg__line.second-1
     .bg__line.second-2
     .bg__line.second-3

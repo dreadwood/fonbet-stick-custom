@@ -1,23 +1,23 @@
-include /components/button/btn-default
+include /components/button/btn
 include /components/background/bg-third
 include /components/block/b-window
 
 mixin b-third({ isHide, className })
-  .b-first(hidden=isHide class=className)
+  .b-set(hidden=isHide class=className)
     +bg-third({})
-    .b-first__content
-      .b-first__left
-        .b-first__step 3
-        .b-first__wrp
-          .b-first__title Покрытие крюка
-          .b-first__color.red Глянцевое
-      +b-window({ step: 3, className: "b-first__window" })
-      +btn-default({
+    .b-set__content
+      .b-set__left
+        .b-set__step 3
+        .b-set__wrp
+          .b-set__title Покрытие крюка
+          .b-set__color.red Глянцевое
+      +b-window({ step: 3, className: "b-set__window" })
+      +btn({
         text: "Назад",
         color: "black",
-        className: "b-first__btn-prev"
+        className: "b-set__btn-prev"
       })
-      +btn-default({
+      +btn({
         text: "Далее",
-        className: "b-first__btn-next"
+        className: "b-set__btn-next"
       })

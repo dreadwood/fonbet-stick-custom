@@ -27,15 +27,23 @@
   }
 }
 .b-window__nav {
+  @include transition(background-color);
   position: absolute;
   top: 50%;
   display: grid;
   place-items: center;
   width: $apx-65;
   height: $apx-88;
+  margin: 0;
+  padding: 0;
   background-color: $color-green-blue;
+  border: 0;
   border-radius: $apx-27;
   translate: 0 -50%;
+  &:not([disabled]):hover,
+  &:not([disabled]):focus-visible {
+    background-color: color.adjust($color-carmine-red, $blackness: 10%);
+  }
   &.prev {
     right: calc(100% + $apx-68);
   }
@@ -52,5 +60,149 @@
     &.next {
       left: calc(100% + $apx-m-19);
     }
+  }
+}
+.b-window__pag {
+  position: absolute;
+  top: calc(100% + $apx-22);
+  left: 50%;
+  width: max-content;
+  translate: -50%;
+  &.color {
+    .b-window__pag-name {
+      margin-top: 0;
+    }
+  }
+  @include mobile {
+    top: calc(100% + $apx-m-99);
+  }
+}
+.b-window__pag-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $apx-4;
+  @include mobile {
+    gap: $apx-m-4;
+  }
+}
+.b-window__pag-btn {
+  @include transition(scale);
+  position: relative;
+  display: block;
+  width: $apx-31;
+  margin: 0;
+  padding: 0;
+  background-color: $color-green-blue;
+  border: $apx-3 solid $color-green-blue;
+  border-radius: $apx-10;
+  aspect-ratio: 1 / 1;
+  &.clear {
+    background-color: transparent;
+    border-color: $color-carmine-red;
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: $apx-34;
+      height: $apx-2;
+      background-color: $color-carmine-red;
+      translate: -50% -50%;
+    }
+    &::before {
+      rotate: 45deg;
+    }
+    &::after {
+      rotate: -45deg;
+    }
+  }
+  &:not(.clear).actv {
+    background-color: $color-carmine-red;
+    border-color: $color-carmine-red;
+    &::before,
+    &::after {
+      content: none;
+    }
+  }
+  &:not(.actv, [disabled]):hover,
+  &:not(.actv, [disabled]):focus-visible {
+    scale: 1.1;
+  }
+  @include mobile {
+    width: $apx-m-31;
+    border-width: $apx-m-2;
+    border-radius: $apx-m-10;
+    &.clear {
+      &::before,
+      &::after {
+        width: $apx-m-34;
+        height: $apx-m-2;
+      }
+    }
+  }
+}
+.b-window__pag-color {
+  @include transition(scale);
+  position: relative;
+  display: block;
+  width: $apx-47;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: $apx-3 solid transparent;
+  border-radius: $apx-16;
+  aspect-ratio: 1 / 1;
+  &.red {
+    background-color: $color-carmine-red;
+    border-color: $color-carmine-red;
+  }
+  &.white {
+    background-color: $color-white;
+    border-color: $color-black;
+  }
+  &.black {
+    background-color: $color-black;
+    border-color: $color-black;
+  }
+  &.carbon {
+    background-color: $color-green-blue;
+    background-image: linear-gradient(
+        45deg,
+        $color-black 25%,
+        transparent 25%,
+        transparent 75%,
+        $color-black 75%
+      ),
+      linear-gradient(
+        45deg,
+        $color-black 25%,
+        transparent 25%,
+        transparent 75%,
+        $color-black 75%
+      );
+    background-size: $apx-10 $apx-10;
+    background-position:
+      0 0,
+      $apx-5 $apx-5;
+  }
+  &:not(.actv, [disabled]):hover,
+  &:not(.actv, [disabled]):focus-visible {
+    scale: 1.05;
+  }
+}
+.b-window__pag-name {
+  margin-top: $apx-16;
+  font-family: $font-default;
+  font-size: $apx-30;
+  line-height: $apx-40;
+  text-align: center;
+  color: $color-green-blue;
+  text-transform: uppercase;
+  @include mobile {
+    margin-top: $apx-m-16;
+    font-size: $apx-m-28;
+    line-height: $apx-m-40;
   }
 }
