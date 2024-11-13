@@ -26,10 +26,29 @@ mixin b-window-pag-3({})
       button.b-window__pag-btn
       button.b-window__pag-btn
       button.b-window__pag-btn
-    .b-window__pag-name ПОКРЫТИЕ КРЮКА 1/4
+    .b-window__pag-name Покрытие крюка 1/4
+
+mixin b-window-shaft({})
+  .b-window__shaft
+    button.b-window__color-btn.reflective
+    button.b-window__color-btn.chrome
+    button.b-window__color-btn.black
+    button.b-window__color-btn.white
+    button.b-window__color-btn.red
+
+mixin b-window-blade({})
+  .b-window__blade
+    button.b-window__color-btn.black
+    button.b-window__color-btn.white
+    button.b-window__color-btn.red
+    button.b-window__color-btn.carbon
 
 mixin b-window({ step, isHide, className })
   .b-window(hidden=isHide, class=className)
+    if step === 2
+      +b-window-shaft({})
+    if step === 3
+      +b-window-blade({})
     .b-window__field
       if step === 1
         img.b-window__img.first(src="/img/demo-step-1.png")

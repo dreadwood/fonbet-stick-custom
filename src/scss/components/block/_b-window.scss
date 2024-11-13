@@ -206,3 +206,98 @@
     line-height: $apx-m-40;
   }
 }
+.b-window__shaft {
+  position: absolute;
+  bottom: $apx-15;
+  left: $apx-17;
+  z-index: 1;
+  display: grid;
+  gap: $apx-8;
+  width: max-content;
+  @include mobile {
+    bottom: $apx-m-22;
+    left: $apx-m-22;
+    gap: $apx-m-8;
+  }
+}
+.b-window__blade {
+  position: absolute;
+  top: $apx-15;
+  left: $apx-17;
+  z-index: 1;
+  display: grid;
+  gap: $apx-8;
+  width: max-content;
+  @include mobile {
+    top: $apx-m-22;
+    left: $apx-m-22;
+    gap: $apx-m-8;
+  }
+}
+.b-window__color-btn {
+  @include transition(scale);
+  display: block;
+  width: $apx-63;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: $apx-3 solid transparent;
+  border-radius: $apx-20;
+  aspect-ratio: 1 / 1;
+  &.red {
+    background-color: $color-carmine-red;
+    border-color: $color-carmine-red;
+  }
+  &.white {
+    background-color: $color-white;
+    border-color: $color-white;
+  }
+  &.black {
+    background-color: $color-black;
+    border-color: $color-black;
+  }
+  &.chrome {
+    background-image: $gradient-chrome;
+    border-color: $color-white;
+  }
+  &.reflective {
+    background-image: $gradient-reflective;
+    border-color: $color-white;
+  }
+  &.carbon {
+    background-color: $color-green-blue;
+    background-image: linear-gradient(
+        45deg,
+        $color-black 25%,
+        transparent 25%,
+        transparent 75%,
+        $color-black 75%
+      ),
+      linear-gradient(
+        45deg,
+        $color-black 25%,
+        transparent 25%,
+        transparent 75%,
+        $color-black 75%
+      );
+    background-size: $apx-10 $apx-10;
+    background-position:
+      0 0,
+      $apx-5 $apx-5;
+  }
+  &:not(.actv, [disabled]):hover,
+  &:not(.actv, [disabled]):focus-visible {
+    scale: 1.05;
+  }
+  @include mobile {
+    width: $apx-m-63;
+    border-width: $apx-m-2;
+    border-radius: $apx-m-20;
+    &.carbon {
+      background-size: $apx-m-10 $apx-m-10;
+      background-position:
+        0 0,
+        $apx-m-5 $apx-m-5;
+    }
+  }
+}
