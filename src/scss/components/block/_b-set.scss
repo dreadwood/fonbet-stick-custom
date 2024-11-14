@@ -146,11 +146,22 @@
   position: absolute;
   right: 0;
   bottom: 0;
+  &.finish {
+    display: none;
+  }
   @include mobile {
     width: $apx-m-230;
-    &.finish {
-      width: max-content;
-    }
+    // &.finish {
+    //   width: max-content;
+    // }
+  }
+}
+.b-set__btn-save {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  &:not(.finish) {
+    display: none;
   }
 }
 

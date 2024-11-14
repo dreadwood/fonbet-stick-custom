@@ -65,6 +65,8 @@
     setBtnPrev: null,
     /** @type {HTMLButtonElement | null} */
     setBtnNext: null,
+    /** @type {HTMLButtonElement | null} */
+    setBtnSave: null,
 
     init() {
       const container = document.querySelector('.js-set')
@@ -76,9 +78,11 @@
       this.titleEl = document.querySelector('.js-set-title')
       this.setBtnPrev = document.querySelector('.js-set-btn-prev')
       this.setBtnNext = document.querySelector('.js-set-btn-next')
+      this.setBtnSave = document.querySelector('.js-set-btn-save')
 
       this.setBtnPrev.addEventListener('click', () => this.prevStep())
       this.setBtnNext.addEventListener('click', () => this.nextStep())
+      this.setBtnSave.addEventListener('click', () => this.saveResult())
 
       this.initWindowFirst()
       this.initWindowSecond()
@@ -132,6 +136,8 @@
       }
 
       this.changeCssClass('.js-set-btn-prev')
+      this.changeCssClass('.js-set-btn-next')
+      this.changeCssClass('.js-set-btn-save')
     },
 
     initWindowFirst() {
@@ -359,6 +365,27 @@
       name.style = `color: ${this.stickNameColor};`
     },
 
+    saveResult() {
+      const resultField = document.querySelector('.js-set-result-field')
+      const nameField = document.querySelector('.js-set-result-name')
+
+      if (!resultField) {
+        console.error('resultField не найден')
+        return
+      }
+
+      nameField.classList.add('print')
+
+      html2canvas(resultField, { backgroundColor: null }).then((canvas) => {
+        const link = document.createElement('a')
+        link.href = canvas.toDataURL('image/png')
+        link.download = 'result.png'
+        link.click()
+
+        nameField.classList.remove('print')
+      })
+    },
+
     /**
      * @param {HTMLElement} el
      */
@@ -415,4 +442,6 @@
   }
 
   state.init()
+
+  console.log(html2canvas)
 })()

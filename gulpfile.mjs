@@ -97,7 +97,7 @@ const sprite = () => {
 
 const js = () => {
   return gulp
-    .src('src/js/*.js')
+    .src('src/js/common/*.js')
     .pipe(
       plumber({
         errorHandler(err) {
@@ -111,6 +111,25 @@ const js = () => {
     .pipe(gulp.dest('dist/js'))
     .pipe(uglify.default())
     .pipe(rename(`script.min.js`))
+    .pipe(gulp.dest('dist/js'))
+}
+
+const jsVendor = () => {
+  return gulp
+    .src('src/js/vendor/*.js')
+    .pipe(
+      plumber({
+        errorHandler(err) {
+          console.error(err.toString())
+          this.emit('end')
+        }
+      })
+    )
+    .pipe(order(['utils.js', '*.js']))
+    .pipe(concat(`vendor.js`))
+    .pipe(gulp.dest('dist/js'))
+    .pipe(uglify.default())
+    .pipe(rename(`vendor.min.js`))
     .pipe(gulp.dest('dist/js'))
 }
 
@@ -146,6 +165,7 @@ export const build = gulp.series(
   clean,
   copy,
   css,
+  jsVendor,
   js,
   // images,
   // webp,

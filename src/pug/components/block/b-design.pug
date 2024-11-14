@@ -2,7 +2,7 @@ mixin b-design({ isDemo, isHide, className })
   .b-design.finish.js-set-design(hidden=isHide class=className)
     .b-design__title Твой дизайн
     .b-design__text Отличный результат! #[br] Обязательно проверь, все ли правильно: после этого шага изменить дизайн будет нельзя. А&nbsp;если тебе нужно внести изменения, вернись на нужный шаг с помощью кнопки «НАЗАД».
-    .b-design__field
+    .b-design__field.js-set-result-field
       if isDemo
         .b-design__demo
           +picture({ image: "/img/stick.png", width: 1520, height: 375 })
@@ -11,5 +11,5 @@ mixin b-design({ isDemo, isHide, className })
           img.b-design__stick.js-set-result-stick(src="/img/sticks/stick-empty-red.webp")
           img.b-design__pattern.js-set-result-pattern(src="/img/sticks/pattern-black-4.webp" hidden)
           img.b-design__blade.js-set-result-blade(src="/img/sticks/blade-red-normal.webp")
-          .b-design__name.js-set-result-name
+        .b-design__name.js-set-result-name
 

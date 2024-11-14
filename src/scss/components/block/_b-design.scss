@@ -70,7 +70,13 @@
   width: $apx-750;
   height: $apx-1500;
   translate: -50% -50%;
-  rotate: 90deg;
+  transform: rotate(90deg);
+  @include mobile {
+    top: 50%;
+    width: $apx-m-500;
+    height: $apx-m-1000;
+    transform: rotate(0);
+  }
 }
 .b-design__stick {
   position: absolute;
@@ -98,17 +104,30 @@
 }
 .b-design__name {
   position: absolute;
-  bottom: $apx-380;
-  left: 49.8%;
+  // bottom: $apx-348;
+  bottom: 37.1%;
+  left: 28.4%;
   z-index: 1;
   font-family: $font-default;
   font-size: $apx-21;
-  line-height: $apx-54;
+  line-height: 1;
   font-weight: 700;
   font-style: italic;
   text-align: left;
   color: $color-black;
   white-space: nowrap;
   transform-origin: left center;
-  rotate: -90deg;
+  &.print {
+    transform: translateY(-60%);
+  }
+  @include mobile {
+    bottom: 28.2%;
+    left: 49.9%;
+    font-size: $apx-m-15;
+    line-height: 1;
+    transform: rotate(-90deg);
+    &.print {
+      transform: rotate(-90deg) translateY(-50%);
+    }
+  }
 }
