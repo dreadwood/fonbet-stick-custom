@@ -27,7 +27,7 @@ const copy = () => {
     .src(
       [
         'src/fonts/**/*.{woff,woff2}',
-        'src/img/*.{webm,webp,avif,jpg,jpeg,png,svg}',
+        'src/img/**/*.{webm,webp,avif,jpg,jpeg,png,svg}',
         'src/favicon/**/*',
         'src/favicon.ico',
         'src/robots.txt'
@@ -96,25 +96,22 @@ const sprite = () => {
 }
 
 const js = () => {
-  return (
-    gulp
-      .src('src/js/*.js')
-      // .pipe(
-      //   plumber({
-      //     errorHandler: (err) => {
-      //       console.log('An error occurred:', err.message)
-      //       // throw new Error('test')
-      //     }
-      //   })
-      // )
-      // .pipe(plumber())
-      .pipe(order(['utils.js', '*.js']))
-      .pipe(concat(`script.js`))
-      .pipe(gulp.dest('dist/js'))
-      .pipe(uglify.default())
-      .pipe(rename(`script.min.js`))
-      .pipe(gulp.dest('dist/js'))
-  )
+  return gulp
+    .src('src/js/*.js')
+    .pipe(
+      plumber({
+        errorHandler(err) {
+          console.error(err.toString())
+          this.emit('end')
+        }
+      })
+    )
+    .pipe(order(['utils.js', '*.js']))
+    .pipe(concat(`script.js`))
+    .pipe(gulp.dest('dist/js'))
+    .pipe(uglify.default())
+    .pipe(rename(`script.min.js`))
+    .pipe(gulp.dest('dist/js'))
 }
 
 const html = () => {

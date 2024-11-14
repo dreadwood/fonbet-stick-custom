@@ -5,7 +5,7 @@ include /components/background/bg-fifth
 mixin b-fifth({ isHide, className })
   .b-set(hidden=isHide class=className)
     +bg-fifth({})
-    .b-set__content
+    .b-set__content.fifth
       .b-set__left
         .b-set__step 5
         .b-set__wrp.fifth

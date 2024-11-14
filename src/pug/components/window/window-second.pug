@@ -1,0 +1,27 @@
+mixin window-second({ isHide, className })
+  .b-window.second.js-widow(hidden=isHide class=className)
+    .b-window__field
+      img.b-window__img.js-widow-img(src="/img/sticks/shaft-red.webp")
+      img.b-window__img.pattern.js-widow-pattern(src="/img/sticks/pattern-black-1.webp" hidden)
+    .b-window__shaft.js-widow-color-list
+      button.b-window__color-btn.reflective(data-color="4")
+      button.b-window__color-btn.chrome(data-color="3")
+      button.b-window__color-btn.black(data-color="2")
+      button.b-window__color-btn.white(data-color="1")
+      button.b-window__color-btn.red(data-color="0")
+    .b-window__control
+      .b-window__pag
+        .b-window__pag-list.js-widow-pag-list
+          button.b-window__pag-btn.clear(data-pattern="0")
+          button.b-window__pag-btn(data-pattern="1")
+          button.b-window__pag-btn(data-pattern="2")
+          button.b-window__pag-btn(data-pattern="3")
+          button.b-window__pag-btn(data-pattern="4")
+          button.b-window__pag-btn(data-pattern="5")
+          button.b-window__pag-btn(data-pattern="6")
+        .b-window__pag-name Текстура шафта
+
+    button.b-window__nav.prev.js-widow-btn(disabled)
+      +svg({ name: 'nav-arrow-prev', width: 65, height: 88 })
+    button.b-window__nav.next.js-widow-btn
+      +svg({ name: 'nav-arrow-next', width: 65, height: 88 })

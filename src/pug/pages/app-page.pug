@@ -8,49 +8,53 @@ include /components/background/bg-fifth
 
 include /components/block/b-start
 include /components/block/b-name
-include /components/block/b-window
 include /components/block/b-spec
+
+include /components/window/window-first
+include /components/window/window-second
+include /components/window/window-third
+include /components/window/window-fourth
 
 block data
   - title = "Template"
 
 block content
-  .b-set(hidden=isHide class=className)
+  .b-set.js-set(hidden=isHide class=className)
     +bg-first({ isHide: false, className: "js-bg first" })
     +bg-second({ isHide: true, className: "js-bg second" })
     +bg-third({ isHide: true, className: "js-bg third" })
     +bg-fourth({ isHide: true, className: "js-bg fourth" })
     +bg-fifth({ isHide: true, className: "js-bg fifth" })
 
-    .b-set__content
+    .b-set__content.js-set-content
       .b-set__left
         .b-set__step.js-set-step 1
         .b-set__wrp.js-set-wrp.first
           .b-set__title.js-set-title Цвет
 
-          .js-set-content.js-set-content.first
-            .b-set__color.red красный
+          .js-set-visibility.first
+            .b-set__color.red.js-widow-color-stick-name красный
             .b-set__text Выбери основной цвет клюшки для кастомизации. #[br] #[br] Если ты потом захочешь его поменять, воспользуйся кнопкой «Назад» на следующих экранах.
 
-          .js-set-content.js-set-content.second(hidden)
+          .js-set-visibility.second(hidden)
             .b-set__text Создай свой дизайн для шафта клюшки — или воспользуйся одним из готовых вариантов.
 
-          .js-set-content.js-set-content.third(hidden)
-            .b-set__color.red Глянцевое
+          .js-set-visibility.third(hidden)
+            .b-set__color.red.js-widow-blade-texture Обычное
 
-          .js-set-content.js-set-content.fourth(hidden)
+          .js-set-visibility.fourth(hidden)
             +b-name({ className: "b-set__name" })
 
-          .js-set-content.js-set-content.fifth(hidden)
+          .js-set-visibility.fifth(hidden)
             .b-set__text Последний шаг — настраиваем клюшку под&nbsp;твои предпочтения и стиль игры!
 
-      .b-set__spec.js-set-content.fifth(hidden)
+      .b-set__spec.js-set-visibility.fifth(hidden)
         +b-spec({})
 
-      +b-window({ step: 1, isHide: false, className: "b-set__window js-set-content first" })
-      +b-window({ step: 2, isHide: true, className: "b-set__window js-set-content second" })
-      +b-window({ step: 3, isHide: true, className: "b-set__window js-set-content third" })
-      +b-window({ step: 4, isHide: true, className: "b-set__window js-set-content fourth" })
+      +window-first({ isHide: false, className: "b-set__window js-set-visibility" })
+      +window-second({ isHide: true, className: "b-set__window js-set-visibility" })
+      +window-third({ isHide: true, className: "b-set__window js-set-visibility" })
+      +window-fourth({ isHide: true, className: "b-set__window js-set-visibility" })
 
       +btn({
         text: "Назад",

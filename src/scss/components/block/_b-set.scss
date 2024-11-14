@@ -19,6 +19,9 @@
   width: $apx-1618;
   height: $apx-950;
   margin: auto;
+  &.fifth {
+    display: block;
+  }
   @include mobile {
     display: block;
     width: auto;

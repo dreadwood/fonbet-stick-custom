@@ -1,0 +1,17 @@
+mixin window-first({ isHide, className })
+  .b-window.first.js-widow(hidden=isHide class=className)
+    .b-window__field
+      img.b-window__img.js-widow-img(src="/img/sticks/stick-red.webp")
+    .b-window__control
+      .b-window__pag.color
+        .b-window__pag-list.js-widow-pag-list
+          button.b-window__pag-color.red(data-color="red")
+          button.b-window__pag-color.white(data-color="white")
+          button.b-window__pag-color.black(data-color="black")
+          button.b-window__pag-color.carbon(data-color="carbon")
+        .b-window__pag-name Цвет
+
+    button.b-window__nav.prev.js-widow-btn(disabled)
+      +svg({ name: 'nav-arrow-prev', width: 65, height: 88 })
+    button.b-window__nav.next.js-widow-btn
+      +svg({ name: 'nav-arrow-next', width: 65, height: 88 })
