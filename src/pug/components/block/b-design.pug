@@ -1,5 +1,5 @@
-mixin b-design({ className })
-  .b-design(class=className)
+mixin b-design({ isHide, className })
+  .b-design.finish(hidden=isHide class=className)
     .b-design__title Твой дизайн
     .b-design__text Отличный результат! #[br] Обязательно проверь, все ли правильно: после этого шага изменить дизайн будет нельзя. А&nbsp;если тебе нужно внести изменения, вернись на нужный шаг с помощью кнопки «НАЗАД».
     .b-design__field

@@ -33,6 +33,9 @@
 }
 .b-set__left {
   padding-top: $apx-52;
+  &.finish {
+    display: none;
+  }
   @include mobile {
     display: flex;
     align-items: flex-start;

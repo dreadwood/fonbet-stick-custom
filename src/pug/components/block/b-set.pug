@@ -23,7 +23,7 @@ mixin b-set({ isHide, className })
     +bg-fifth({ isHide: true, className: "js-bg fifth" })
 
     .b-set__content.js-set-content
-      .b-set__left
+      .b-set__left.first.js-set-left
         .b-set__step.js-set-step 1
         .b-set__wrp.js-set-wrp.first
           .b-set__title.js-set-title Цвет
@@ -52,7 +52,7 @@ mixin b-set({ isHide, className })
       +window-third({ isHide: true, className: "b-set__window js-set-visibility" })
       +window-fourth({ isHide: true, className: "b-set__window js-set-visibility" })
 
-      //- +b-design({ className: "" })
+      +b-design({ isHide: true, className: "js-set-visibility" })
 
       +btn({
         text: "Назад",

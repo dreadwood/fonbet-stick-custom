@@ -109,6 +109,7 @@
 
       this.changeCssClass('.js-set-content')
       this.changeCssClass('.js-set-wrp')
+      this.changeCssClass('.js-set-left')
       this.changeVisibility('.js-set-visibility')
     },
 
@@ -119,7 +120,7 @@
         this.setBtnPrev.setAttribute('hidden', 'hidden')
       }
 
-      if (this.step === 5) {
+      if (this.step === 6) {
         this.setBtnNext.setAttribute('disabled', 'disabled')
       } else {
         this.setBtnNext.removeAttribute('disabled')
