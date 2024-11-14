@@ -71,6 +71,7 @@
 .b-set__title {
   font-size: $apx-55;
   line-height: 1.1;
+  // font-style: italic;
   @include mobile {
     font-size: $apx-m-40;
     line-height: 1.1;
@@ -80,6 +81,7 @@
   margin-top: $apx-16;
   font-size: $apx-109;
   line-height: 1.1;
+  // font-style: italic;
   color: $color-carmine-red;
   @include mobile {
     margin-top: 0;
@@ -93,9 +95,12 @@
   font-size: $apx-30;
   line-height: 1.1;
   font-weight: 900;
+  // font-style: italic;
   text-align: left;
   color: $color-green-blue;
   text-transform: uppercase;
+  mix-blend-mode: difference;
+  filter: invert(100%);
   @include mobile {
     margin-top: $apx-m-4;
     font-size: $apx-m-18;
