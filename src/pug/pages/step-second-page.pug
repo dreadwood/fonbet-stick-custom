@@ -1,8 +1,27 @@
 extends /elements/layout-page
-include /components/block/b-second
+include /components/button/btn
+include /components/background/bg-second
+include /components/block/b-window
 
 block data
   - title = "Template"
 
 block content
-  +b-second({ isHide: false })
+  .b-set(hidden=isHide class=className)
+    +bg-second({})
+    .b-set__content
+      .b-set__left
+        .b-set__step 2
+        .b-set__wrp
+          .b-set__title Шафт
+          .b-set__text Создай свой дизайн для шафта клюшки — или воспользуйся одним из готовых вариантов.
+      +b-window({ step: 2, className: "b-set__window" })
+      +btn({
+        text: "Назад",
+        color: "black",
+        className: "b-set__btn-prev"
+      })
+      +btn({
+        text: "Далее",
+        className: "b-set__btn-next"
+      })

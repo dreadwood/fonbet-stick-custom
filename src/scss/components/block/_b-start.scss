@@ -232,6 +232,8 @@
   }
 }
 .b-start__btn {
+  position: relative;
+  z-index: 3;
   min-width: $apx-466;
   margin-top: $apx-37;
   animation-name: start-btn;

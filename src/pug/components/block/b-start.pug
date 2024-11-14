@@ -2,7 +2,7 @@ include /components/background/bg-start
 include /components/button/btn
 
 mixin b-start({ isHide, className })
-  .b-start(hidden=isHide class=className)
+  .b-start.js-start(hidden=isHide class=className)
     +bg-start({})
     .b-start__content
       a.b-start__logo(href="#")
@@ -32,5 +32,5 @@ mixin b-start({ isHide, className })
           +btn({
             text: "За подругой!",
             color: "white",
-            className: "b-start__btn js-b-start-btn"
+            className: "b-start__btn js-start-btn"
           })

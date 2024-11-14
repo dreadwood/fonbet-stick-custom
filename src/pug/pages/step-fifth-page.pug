@@ -1,8 +1,29 @@
 extends /elements/layout-page
-include /components/block/b-fifth
+include /components/button/btn
+include /components/block/b-spec
+include /components/background/bg-fifth
 
 block data
   - title = "Template"
 
 block content
-  +b-fifth({ isHide: false })
+  .b-set(hidden=isHide class=className)
+    +bg-fifth({})
+    .b-set__content.fifth
+      .b-set__left
+        .b-set__step 5
+        .b-set__wrp.fifth
+          .b-set__title Технические характеристики
+          .b-set__text Последний шаг — настраиваем клюшку под&nbsp;твои предпочтения и стиль игры!
+      .b-set__spec
+        +b-spec({})
+
+      +btn({
+        text: "Назад",
+        color: "black",
+        className: "b-set__btn-prev fifth"
+      })
+      +btn({
+        text: "Далее",
+        className: "b-set__btn-next"
+      })

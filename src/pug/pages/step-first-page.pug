@@ -1,8 +1,23 @@
 extends /elements/layout-page
-include /components/block/b-first
+include /components/button/btn
+include /components/background/bg-first
+include /components/block/b-window
 
 block data
   - title = "Template"
 
 block content
-  +b-first({ isHide: false })
+  .b-set(hidden=isHide class=className)
+    +bg-first({})
+    .b-set__content
+      .b-set__left
+        .b-set__step 1
+        .b-set__wrp
+          .b-set__title Цвет
+          .b-set__color.red красный
+          .b-set__text Выбери основной цвет клюшки для кастомизации. #[br] #[br] Если ты потом захочешь его поменять, воспользуйся кнопкой «Назад» на следующих экранах.
+      +b-window({ step: 1, className: "b-set__window" })
+      +btn({
+        text: "Далее",
+        className: "b-set__btn-next"
+      })
