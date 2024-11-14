@@ -47,10 +47,11 @@
 
     stickColor: STICK_COLOR[0],
     stickPatternColor: 0,
-    stickPatternType: 0,
+    stickPatternType: '0',
     stickBladeColor: 0,
     stickBladeTexture: 0,
     stickName: '',
+    stickNameColor: 'black',
 
     stickFormGrip: 'right',
     stickFormFlex: '90',
@@ -111,6 +112,10 @@
       this.changeCssClass('.js-set-wrp')
       this.changeCssClass('.js-set-left')
       this.changeVisibility('.js-set-visibility')
+
+      if (this.step === 6) {
+        this.updateWindowResult()
+      }
     },
 
     updateSetBtnsNavigation() {
@@ -160,12 +165,12 @@
         imgFourth.src = `/img/sticks/end-${this.stickColor}.webp`
         nameColor.textContent = COLORS[this.stickColor]
 
-        const textColor =
+        this.stickNameColor =
           this.stickColor === STICK_COLOR[0] ||
           this.stickColor === STICK_COLOR[1]
             ? 'black'
             : 'white'
-        label.style = `color: ${textColor};`
+        label.style = `color: ${this.stickNameColor};`
       }
 
       list.addEventListener('click', (evt) => {
@@ -318,12 +323,40 @@
       const input = document.querySelector('.js-window-name-input')
 
       input.addEventListener('input', (evt) => {
-        if (evt.target.value.length > 14) {
-          evt.target.value = evt.target.value.slice(0, 14)
-        }
-
-        label.textContent = evt.target.value
+        const text = evt.target.value.slice(0, 14)
+        evt.target.value = text
+        label.textContent = text
+        this.stickName = text
       })
+    },
+
+    updateWindowResult() {
+      const container = document.querySelector('.js-set-design')
+      const stick = container.querySelector('.js-set-result-stick')
+      const pattern = container.querySelector('.js-set-result-pattern')
+      const blade = container.querySelector('.js-set-result-blade')
+      const name = container.querySelector('.js-set-result-name')
+
+      // stick
+      stick.src = `/img/sticks/stick-empty-${this.stickColor}.webp`
+
+      // pattern
+      if (this.stickPatternType === '0') {
+        pattern.setAttribute('hidden', 'hidden')
+      } else {
+        const patternColor = STICK_PATTERN_COLOR[this.stickPatternColor]
+        pattern.src = `./img/sticks/pattern-${patternColor}-${this.stickPatternType}.webp`
+        pattern.removeAttribute('hidden')
+      }
+
+      // blade
+      const bladeColor = STICK_COLOR[this.stickBladeColor]
+      const bladeTexture = BLADE_TEXTURE[this.stickBladeTexture]
+      blade.src = `./img/sticks/blade-${bladeColor}-${bladeTexture}.webp`
+
+      // name
+      name.textContent = this.stickName
+      name.style = `color: ${this.stickNameColor};`
     },
 
     /**
@@ -382,10 +415,4 @@
   }
 
   state.init()
-  // step
-  // title
-  // prev button text
-  // prev button hide
-  // prev button class
-  // next button text
 })()

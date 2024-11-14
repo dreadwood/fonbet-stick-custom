@@ -3,6 +3,7 @@ include /components/background/bg-second
 include /components/background/bg-third
 include /components/background/bg-fourth
 include /components/background/bg-fifth
+include /components/background/bg-finish
 
 include /components/block/b-start
 include /components/block/b-name
@@ -21,6 +22,7 @@ mixin b-set({ isHide, className })
     +bg-third({ isHide: true, className: "js-bg third" })
     +bg-fourth({ isHide: true, className: "js-bg fourth" })
     +bg-fifth({ isHide: true, className: "js-bg fifth" })
+    +bg-finish({ isHide: true, className: "js-bg finish" })
 
     .b-set__content.js-set-content
       .b-set__left.first.js-set-left
