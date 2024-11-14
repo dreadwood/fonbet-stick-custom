@@ -7,6 +7,7 @@ include /components/background/bg-fifth
 include /components/block/b-start
 include /components/block/b-name
 include /components/block/b-spec
+include /components/block/b-design
 
 include /components/window/window-first
 include /components/window/window-second
@@ -50,6 +51,8 @@ mixin b-set({ isHide, className })
       +window-second({ isHide: true, className: "b-set__window js-set-visibility" })
       +window-third({ isHide: true, className: "b-set__window js-set-visibility" })
       +window-fourth({ isHide: true, className: "b-set__window js-set-visibility" })
+
+      //- +b-design({ className: "" })
 
       +btn({
         text: "Назад",

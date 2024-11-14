@@ -131,12 +131,15 @@
     initWindowFirst() {
       const container = document.querySelector('.js-widow.first')
       const containerSecond = document.querySelector('.js-widow.second')
+      const containerFourth = document.querySelector('.js-widow.fourth')
       const btnPrev = container.querySelector('.js-widow-btn.prev')
       const btnNext = container.querySelector('.js-widow-btn.next')
       const img = container.querySelector('.js-widow-img')
       const imgSecond = containerSecond.querySelector('.js-widow-img')
+      const imgFourth = containerFourth.querySelector('.js-widow-img')
       const list = container.querySelector('.js-widow-pag-list')
       const nameColor = document.querySelector('.js-widow-color-stick-name')
+      const label = containerFourth.querySelector('.js-window-name-label')
 
       const changeSlide = () => {
         const index = STICK_COLOR.findIndex((el) => el === this.stickColor)
@@ -153,7 +156,15 @@
 
         img.src = `/img/sticks/stick-${this.stickColor}.webp`
         imgSecond.src = `/img/sticks/shaft-${this.stickColor}.webp`
+        imgFourth.src = `/img/sticks/end-${this.stickColor}.webp`
         nameColor.textContent = COLORS[this.stickColor]
+
+        const textColor =
+          this.stickColor === STICK_COLOR[0] ||
+          this.stickColor === STICK_COLOR[1]
+            ? 'black'
+            : 'white'
+        label.style = `color: ${textColor};`
       }
 
       list.addEventListener('click', (evt) => {

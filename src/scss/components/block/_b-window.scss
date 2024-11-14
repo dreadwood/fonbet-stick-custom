@@ -25,9 +25,10 @@
   font-weight: 700;
   font-style: italic;
   text-align: left;
+  color: $color-black;
   white-space: nowrap;
-  rotate: 90deg;
   transform-origin: left center;
+  rotate: 90deg;
   @include mobile {
     top: $apx-m-130;
     left: calc(50% - $apx-m-8);
