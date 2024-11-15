@@ -7,7 +7,7 @@
   text-transform: uppercase;
   background-color: $color-gray-961;
   @include mobile {
-    padding-top: $apx-m-145; // TODO: 2024-11-12 /
+    padding-top: $apx-m-150; // TODO: 2024-11-12 /
     padding-bottom: $apx-m-159; // TODO: 2024-11-12 /
   }
 }
@@ -28,7 +28,6 @@
     width: $apx-m-820; // TODO: 2024-11-12 /
     height: auto;
     height: $apx-m-808 * 2; // TODO: 2024-11-12 /
-    // padding: 0 $apx-m-130 0 $apx-m-130; // TODO: 2024-11-12 /
   }
 }
 .b-set__left {
@@ -39,9 +38,9 @@
   @include mobile {
     display: flex;
     align-items: flex-start;
-    gap: $apx-m-80;
+    gap: $apx-m-74;
     padding-top: 0;
-    padding-left: $apx-m-46;
+    padding-left: $apx-m-40;
   }
 }
 .b-set__step {
@@ -52,7 +51,9 @@
   font-weight: 600;
   color: $color-black;
   @include mobile {
-    font-size: $apx-m-274;
+    margin-top: -#{$apx-m-40};
+    margin-bottom: $apx-m-10;
+    font-size: $apx-m-275;
     line-height: 1.1;
   }
 }

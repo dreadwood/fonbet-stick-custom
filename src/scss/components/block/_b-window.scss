@@ -121,7 +121,7 @@
   align-items: center;
   gap: $apx-4;
   @include mobile {
-    gap: $apx-m-4;
+    gap: $apx-m-6;
   }
 }
 .b-window__pag-btn {
@@ -228,6 +228,11 @@
   &:not(.actv, [disabled]):hover,
   &:not(.actv, [disabled]):focus-visible {
     scale: 1.05;
+  }
+  @include mobile {
+    width: $apx-m-47;
+    border-width: $apx-m-2;
+    border-radius: $apx-m-16;
   }
 }
 .b-window__pag-name {

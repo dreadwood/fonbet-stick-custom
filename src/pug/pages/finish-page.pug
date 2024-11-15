@@ -1,7 +1,7 @@
 extends /elements/layout-page
 include /components/button/btn
 include /components/background/bg-finish
-include /components/block/b-design
+include /components/block/b-result
 
 block data
   - title = "Template"
@@ -10,7 +10,7 @@ block content
   .b-set(hidden=isHide class=className)
     +bg-finish({})
     .b-set__content
-      +b-design({})
+      +b-result({})
 
       +btn({
         text: "Назад",

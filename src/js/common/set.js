@@ -337,7 +337,7 @@
     },
 
     updateWindowResult() {
-      const container = document.querySelector('.js-set-design')
+      const container = document.querySelector('.js-set-result')
       const stick = container.querySelector('.js-set-result-stick')
       const pattern = container.querySelector('.js-set-result-pattern')
       const blade = container.querySelector('.js-set-result-blade')

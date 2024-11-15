@@ -1,4 +1,4 @@
-.b-design {
+.b-result {
   font-family: $font-default;
   font-size: $apx-30;
   line-height: $apx-40;
@@ -11,7 +11,7 @@
     line-height: $apx-m-30;
   }
 }
-.b-design__title {
+.b-result__title {
   font-family: $font-title;
   font-size: $apx-137;
   line-height: 1.1;
@@ -21,13 +21,13 @@
     line-height: 1.1;
   }
 }
-.b-design__text {
+.b-result__text {
   margin-top: $apx-3;
   @include mobile {
     margin-top: $apx-m-28;
   }
 }
-.b-design__field {
+.b-result__field {
   height: $apx-375;
   margin-top: $apx-65;
   background-image: $gradient-red;
@@ -42,7 +42,7 @@
     border-radius: $apx-m-38;
   }
 }
-.b-design__demo {
+.b-result__demo {
   width: $apx-1520;
   height: $apx-375;
   margin: 0 auto;
@@ -63,7 +63,7 @@
     translate: -50% -50%;
   }
 }
-.b-design__result {
+.b-result__result {
   position: absolute;
   top: 62%;
   left: 50%;
@@ -78,7 +78,7 @@
     transform: rotate(0);
   }
 }
-.b-design__stick {
+.b-result__stick {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -87,7 +87,7 @@
   translate: -50% -50%;
   object-fit: contain;
 }
-.b-design__pattern {
+.b-result__pattern {
   position: absolute;
   top: $apx-20;
   left: 50%;
@@ -95,14 +95,14 @@
   object-fit: contain;
   translate: -60%;
 }
-.b-design__blade {
+.b-result__blade {
   position: absolute;
   bottom: $apx-20;
   left: 27.7%;
   width: 25%;
   object-fit: contain;
 }
-.b-design__name {
+.b-result__name {
   position: absolute;
   // bottom: $apx-348;
   bottom: 37.1%;
