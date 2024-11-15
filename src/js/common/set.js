@@ -442,6 +442,4 @@
   }
 
   state.init()
-
-  console.log(html2canvas)
 })()

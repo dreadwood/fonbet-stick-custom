@@ -16,6 +16,10 @@
   color: $color-black;
   text-transform: uppercase;
   background-color: transparentize($color-black, 0.5);
+  @include ultra-wide {
+    font-size: $apx-26;
+    line-height: 1.2;
+  }
   @include mobile {
     --box-shadow-blur: $apx-m-20;
     padding: $apx-m-20;
@@ -31,6 +35,9 @@
   background-color: $color-white;
   border: $apx-15 solid $color-green-blue;
   border-radius: $apx-41;
+  @include ultra-wide {
+    padding: $apx-60 $apx-40 $apx-40 $apx-40;
+  }
   @include mobile {
     width: $apx-m-938;
     margin-top: 0;
@@ -46,6 +53,10 @@
   span {
     color: $color-carmine-red;
   }
+  @include ultra-wide {
+    font-size: $apx-100;
+    line-height: 0.82;
+  }
   @include mobile {
     font-size: $apx-m-100;
     line-height: 0.82;
@@ -54,6 +65,10 @@
 .b-customizer__subtitle {
   max-width: $apx-750;
   margin: $apx-6 auto $apx-26 auto;
+  @include ultra-wide {
+    margin-top: 0;
+    margin-bottom: $apx-20;
+  }
   @include mobile {
     max-width: none;
     margin-top: $apx-m-20;

@@ -3,10 +3,7 @@
   font-weight: 700;
   font-style: normal;
   font-display: swap;
-  src:
-    local("CeraPro Bold"),
-    local("CeraPro-Bold"),
-    url("/fonts/cera-pro-bold.woff2") format("woff2");
+  src: url("/fonts/cera-pro-bold.woff2") format("woff2");
 }
 
 @font-face {
@@ -14,21 +11,7 @@
   font-weight: 700;
   font-style: italic;
   font-display: swap;
-  src:
-    local("CeraPro BoldItalic"),
-    local("CeraPro-BoldItalic"),
-    url("/fonts/cera-pro-bold-italic.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "DIN Condensed";
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-  src:
-    local("DIN Condensed SemiBold"),
-    local("DIN-Condensed-SemiBold"),
-    url("/fonts/din-condensed-semibold.woff2") format("woff2");
+  src: url("/fonts/cera-pro-bold-italic.woff2") format("woff2");
 }
 
 @font-face {
@@ -36,8 +19,5 @@
   font-weight: 700;
   font-style: normal;
   font-display: swap;
-  src:
-    local("DIN Condensed Bold"),
-    local("DIN-Condensed-Bold"),
-    url("/fonts/din-condensed-bold.woff2") format("woff2");
+  src: url("/fonts/din-condensed-bold.woff2") format("woff2");
 }

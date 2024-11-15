@@ -8,6 +8,9 @@
   height: $apx-842;
   background-color: $color-gray-655;
   border-radius: $apx-27;
+  @include ultra-wide {
+    height: $apx-720;
+  }
   @include mobile {
     width: $apx-m-612;
     height: $apx-m-589 * 2;

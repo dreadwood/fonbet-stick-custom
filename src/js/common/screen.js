@@ -10,7 +10,6 @@
   const startBtn = document.querySelector('.js-start-btn')
 
   if (!startScreen || !setScreen || !startBtn) {
-    console.error('startScreen, setScreen, startBtn does not exist')
     return
   }
 
