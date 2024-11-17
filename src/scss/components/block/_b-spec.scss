@@ -7,6 +7,9 @@
   color: $color-green-blue;
   text-transform: uppercase;
   @include mobile {
+    max-width: $apx-m-770;
+    margin-right: auto;
+    margin-left: auto;
     font-size: $apx-m-60;
     line-height: $apx-m-40;
   }
@@ -25,7 +28,7 @@
     align-items: flex-start;
     gap: $apx-m-25;
     // width: 100%;
-    max-width: $apx-m-770;
+    max-width: none;
     &:not(:first-child) {
       margin-top: $apx-m-152;
     }

@@ -36,23 +36,26 @@
   }
   @include mobile {
     width: $apx-m-818;
-    padding: $apx-m-118 $apx-m-20 $apx-m-56 $apx-m-20;
-    font-size: $apx-m-23;
+    padding: $apx-m-92 $apx-m-20 $apx-m-80 $apx-m-20;
+    font-size: $apx-m-30;
     line-height: 1.2;
     border-width: $apx-m-15;
     border-radius: $apx-m-41;
     &.share {
-      padding-top: $apx-m-162;
+      padding-top: $apx-m-133;
       padding-bottom: $apx-m-68;
       .m-white__title {
         line-height: 0.95;
       }
       .m-white__text {
-        margin-top: $apx-m-4;
+        width: $apx-m-540;
+        margin-top: $apx-m-6;
+        margin-right: auto;
+        margin-left: auto;
       }
       .m-white__btn {
         min-width: $apx-m-332;
-        margin-top: $apx-m-137;
+        margin-top: $apx-m-40;
       }
     }
   }
@@ -84,7 +87,7 @@
     display: none;
   }
   @include mobile {
-    margin-top: $apx-m-41;
+    margin-top: $apx-m-3;
     &.desktop {
       display: none;
     }
@@ -101,7 +104,7 @@
   padding: $apx-26 $apx-40 $apx-22 $apx-40;
   @include mobile {
     min-width: $apx-m-410;
-    margin-top: $apx-m-62;
+    margin-top: $apx-m-66;
     padding: $apx-m-25 $apx-m-40 $apx-m-22 $apx-m-40;
   }
 }
@@ -126,7 +129,7 @@
   border: 0;
   @include mobile {
     margin-top: $apx-m-23;
-    font-size: $apx-m-23;
+    font-size: $apx-m-30;
     line-height: 1.2;
   }
 }

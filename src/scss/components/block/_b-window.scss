@@ -13,7 +13,7 @@
   }
   @include mobile {
     width: $apx-m-612;
-    height: $apx-m-589 * 2;
+    height: $apx-m-557 * 2;
     border-radius: $apx-m-38;
   }
 }
@@ -276,9 +276,9 @@
   gap: $apx-8;
   width: max-content;
   @include mobile {
-    top: $apx-m-22;
-    left: $apx-m-22;
-    gap: $apx-m-8;
+    top: $apx-m-19;
+    left: $apx-m-20;
+    gap: $apx-m-5;
   }
 }
 .b-window__color-btn {
@@ -337,7 +337,7 @@
     scale: 1.05;
   }
   @include mobile {
-    width: $apx-m-63;
+    width: $apx-m-59;
     border-width: $apx-m-2;
     border-radius: $apx-m-20;
     &.carbon {

@@ -365,9 +365,8 @@
   background-color: $color-carmine-red;
   translate: $apx-620 -#{$apx-620};
   @include mobile {
-    top: $apx-m-162;
+    top: $apx-m-255;
     right: $apx-m-250;
-    // display: none;
     width: $apx-m-220;
     height: $apx-m-420;
     translate: $apx-m-600 -#{$apx-m-600};
@@ -381,7 +380,7 @@
   background-color: $color-black;
   translate: $apx-310 -#{$apx-310};
   @include mobile {
-    top: $apx-m-322;
+    top: $apx-m-414;
     right: $apx-m-370;
     width: $apx-m-150;
     height: $apx-m-260;
@@ -397,7 +396,7 @@
   background-color: $color-black;
   translate: $apx-130 -#{$apx-130};
   @include mobile {
-    top: $apx-m-222;
+    top: $apx-m-314;
     right: -#{$apx-m-14};
     width: $apx-m-230;
     height: $apx-m-250;
@@ -461,6 +460,7 @@
   background-color: $color-carmine-red;
   translate: $apx-354 -#{$apx-354};
   @include mobile {
+    top: $apx-m-102;
     right: $apx-m-208;
     width: $apx-m-296;
     height: $apx-m-586;
@@ -475,6 +475,7 @@
   background-color: $color-carmine-red;
   translate: $apx-352 -#{$apx-352};
   @include mobile {
+    top: $apx-m-102;
     right: 0;
     width: $apx-m-200;
     height: $apx-m-494;
@@ -489,6 +490,7 @@
   background-color: $color-black;
   translate: $apx-218 -#{$apx-218};
   @include mobile {
+    top: $apx-m-102;
     right: $apx-m-1;
     width: $apx-m-178;
     height: $apx-m-412;
@@ -535,10 +537,10 @@
   background-color: $color-carmine-red;
   translate: -#{$apx-120} $apx-120;
   @include mobile {
-    bottom: $apx-m-243;
-    left: $apx-m-406;
-    width: $apx-m-120;
-    height: $apx-m-274;
+    bottom: $apx-m-274;
+    left: $apx-m-396;
+    width: $apx-m-138;
+    height: $apx-m-311;
     translate: -#{$apx-m-274} $apx-m-274;
   }
 }
@@ -550,7 +552,8 @@
   background-color: $color-carmine-red;
   translate: $apx-166 -#{$apx-166};
   @include mobile {
-    right: $apx-m-42;
+    top: $apx-m-122;
+    right: 0;
     width: $apx-m-96;
     height: $apx-m-410;
     translate: $apx-m-410 -#{$apx-m-410};
@@ -564,7 +567,8 @@
   background-color: $color-black;
   translate: $apx-208 -#{$apx-208};
   @include mobile {
-    right: $apx-m-176;
+    top: $apx-m-121;
+    right: $apx-m-110;
     width: $apx-m-96;
     height: $apx-m-457;
     translate: $apx-m-457 -#{$apx-m-457};
@@ -579,12 +583,12 @@
   animation-duration: 1s;
   translate: $apx-400 -#{$apx-400};
   @include mobile {
-    top: 0;
-    right: $apx-m-326;
+    top: $apx-m-183;
+    right: $apx-m-264;
     width: $apx-m-178;
-    height: $apx-m-549;
+    height: $apx-m-488;
     background-color: $color-black;
-    translate: $apx-m-549 -#{$apx-m-549};
+    translate: $apx-m-488 -#{$apx-m-488};
   }
 }
 

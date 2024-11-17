@@ -25,8 +25,8 @@
   @include mobile {
     --box-shadow-blur: $apx-m-20;
     width: $apx-m-818;
-    padding: $apx-m-290 $apx-m-20 $apx-m-56 $apx-m-20;
-    font-size: $apx-m-23;
+    padding: $apx-m-186 $apx-m-20 $apx-m-140 $apx-m-20;
+    font-size: $apx-m-30;
     line-height: 1.2;
     border-width: $apx-m-15;
     border-radius: $apx-m-41;
@@ -95,7 +95,9 @@
 }
 .m-red__text {
   margin-top: $apx-23;
+  color: $color-white;
   @include mobile {
-    margin-top: $apx-m-178;
+    margin-top: $apx-m-8;
+    margin-top: 0;
   }
 }

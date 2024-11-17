@@ -59,6 +59,7 @@
   }
   @include mobile {
     max-width: $apx-m-620;
+    margin-top: $apx-m-13;
     padding: $apx-m-6 $apx-m-29 $apx-m-2 $apx-m-29;
     font-size: $apx-m-37;
     line-height: $apx-m-50;
@@ -67,13 +68,16 @@
   }
 }
 .b-name__subfield {
+  width: $apx-420;
   margin-top: $apx-11;
   font-size: $apx-19;
   line-height: 1.1;
+  font-weight: 500;
   text-transform: none;
   @include mobile {
-    margin-top: $apx-m-14;
-    font-size: $apx-m-19;
+    width: auto;
+    margin-top: $apx-m-5;
+    font-size: $apx-m-30;
     line-height: 1.1;
   }
 }

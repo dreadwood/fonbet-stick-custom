@@ -8,7 +8,7 @@
   text-transform: uppercase;
   background-color: $color-gray-961;
   @include mobile {
-    padding: $apx-m-150 0 $apx-m-159 0;
+    padding: $apx-m-132 0 $apx-m-159 0;
   }
 }
 .b-set__content {
@@ -28,7 +28,7 @@
   @include mobile {
     display: block;
     width: $apx-m-820;
-    height: $apx-m-808 * 2;
+    height: $apx-m-813 * 2;
   }
 }
 .b-set__left {
@@ -38,10 +38,14 @@
   }
   @include mobile {
     display: flex;
-    align-items: flex-start;
-    gap: $apx-m-74;
+    align-items: flex-end;
+    gap: $apx-m-80;
+    height: $apx-m-294;
     padding-top: 0;
-    padding-left: $apx-m-40;
+    padding-left: $apx-m-46;
+    &.second {
+      width: $apx-m-680;
+    }
   }
 }
 .b-set__step {
@@ -52,22 +56,17 @@
   font-weight: 700;
   color: $color-black;
   @include mobile {
-    margin-top: -#{$apx-m-40};
-    margin-bottom: $apx-m-10;
+    // margin-top: -#{$apx-m-40};
+    margin-top: 0;
+    margin-bottom: -#{$apx-m-84};
     font-size: $apx-m-275;
     line-height: 1.1;
   }
 }
 .b-set__wrp {
   width: $apx-650;
-  &.fifth {
-    width: auto;
-  }
   @include mobile {
     width: auto;
-    &.fifth {
-      width: $apx-m-430;
-    }
   }
 }
 .b-set__title {
@@ -75,7 +74,8 @@
   line-height: 1.1;
   font-weight: 700;
   @include mobile {
-    font-size: $apx-m-40;
+    margin-bottom: -#{$apx-m-9};
+    font-size: $apx-m-60;
     line-height: 1.1;
   }
 }
@@ -103,27 +103,27 @@
   mix-blend-mode: difference;
   filter: invert(100%);
   @include mobile {
-    margin-top: $apx-m-4;
-    font-size: $apx-m-18;
+    margin-top: $apx-m-6;
+    font-size: $apx-m-30;
     line-height: 1.1;
   }
 }
 .b-set__name {
   margin-top: $apx-46;
   @include mobile {
-    margin-top: $apx-m-3;
+    margin-top: 0;
   }
 }
 .b-set__spec {
   margin-top: $apx-46;
   @include mobile {
-    margin-top: $apx-m-151;
+    margin-top: $apx-m-267;
   }
 }
 .b-set__window {
   margin-right: $apx-300;
   @include mobile {
-    margin-top: -#{$apx-m-26};
+    margin-top: $apx-m-35;
     margin-right: auto;
     margin-left: auto;
   }

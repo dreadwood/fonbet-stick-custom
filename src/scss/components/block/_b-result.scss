@@ -17,6 +17,7 @@
   line-height: 1.1;
   color: $color-black;
   @include mobile {
+    margin-top: $apx-m-12;
     font-size: $apx-m-137;
     line-height: 1.1;
   }
@@ -24,7 +25,7 @@
 .b-result__text {
   margin-top: $apx-3;
   @include mobile {
-    margin-top: $apx-m-28;
+    margin-top: $apx-m-2;
   }
 }
 .b-result__field {
@@ -36,7 +37,7 @@
     position: relative;
     width: $apx-m-756;
     height: $apx-m-558 * 2;
-    margin-top: $apx-m-46;
+    margin-top: $apx-m-74;
     margin-right: auto;
     margin-left: auto;
     border-radius: $apx-m-38;
