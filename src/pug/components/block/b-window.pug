@@ -51,13 +51,13 @@ mixin b-window({ step, isHide, className })
       +b-window-blade({})
     .b-window__field
       if step === 1
-        img.b-window__img.first(src="/img/demo-step-1.png")
+        img.b-window__img.first(src="./img/demo-step-1.png")
       if step === 2
-        img.b-window__img.second(src="/img/demo-step-2.png")
+        img.b-window__img.second(src="./img/demo-step-2.png")
       if step === 3
-        img.b-window__img.third(src="/img/demo-step-3.png")
+        img.b-window__img.third(src="./img/demo-step-3.png")
       if step === 4
-        img.b-window__img.fourth(src="/img/demo-step-4.png")
+        img.b-window__img.fourth(src="./img/demo-step-4.png")
     .b-window__control
       if step === 1
         +b-window-pag-1({})

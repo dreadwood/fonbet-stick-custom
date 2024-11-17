@@ -47,7 +47,7 @@
 
     stickColor: STICK_COLOR[0],
     stickPatternColor: 0,
-    stickPatternType: '0',
+    stickPatternType: 0,
     stickBladeColor: 0,
     stickBladeTexture: 0,
     stickName: '',
@@ -166,9 +166,9 @@
           btnNext.removeAttribute('disabled')
         }
 
-        img.src = `/img/sticks/stick-${this.stickColor}.webp`
-        imgSecond.src = `/img/sticks/shaft-${this.stickColor}.webp`
-        imgFourth.src = `/img/sticks/end-${this.stickColor}.webp`
+        img.src = `./img/sticks/stick-${this.stickColor}.webp`
+        imgSecond.src = `./img/sticks/shaft-${this.stickColor}.webp`
+        imgFourth.src = `./img/sticks/end-${this.stickColor}.webp`
         nameColor.textContent = COLORS[this.stickColor]
 
         this.stickNameColor =
@@ -225,11 +225,11 @@
           btnNext.removeAttribute('disabled')
         }
 
-        if (this.stickPatternType === '0') {
+        if (this.stickPatternType === 0) {
           imgPattern.setAttribute('hidden', 'hidden')
         } else {
           const color = STICK_PATTERN_COLOR[this.stickPatternColor]
-          imgPattern.src = `/img/sticks/pattern-${color}-${this.stickPatternType}.webp`
+          imgPattern.src = `./img/sticks/pattern-${color}-${this.stickPatternType}.webp`
           imgPattern.removeAttribute('hidden')
         }
       }
@@ -295,7 +295,7 @@
 
         nameTexture.textContent = TEXTURE[BLADE_TEXTURE[this.stickBladeTexture]]
         pagText.textContent = `Покрытие крюка ${this.stickBladeTexture + 1}/4`
-        img.src = `/img/sticks/blade-${color}-${texture}.webp`
+        img.src = `./img/sticks/blade-${color}-${texture}.webp`
       }
 
       listColor.addEventListener('click', (evt) => {
@@ -344,10 +344,10 @@
       const name = container.querySelector('.js-set-result-name')
 
       // stick
-      stick.src = `/img/sticks/stick-empty-${this.stickColor}.webp`
+      stick.src = `./img/sticks/stick-empty-${this.stickColor}.webp`
 
       // pattern
-      if (this.stickPatternType === '0') {
+      if (this.stickPatternType === 0) {
         pattern.setAttribute('hidden', 'hidden')
       } else {
         const patternColor = STICK_PATTERN_COLOR[this.stickPatternColor]

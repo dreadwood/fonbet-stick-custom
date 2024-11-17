@@ -126,6 +126,9 @@
   height: $apx-150;
   background-color: $color-black;
   translate: -#{$apx-500};
+  @media (height <= 1050px) {
+    bottom: -#{$apx-11};
+  }
   @include mobile {
     bottom: $apx-m-159;
     left: -#{$apx-m-76};
@@ -141,8 +144,11 @@
   height: $apx-289;
   background-color: $color-black;
   translate: -#{$apx-290} $apx-290;
+  @media (height <= 1050px) {
+    bottom: -#{$apx-200};
+  }
   @include mobile {
-    left: -#{$apx-m-200};
+    left: -#{$apx-m-150};
     width: $apx-m-180;
     height: $apx-m-190;
     translate: -#{$apx-m-190} $apx-m-190;
@@ -339,6 +345,10 @@
   height: $apx-408;
   background-color: $color-carmine-red;
   translate: -#{$apx-408} $apx-408;
+  @media (height <= 1050px) {
+    bottom: -#{$apx-110};
+    left: #{$apx-80};
+  }
   @include mobile {
     bottom: $apx-m-390;
     left: -#{$apx-m-230};

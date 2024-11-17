@@ -1,0 +1,74 @@
+mixin m-auth-script({})
+  script.
+    let init = function() {
+      [urlsConfig.registrationWidgetLoader].forEach((_item) => {
+        let script = document.createElement('script')
+        script.src = urlsConfig.cdnUrl + '/' + _item
+        document.head.appendChild(script);
+      })
+    }
+  //- script(src="https://fon.bet/settings.js" onload="init()")
+
+mixin m-auth({ isShow, className })
+  - const linkLogin = "https://fon.bet/authProcess/login/"
+  - const linkPersonalData = "#"
+  - const linkInfo = "#"
+  - const linkRules = "#"
+  - const linkAd = "#"
+  //- +m-auth-script({})
+  .overlay(class=isShow && "show")
+    .m-auth.js-auth
+      button.m-auth__close
+      .m-auth__bg
+        .m-auth__img-coin
+          +picture2x({ image: "./img/auth-coin@1x.png", width: 355, height: 353 })
+        .m-auth__img-ovetchkin
+          +picture2x({ image: "./img/auth-ovetchkin@1x.png", width: 256, height: 375 })
+      .m-auth__text.sup Для участия в великой погоне войдите в свой аккаунт
+      a.m-auth__login(href=linkLogin) Войти с fonbet
+      .m-auth__text.sub Или зарегистрируйтесь
+      .m-auth__container(
+        id="registrationContainer"
+        data-auto-login="1"
+        data-hidden-promo-id="true"
+        data-promo-id=""
+        data-ignore-label="true"
+        data-locale="ru"
+        data-layout="4"
+      )
+        form.m-auth__form.js-auth-form
+          .m-auth__el.js-auth-el-tel
+            label.m-auth__label(for="auth_tel") Номер телефона
+            input.m-auth__field(type="tel" id="auth_tel" name="tel" placeholder="+7 (9XX) XXX XX XX")
+            .m-auth__description На этот номер придет SMS-код
+            .m-auth__error(data-field-error) Номер должен быть формата +7 (9XX) XXX XX XX
+          .m-auth__el.js-auth-el-bday
+            label.m-auth__label(for="auth_bday") Дата рождения
+            input.m-auth__field(type="text" id="auth_bday" name="bday" placeholder="ДД.ММ.ГГГГ" autocomplete="bday")
+            .m-auth__description Вам должно быть 18 лет
+            .m-auth__error(data-field-error)
+          .m-auth__el.js-auth-el-pass
+            label.m-auth__label(for="auth_pass") Пароль
+            .m-auth__field-pass
+              input.m-auth__field(type="password" id="auth_pass" name="pass" placeholder="Придумайте пароль" autocomplete="current-password")
+              button(type="button" data-field-show hidden)
+                +svg({ name: "eye-cross", width: 20, height: 20, className: "eye-cross" })
+                +svg({ name: "eye", width: 20, height: 20, className: "eye" })
+            .m-auth__description Не менее 8 знаков. Цифры и латинские буквы — обязательно
+            .m-auth__error(data-field-error)
+          .m-auth__el.js-auth-el-agree
+            label.m-auth__checkbox.error
+              input.visually-hidden(type="checkbox" name="agree")
+              .m-auth__checkbox-icon
+                +svg({ name: "check", width: 16, height: 16 })
+              .m-auth__checkbox-text Настоящим даю своё #[a(href=linkPersonalData target="_blank") согласие] на обработку персональных данных ООО «ФОНКОР», #[a(href=linkInfo target="_blank") согласие] на обработку сведений об оказанных операторами услугах связи и передачу сведений ООО «ФОНКОР», а также подтверждаю, что ознакомлен с #[a(href=linkRules target="_blank") правилами].
+          .m-auth__el.js-auth-el-ad
+            label.m-auth__checkbox
+              input.visually-hidden(type="checkbox" id="auth_ad" name="ad" checked)
+              .m-auth__checkbox-icon
+                +svg({ name: "check", width: 16, height: 16 })
+              .m-auth__checkbox-text Получать выгодные #[a(href=linkAd target="_blank") предложения]
+          button.m-auth__submit(type="submit")
+            .m-auth__submit-gradient
+            .m-auth__submit-text Зарегистрироваться
+

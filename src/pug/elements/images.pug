@@ -36,7 +36,7 @@ mixin picture2x({ image, width, height, altText, className })
 
 
 //- simple vector image
-mixin svg({name, width, height, className})
+mixin svg({ name, width, height, className })
   if name.includes('/img')
     img(class=className || null src=name width=width height=height alt="")
   else
