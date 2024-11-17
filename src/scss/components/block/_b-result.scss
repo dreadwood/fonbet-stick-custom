@@ -29,10 +29,14 @@
   }
 }
 .b-result__field {
+  position: relative;
   height: $apx-375;
   margin-top: $apx-65;
   background-image: $gradient-red;
   border-radius: $apx-27;
+  @include ultra-wide {
+    margin-top: $apx-40;
+  }
   @include mobile {
     position: relative;
     width: $apx-m-756;
@@ -66,7 +70,7 @@
 }
 .b-result__result {
   position: absolute;
-  top: 62%;
+  top: 68%;
   left: 50%;
   width: $apx-750;
   height: $apx-1500;
@@ -74,8 +78,9 @@
   transform: rotate(90deg);
   @include mobile {
     top: 50%;
+    left: 54%;
     width: $apx-m-500;
-    height: $apx-m-1000;
+    height: $apx-m-520 * 2;
     transform: rotate(0);
   }
 }
@@ -102,6 +107,9 @@
   left: 27.7%;
   width: 25%;
   object-fit: contain;
+  @include mobile {
+    bottom: $apx-m-32;
+  }
 }
 .b-result__name {
   position: absolute;
@@ -123,7 +131,7 @@
   }
   @include mobile {
     bottom: 28.2%;
-    left: 49.9%;
+    left: 53.7%;
     font-size: $apx-m-15;
     line-height: 1;
     transform: rotate(-90deg);
