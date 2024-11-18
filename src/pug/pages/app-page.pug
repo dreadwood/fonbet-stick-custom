@@ -3,6 +3,7 @@ extends /elements/layout-page
 include /components/block/b-loading
 include /components/block/b-start
 include /components/block/b-set
+include /components/block/b-result-end
 
 include /components/modal/m-auth
 include /components/modal/m-bet
@@ -19,6 +20,7 @@ block content
   +b-loading({ isHide: false })
   +b-start({ isHide: true })
   +b-set({ isHide: true })
+  +b-result-end({ isHide: true })
 
 block modal
   +m-auth({ isShow: false })

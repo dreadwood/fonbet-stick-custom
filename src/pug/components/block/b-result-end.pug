@@ -1,0 +1,18 @@
+mixin b-result-end({ isHide, className })
+ .b-set.js-result-end(hidden=isHide class=className)
+    +bg-finish({ isHide: false })
+    .b-set__content
+      .b-result.finish.js-result-end-container(class=className)
+        .b-result__title Твой дизайн
+        .b-result__text Отличный результат! #[br] Обязательно проверь, все ли правильно: после этого шага изменить дизайн будет нельзя. А&nbsp;если тебе нужно внести изменения, вернись на нужный шаг с помощью кнопки «НАЗАД».
+        .b-result__field.js-set-result-field
+          .b-result__result
+            img.b-result__stick.js-set-result-stick(src="./img/sticks/stick-empty-red.webp")
+            img.b-result__pattern.js-set-result-pattern(src="./img/sticks/pattern-black-4.webp" hidden)
+            img.b-result__blade.js-set-result-blade(src="./img/sticks/blade-red-normal.webp")
+          .b-result__name.js-set-result-name
+      +btn({
+        text: "Вернуться к погоне ",
+        href: "https://fon.bet/sports/hockey/114545",
+        className: "b-set__btn-return"
+      })

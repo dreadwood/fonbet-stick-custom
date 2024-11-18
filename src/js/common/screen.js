@@ -11,6 +11,8 @@
   /** @type {HTMLDivElement | null} */
   const setScreen = document.querySelector('.js-set')
   /** @type {HTMLDivElement | null} */
+  const resultScreen = document.querySelector('.js-result-end')
+  /** @type {HTMLDivElement | null} */
   const modalAuth = document.querySelector('.js-auth-overlay')
   /** @type {HTMLButtonElement | null} */
   const startBtn = document.querySelector('.js-start-btn')
@@ -31,6 +33,11 @@
   const showStartScreen = () => {
     loadingScreen.setAttribute('hidden', 'hidden')
     startScreen.removeAttribute('hidden')
+  }
+
+  const showResultScreen = () => {
+    loadingScreen.setAttribute('hidden', 'hidden')
+    resultScreen.removeAttribute('hidden')
   }
 
   const onEscKeydown = (evt) => {
@@ -61,12 +68,18 @@
         pin: clientId
       }
 
+      console.log(req)
+
       try {
-        const data = window.utils.fetchData(GET_STICK_URL, req)
+        const data = await window.utils.fetchData(GET_STICK_URL, req)
+
         if (data.status === 200) {
           // показать результаты
           const res = await data.json()
-          console.log(res)
+
+          window.result(res.data)
+          showResultScreen()
+          console.log(res.data)
         } else {
           // показать стартовый экран
           showStartScreen()

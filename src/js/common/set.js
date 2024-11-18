@@ -357,8 +357,6 @@
       const modalBetBtn = modalBet.querySelector('.js-bet-btn')
       const modalScore = document.querySelector('.js-score')
 
-      console.log(modalScore)
-
       modalBetBtn.addEventListener('click', () => {
         modalBet.classList.remove('show')
         modalScore.classList.add('show')
