@@ -374,11 +374,13 @@
 
       modalScoreBtn.addEventListener('click', () => {
         modalScore.classList.remove('show')
+        document.body.classList.remove('scroll-lock')
       })
 
       modalScore.addEventListener('click', (evt) => {
         if (evt.target === modalScore) {
           modalScore.classList.remove('show')
+          document.body.classList.remove('scroll-lock')
         }
       })
     },
@@ -465,8 +467,8 @@
         console.log(modalBet)
 
         if (data.ok) {
-          console.log('test')
           modalBet.classList.add('show')
+          document.body.classList.add('scroll-lock')
           this.showEl(this.setBtnReturn)
         }
       } catch (error) {

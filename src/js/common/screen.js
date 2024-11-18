@@ -46,11 +46,13 @@
 
   const openModal = () => {
     modalAuth.classList.add('show')
+    document.body.classList.add('scroll-lock')
     document.addEventListener('keydown', onEscKeydown)
   }
 
   const closeModal = () => {
     modalAuth.classList.remove('show')
+    document.body.classList.remove('scroll-lock')
     document.removeEventListener('keydown', onEscKeydown)
   }
 
