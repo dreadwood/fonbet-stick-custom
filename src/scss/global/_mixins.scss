@@ -35,8 +35,13 @@
   overflow: hidden;
 }
 
+// @mixin ultra-wide {
+//   @media (max-height: $ultra-wide-height) {
+//     @content;
+//   }
+// }
 @mixin ultra-wide {
-  @media (max-height: $ultra-wide-height) {
+  @media (aspect-ratio > 16/9) {
     @content;
   }
 }
