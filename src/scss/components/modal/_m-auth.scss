@@ -202,6 +202,10 @@
       background-color: transparentize($color-indian-red, 0.9);
       border-color: $color-indian-red;
     }
+    .m-auth__checkbox-icon {
+      background-color: transparentize($color-indian-red, 0.9);
+      border-color: $color-indian-red;
+    }
   }
 }
 .m-auth__label {
@@ -334,12 +338,12 @@
   gap: $apx-11;
   color: $color-gray-667;
   cursor: pointer;
-  &.error {
-    .m-auth__checkbox-icon {
-      background-color: transparentize($color-indian-red, 0.9);
-      border-color: $color-indian-red;
-    }
-  }
+  // &.error {
+  //   .m-auth__checkbox-icon {
+  //     background-color: transparentize($color-indian-red, 0.9);
+  //     border-color: $color-indian-red;
+  //   }
+  // }
   input:checked + .m-auth__checkbox-icon {
     background-color: $color-black;
     border-color: transparent;

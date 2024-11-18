@@ -7,7 +7,7 @@ mixin m-auth-script({})
         document.head.appendChild(script);
       })
     }
-  //- script(src="https://fon.bet/settings.js" onload="init()")
+  script(src="https://fon.bet/settings.js" onload="init()")
 
 mixin m-auth({ isShow, className })
   - const linkLogin = "https://fon.bet/authProcess/login/"
@@ -50,21 +50,21 @@ mixin m-auth({ isShow, className })
           .m-auth__el.js-auth-el-pass
             label.m-auth__label(for="auth_pass") Пароль
             .m-auth__field-pass
-              input.m-auth__field(type="password" id="auth_pass" name="pass" placeholder="Придумайте пароль" autocomplete="current-password")
+              input.m-auth__field(type="password" id="auth_pass" name="password" placeholder="Придумайте пароль" autocomplete="current-password")
               button(type="button" data-field-show hidden)
                 +svg({ name: "eye-cross", width: 20, height: 20, className: "eye-cross" })
                 +svg({ name: "eye", width: 20, height: 20, className: "eye" })
             .m-auth__description Не менее 8 знаков. Цифры и латинские буквы — обязательно
             .m-auth__error(data-field-error)
           .m-auth__el.js-auth-el-agree
-            label.m-auth__checkbox.error
+            label.m-auth__checkbox
               input.visually-hidden(type="checkbox" name="agree")
               .m-auth__checkbox-icon
                 +svg({ name: "check", width: 16, height: 16 })
               .m-auth__checkbox-text Настоящим даю своё #[a(href=linkPersonalData target="_blank") согласие] на обработку персональных данных ООО «ФОНКОР», #[a(href=linkInfo target="_blank") согласие] на обработку сведений об оказанных операторами услугах связи и передачу сведений ООО «ФОНКОР», а также подтверждаю, что ознакомлен с #[a(href=linkRules target="_blank") правилами].
           .m-auth__el.js-auth-el-ad
             label.m-auth__checkbox
-              input.visually-hidden(type="checkbox" id="auth_ad" name="ad" checked)
+              input.visually-hidden.js-auth-checkbox-ad(type="checkbox" id="auth_ad" name="ad" checked)
               .m-auth__checkbox-icon
                 +svg({ name: "check", width: 16, height: 16 })
               .m-auth__checkbox-text Получать выгодные #[a(href=linkAd target="_blank") предложения]

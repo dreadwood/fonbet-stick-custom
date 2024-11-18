@@ -2,8 +2,6 @@
  * auth.js
  */
 ;(() => {
-  console.log('test auth.js')
-
   var regFlag = false
   var refreshIntervalId = setInterval(function () {
     if (typeof window.registrationApi !== 'undefined') regFlag = true
@@ -34,7 +32,7 @@
   const bdayEl = container.querySelector('.js-auth-el-bday')
   const passEl = container.querySelector('.js-auth-el-pass')
   const agreeEl = container.querySelector('.js-auth-el-agree')
-  const adEl = container.querySelector('.js-auth-el-ad')
+  const ad = container.querySelector('.js-auth-checkbox-ad')
 
   const TEL_LENGTH = 11
   const MASK_TEL = '+{7} ({9}00) 000-00-00'
@@ -64,13 +62,13 @@
         if (isError) {
           telEl.classList.add('error')
         }
-        return isError
+        return !isError
       }
     ]
   }
 
   function initBirthdayField(fieldWrp, minAge) {
-    const BIRTHDAY_LENGTH = 8
+    const BIRTHDAY_LENGTH = 10
     const field = fieldWrp.querySelector('input[type="text"]')
     const error = fieldWrp.querySelector('[data-field-error]')
 
@@ -103,7 +101,7 @@
           fieldWrp.classList.add('error')
           error.textContent = `Вам должно быть ${minAge} лет`
         }
-        return isError
+        return !isError
       }
     ]
   }
@@ -113,11 +111,53 @@
     const btn = fieldWrp.querySelector('button[data-field-show]')
     const error = fieldWrp.querySelector('[data-field-error]')
 
+    const checkValidPass = () => {
+      let isError = false
+
+      const regexMinLatin = /[A-Za-z]/
+      const regexMinNum = /\d/
+      const regexOnlyLatinNum = /^[A-Za-z\d]+$/
+
+      switch (true) {
+        case !regexMinLatin.test(field.value):
+          isError = true
+          error.textContent = 'Пароль должен содержать латинские буквы'
+          break
+
+        case !regexMinNum.test(field.value):
+          isError = true
+          error.textContent = 'Пароль должен содержать цифры'
+          break
+
+        case !regexOnlyLatinNum.test(field.value):
+          isError = true
+          error.textContent =
+            'Пароль может содержать только цифры и латинские буквы'
+          break
+
+        case field.value.length < 8:
+          isError = true
+          error.textContent = 'Пароль должен быть не менее 8 символов'
+          break
+
+        default:
+          error.textContent = ''
+          break
+      }
+
+      return isError
+    }
+
     field.addEventListener('input', () => {
       if (field.value.length > 0) {
         btn.removeAttribute('hidden')
       } else {
         btn.setAttribute('hidden', 'hidden')
+      }
+
+      const isError = checkValidPass()
+      if (!isError) {
+        fieldWrp.classList.remove('error')
       }
     })
 
@@ -135,38 +175,7 @@
     return [
       field,
       () => {
-        let isError = false
-
-        const regexMinLatin = /[A-Za-z]/
-        const regexMinNum = /\d/
-        const regexOnlyLatinNum = /^[A-Za-z\d]+$/
-
-        switch (true) {
-          case !regexMinLatin.test(field.value):
-            isError = true
-            error.textContent = 'Пароль должен содержать латинские буквы'
-            break
-
-          case !regexMinNum.test(field.value):
-            isError = true
-            error.textContent = 'Пароль должен содержать цифры'
-            break
-
-          case !regexOnlyLatinNum.test(field.value):
-            isError = true
-            error.textContent =
-              'Пароль может содержать только цифры и латинские буквы'
-            break
-
-          case field.value.length < 8:
-            isError = true
-            error.textContent = 'Пароль должен быть не менее 8 символов'
-            break
-
-          default:
-            error.textContent = ''
-            break
-        }
+        const isError = checkValidPass()
 
         if (isError) {
           fieldWrp.classList.add('error')
@@ -174,7 +183,7 @@
           fieldWrp.classList.remove('error')
         }
 
-        return isError
+        return !isError
       }
     ]
   }
@@ -187,7 +196,6 @@
     }
 
     field.addEventListener('change', () => {
-      console.log(field.checked)
       if (field.checked) {
         fieldWrp.classList.remove('error')
       } else {
@@ -198,6 +206,9 @@
     return [
       field,
       () => {
+        if (!field.checked) {
+          fieldWrp.classList.add('error')
+        }
         return field.checked
       }
     ]
@@ -210,16 +221,24 @@
 
   form.addEventListener('submit', (evt) => {
     evt.preventDefault()
+
     const isValidTel = checkValidTel()
     const isValidBday = checkValidBday()
     const isValidPass = checkValidPass()
     const isValidAgree = checkAgree()
-    // console.log('isValidTel', isValidTel)
-    // console.log('isValidBday', isValidBday)
-    console.log('isValidPass', isValidPass)
 
-    // console.log(telField)
-    // console.log(bdayField)
-    // console.log(passField)
+    if ((!isValidTel, !isValidBday, !isValidPass, !isValidAgree)) {
+      return
+    }
+
+    const fields = {
+      [telField.name]: telField.value,
+      [bdayField.name]: bdayField.value,
+      [passField.name]: passField.value,
+      [agree.name]: agree.checked,
+      [ad.name]: ad.checked
+    }
+
+    console.log(fields)
   })
 })()
