@@ -51,6 +51,11 @@
     object-fit: contain;
     object-position: center bottom;
   }
+  @include ultra-wide {
+    img {
+      width: $apx-1350;
+    }
+  }
   @include mobile {
     position: absolute;
     bottom: calc(100% - #{$apx-m-230});
@@ -67,6 +72,9 @@
   max-height: $apx-1097;
   padding: $apx-75 $apx-165;
   transform-origin: center bottom;
+  @include ultra-wide {
+    padding: $apx-55 $apx-165;
+  }
   @include mobile {
     max-height: none;
     margin: auto;
@@ -112,6 +120,11 @@
   animation-timing-function: ease-in-out;
   animation-delay: 0.7s;
   animation-fill-mode: forwards;
+  @include ultra-wide {
+    margin-top: $apx-40;
+    font-size: $apx-260;
+    line-height: 0.85;
+  }
   @include mobile {
     margin-top: $apx-m-76;
     font-size: $apx-m-200;
@@ -184,6 +197,11 @@
     margin-top: $apx-26;
     animation-delay: 0.6s;
   }
+  @include ultra-wide {
+    &.second {
+      margin-top: $apx-20;
+    }
+  }
   @include mobile {
     column-gap: $apx-m-28;
     width: auto;
@@ -242,6 +260,9 @@
   animation-delay: 0.8s;
   translate: 200%;
   animation-fill-mode: forwards;
+  @include ultra-wide {
+    margin-top: $apx-27;
+  }
   @include mobile {
     min-width: $apx-m-462;
     margin-top: $apx-m-18;
