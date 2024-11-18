@@ -4,35 +4,35 @@
   font-weight: 400;
   font-style: normal;
   font-display: swap;
-  src: url("./fonts/cera-pro-regular.woff2") format("woff2");
+  src: url("../fonts/cera-pro-regular.woff2") format("woff2");
 }
 @font-face {
   font-family: "CeraPro";
   font-weight: 500;
   font-style: normal;
   font-display: swap;
-  src: url("./fonts/cera-pro-medium.woff2") format("woff2");
+  src: url("../fonts/cera-pro-medium.woff2") format("woff2");
 }
 @font-face {
   font-family: "CeraPro";
   font-weight: 700;
   font-style: normal;
   font-display: swap;
-  src: url("./fonts/cera-pro-bold.woff2") format("woff2");
+  src: url("../fonts/cera-pro-bold.woff2") format("woff2");
 }
 @font-face {
   font-family: "CeraPro";
   font-weight: 700;
   font-style: italic;
   font-display: swap;
-  src: url("./fonts/cera-pro-bold-italic.woff2") format("woff2");
+  src: url("../fonts/cera-pro-bold-italic.woff2") format("woff2");
 }
 @font-face {
   font-family: "DIN Condensed";
   font-weight: 700;
   font-style: normal;
   font-display: swap;
-  src: url("./fonts/din-condensed-bold.woff2") format("woff2");
+  src: url("../fonts/din-condensed-bold.woff2") format("woff2");
 }
 @keyframes modal-show {
   0% {
@@ -911,7 +911,7 @@ input[type=file].visually-hidden {
 @media (max-width: 1080px) {
   .b-set__title {
     margin-bottom: -0.833337vw;
-    font-size: 5.55558vw;
+    font-size: 5.370394vw;
     line-height: 1.1;
   }
 }
