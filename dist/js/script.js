@@ -633,8 +633,6 @@ window.utils = {
       const container = document.querySelector('.js-set')
       if (!container) return
 
-      // console.log(this)
-
       this.stepEl = document.querySelector('.js-set-step')
       this.titleEl = document.querySelector('.js-set-title')
       this.setBtnPrev = document.querySelector('.js-set-btn-prev')
@@ -691,17 +689,15 @@ window.utils = {
     },
 
     updateSetBtnsNavigation() {
-      if (this.step !== 1) {
-        this.setBtnPrev.removeAttribute('hidden')
-      } else {
-        this.setBtnPrev.setAttribute('hidden', 'hidden')
+      if (this.step !== 1) this.showEl(this.setBtnPrev)
+      else this.hideEl(this.setBtnPrev)
+
+      if (this.step === 5) {
+        this.hideEl(this.setBtnSave)
+        this.showEl(this.setBtnNext)
       }
 
-      if (this.step === 6) {
-        this.setBtnNext.setAttribute('disabled', 'disabled')
-      } else {
-        this.setBtnNext.removeAttribute('disabled')
-      }
+      if (this.step === 6) this.hideEl(this.setBtnNext)
 
       this.changeCssClass('.js-set-btn-prev')
       this.changeCssClass('.js-set-btn-next')
@@ -780,6 +776,7 @@ window.utils = {
       const imgPattern = container.querySelector('.js-widow-pattern')
       const listPattern = container.querySelector('.js-widow-pag-list')
       const listColor = container.querySelector('.js-widow-color-list')
+      const pagBtns = listPattern.querySelectorAll('button')
 
       const changePattern = () => {
         if (this.stickPatternType === 0) {
@@ -792,6 +789,14 @@ window.utils = {
           btnPrev.removeAttribute('disabled')
           btnNext.removeAttribute('disabled')
         }
+
+        pagBtns.forEach((it, i) => {
+          if (i === this.stickPatternType) {
+            it.classList.add('actv')
+          } else {
+            it.classList.remove('actv')
+          }
+        })
 
         if (this.stickPatternType === 0) {
           imgPattern.setAttribute('hidden', 'hidden')

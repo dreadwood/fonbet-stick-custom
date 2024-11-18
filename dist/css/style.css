@@ -4,35 +4,35 @@
   font-weight: 400;
   font-style: normal;
   font-display: swap;
-  src: url("/fonts/cera-pro-regular.woff2") format("woff2");
+  src: url("./fonts/cera-pro-regular.woff2") format("woff2");
 }
 @font-face {
   font-family: "CeraPro";
   font-weight: 500;
   font-style: normal;
   font-display: swap;
-  src: url("/fonts/cera-pro-medium.woff2") format("woff2");
+  src: url("./fonts/cera-pro-medium.woff2") format("woff2");
 }
 @font-face {
   font-family: "CeraPro";
   font-weight: 700;
   font-style: normal;
   font-display: swap;
-  src: url("/fonts/cera-pro-bold.woff2") format("woff2");
+  src: url("./fonts/cera-pro-bold.woff2") format("woff2");
 }
 @font-face {
   font-family: "CeraPro";
   font-weight: 700;
   font-style: italic;
   font-display: swap;
-  src: url("/fonts/cera-pro-bold-italic.woff2") format("woff2");
+  src: url("./fonts/cera-pro-bold-italic.woff2") format("woff2");
 }
 @font-face {
   font-family: "DIN Condensed";
   font-weight: 700;
   font-style: normal;
   font-display: swap;
-  src: url("/fonts/din-condensed-bold.woff2") format("woff2");
+  src: url("./fonts/din-condensed-bold.woff2") format("woff2");
 }
 @keyframes modal-show {
   0% {
@@ -793,7 +793,7 @@ input[type=file].visually-hidden {
 @media (max-width: 1080px) {
   .b-result__name {
     bottom: 28.2%;
-    left: 53.7%;
+    left: 53.9%;
     font-size: 1.388895vw;
     line-height: 1;
     transform: rotate(-90deg);
@@ -1169,7 +1169,7 @@ input[type=file].visually-hidden {
 
 .b-start__img {
   position: absolute;
-  bottom: -0.104166vw;
+  bottom: 0;
   left: 50%;
   z-index: 2;
   width: -moz-max-content;
@@ -1564,17 +1564,27 @@ input[type=file].visually-hidden {
   width: auto;
   height: 100%;
 }
+.b-window__img.name {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 .b-window__img.pattern {
   z-index: 1;
-  width: 0.937494vw;
+  width: 0.833328vw;
   translate: calc(-50% + 0.364581vw);
+}
+@media (aspect-ratio > 16/9) {
+  .b-window__img.pattern {
+    width: 0.729162vw;
+    translate: calc(-50% + 0.312498vw);
+  }
 }
 @media (max-width: 1080px) {
   .b-window__img.pattern {
-    width: 2.037046vw;
+    width: 1.666674vw;
     -o-object-fit: cover;
        object-fit: cover;
-    translate: calc(-50% + 1.018523vw);
+    translate: calc(-50% + 0.833337vw);
   }
 }
 
@@ -1653,7 +1663,7 @@ input[type=file].visually-hidden {
 .b-window__pag-btn {
   transition-timing-function: ease-out;
   transition-duration: 0.2s;
-  transition-property: scale;
+  transition-property: scale, opacity;
   position: relative;
   display: block;
   width: 1.614573vw;
@@ -1662,6 +1672,7 @@ input[type=file].visually-hidden {
   background-color: #222b36;
   border: 0.156249vw solid #222b36;
   border-radius: 0.52083vw;
+  opacity: 0.8;
   aspect-ratio: 1/1;
 }
 .b-window__pag-btn.clear {
@@ -1684,11 +1695,12 @@ input[type=file].visually-hidden {
 .b-window__pag-btn.clear::after {
   rotate: -45deg;
 }
-.b-window__pag-btn:not(.clear).actv {
+.b-window__pag-btn.actv {
   background-color: #e80024;
   border-color: #e80024;
+  opacity: 1;
 }
-.b-window__pag-btn:not(.clear).actv::before, .b-window__pag-btn:not(.clear).actv::after {
+.b-window__pag-btn.actv::before, .b-window__pag-btn.actv::after {
   content: none;
 }
 .b-window__pag-btn:not(.actv, [disabled]):hover, .b-window__pag-btn:not(.actv, [disabled]):focus-visible {
