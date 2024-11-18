@@ -36,6 +36,9 @@
   &.finish {
     display: none;
   }
+  &:not(.fifth) {
+    width: $apx-650;
+  }
   @include mobile {
     display: flex;
     align-items: flex-end;
@@ -45,6 +48,9 @@
     padding-left: $apx-m-46;
     &.second {
       width: $apx-m-680;
+    }
+    &:not(.fifth) {
+      width: auto;
     }
   }
 }
@@ -64,10 +70,10 @@
   }
 }
 .b-set__wrp {
-  width: $apx-650;
-  @include mobile {
-    width: auto;
-  }
+  // width: $apx-650;
+  // @include mobile {
+  //   width: auto;
+  // }
 }
 .b-set__title {
   font-size: $apx-55;
@@ -162,13 +168,14 @@
     // }
   }
 }
-.b-set__btn-save {
+.b-set__btn-save,
+.b-set__btn-return {
   position: absolute;
   right: 0;
   bottom: 0;
-  &:not(.finish) {
-    display: none;
-  }
+  // &:not(.finish) {
+  //   display: none;
+  // }
 }
 
 @keyframes b-set-btn {

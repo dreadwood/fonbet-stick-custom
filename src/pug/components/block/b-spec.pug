@@ -4,7 +4,7 @@ mixin b-spec-btn({ text, name, id, value, checked })
     label(for=id)=text
 
 mixin b-spec({ className })
-  form.b-spec(class=className)
+  form.b-spec.js-spec(class=className)
     .b-spec__row
       .b-spec__name Хват
       .b-spec__grid

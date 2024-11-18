@@ -23,8 +23,6 @@
     red: 'красный',
     white: 'белый',
     black: 'черный',
-    // chrome: 'хром',
-    // reflective: 'reflective',
     carbon: 'карбон'
   }
 
@@ -34,6 +32,8 @@
     glossy: 'глянцевое',
     glitter: 'Зернистое'
   }
+
+  const STICK_SEND_URL = 'https://xcomfeed.com/fonbet/great8/stick-send'
 
   const STICK_COLOR = ['red', 'white', 'black', 'carbon']
   const STICK_PATTERN_COLOR = ['red', 'white', 'black', 'chrome', 'reflective']
@@ -55,7 +55,6 @@
 
     stickFormGrip: 'right',
     stickFormFlex: '90',
-    stickFormPoint: 'middle',
 
     /** @type {HTMLButtonElement | null} */
     stepEl: null,
@@ -67,6 +66,8 @@
     setBtnNext: null,
     /** @type {HTMLButtonElement | null} */
     setBtnSave: null,
+    /** @type {HTMLLinkElement | null} */
+    setBtnReturn: null,
 
     init() {
       const container = document.querySelector('.js-set')
@@ -79,6 +80,7 @@
       this.setBtnPrev = document.querySelector('.js-set-btn-prev')
       this.setBtnNext = document.querySelector('.js-set-btn-next')
       this.setBtnSave = document.querySelector('.js-set-btn-save')
+      this.setBtnReturn = document.querySelector('.js-set-btn-return')
 
       this.setBtnPrev.addEventListener('click', () => this.prevStep())
       this.setBtnNext.addEventListener('click', () => this.nextStep())
@@ -88,6 +90,10 @@
       this.initWindowSecond()
       this.initWindowThird()
       this.initWindowFourth()
+      this.initWindowFifth()
+
+      this.initModalBet()
+      this.initModalScore()
     },
 
     prevStep() {
@@ -119,6 +125,8 @@
 
       if (this.step === 6) {
         this.updateWindowResult()
+        this.setBtnSave.removeAttribute('hidden')
+        this.setBtnReturn.setAttribute('hidden', 'hidden')
       }
     },
 
@@ -336,6 +344,42 @@
       })
     },
 
+    initWindowFifth() {
+      const form = document.querySelector('.js-spec')
+      form.addEventListener('change', () => {
+        this.stickFormGrip = form.elements.grip.value
+        this.stickFormFlex = +form.elements.flex.value
+      })
+    },
+
+    initModalBet() {
+      const modalBet = document.querySelector('.js-bet')
+      const modalBetBtn = modalBet.querySelector('.js-bet-btn')
+      const modalScore = document.querySelector('.js-score')
+
+      console.log(modalScore)
+
+      modalBetBtn.addEventListener('click', () => {
+        modalBet.classList.remove('show')
+        modalScore.classList.add('show')
+      })
+    },
+
+    initModalScore() {
+      const modalScore = document.querySelector('.js-score')
+      const modalScoreBtn = document.querySelector('.js-score-close')
+
+      modalScoreBtn.addEventListener('click', () => {
+        modalScore.classList.remove('show')
+      })
+
+      modalScore.addEventListener('click', (evt) => {
+        if (evt.target === modalScore) {
+          modalScore.classList.remove('show')
+        }
+      })
+    },
+
     updateWindowResult() {
       const container = document.querySelector('.js-set-result')
       const stick = container.querySelector('.js-set-result-stick')
@@ -365,25 +409,66 @@
       name.style = `color: ${this.stickNameColor};`
     },
 
-    saveResult() {
+    async renderStick() {
       const resultField = document.querySelector('.js-set-result-field')
       const nameField = document.querySelector('.js-set-result-name')
 
-      if (!resultField) {
-        console.error('resultField не найден')
-        return
-      }
-
       nameField.classList.add('print')
 
-      html2canvas(resultField, { backgroundColor: null }).then((canvas) => {
+      try {
+        const canvas = await html2canvas(resultField, { backgroundColor: null })
+
+        console.log(canvas)
+
         const link = document.createElement('a')
         link.href = canvas.toDataURL('image/png')
         link.download = 'result.png'
         link.click()
 
         nameField.classList.remove('print')
-      })
+      } catch (error) {
+        console.error(error)
+      }
+
+      return
+    },
+
+    async saveResult() {
+      const clientId = window.userInfo.getClientID()
+      const modalBet = document.querySelector('.js-bet')
+
+      this.hideEl(this.setBtnPrev)
+      this.hideEl(this.setBtnSave)
+      this.showEl(this.setBtnReturn)
+
+      try {
+        await this.renderStick()
+
+        const req = {
+          pin: clientId,
+          color_stick: this.stickColor,
+          shaft_texture: this.stickPatternType,
+          shaft_color: STICK_PATTERN_COLOR[this.stickPatternColor],
+          color_hook: STICK_COLOR[this.stickBladeColor],
+          hook_cover: BLADE_TEXTURE[this.stickBladeTexture],
+          text: this.stickName,
+          grip: this.stickFormGrip,
+          flex: this.stickFormFlex,
+          deflection_point: ''
+        }
+
+        const data = await window.utils.fetchData(STICK_SEND_URL, req)
+
+        console.log(modalBet)
+
+        if (data.ok) {
+          console.log('test')
+          modalBet.classList.add('show')
+          this.showEl(this.setBtnReturn)
+        }
+      } catch (error) {
+        console.error(error)
+      }
     },
 
     /**
@@ -391,21 +476,13 @@
      */
     showEl(el) {
       el.removeAttribute('hidden')
-      el.classList.add('showing')
-      setTimeout(() => {
-        el.classList.add('showing')
-      }, 3000)
     },
 
     /**
      * @param {HTMLElement} el
      */
     hideEl(el) {
-      el.classList.add('hiding')
-      setTimeout(() => {
-        el.classList.remove('hidding')
-        el.setAttribute('hidden', 'hidden')
-      }, 3000)
+      el.setAttribute('hidden', 'hidden')
     },
 
     /**

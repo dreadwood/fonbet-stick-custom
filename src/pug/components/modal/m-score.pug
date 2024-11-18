@@ -1,6 +1,6 @@
 mixin m-score({ isShow, className })
-  .overlay(class=isShow && "show")
+  .overlay.js-score(class=isShow && "show")
     .m-red(class=className)
-      button.m-red__close
+      button.m-red__close.js-score-close
       .m-red__title #[span Твои 1000 баллов] Великой погони начислены!
       .m-red__text Жди результаты розыгрыша #[br] #{endData}

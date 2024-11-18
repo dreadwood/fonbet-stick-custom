@@ -28,8 +28,6 @@
     return
   }
 
-  console.log(window.userInfo.getClientID())
-
   const showStartScreen = () => {
     loadingScreen.setAttribute('hidden', 'hidden')
     startScreen.removeAttribute('hidden')
