@@ -63,34 +63,27 @@
     const clientId = window.userInfo.getClientID()
 
     if (clientId) {
-      // ! проверить результаты
       const req = {
         pin: clientId
       }
-
-      console.log(req)
 
       try {
         const data = await window.utils.fetchData(GET_STICK_URL, req)
 
         if (data.status === 200) {
-          // показать результаты
           const res = await data.json()
 
           window.result(res.data)
           showResultScreen()
           console.log(res.data)
         } else {
-          // показать стартовый экран
           showStartScreen()
         }
       } catch (error) {
-        // показать стартовый экран
         console.error(error)
         showStartScreen()
       }
     } else {
-      // показать стартовый экран
       showStartScreen()
     }
   }

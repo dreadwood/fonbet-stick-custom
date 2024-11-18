@@ -3,8 +3,8 @@ mixin picture({ image, width, height, altText, className })
   - const path = image.split(".")[0]
   //- div=image
   picture
-    source(type="image/avif" srcset=`${path}.avif`)
-    source(type="image/webp" srcset=`${path}.webp`)
+    source(type="image/avif" srcset=`${baseUrl}${path}.avif`)
+    source(type="image/webp" srcset=`${baseUrl}${path}.webp`)
     img(
       class=className
       src=image
@@ -20,11 +20,11 @@ mixin picture2x({ image, width, height, altText, className })
   picture
     source(
       type="image/avif"
-      srcset=`${path}@1x.avif 1x, ${path}@2x.avif 2x`
+      srcset=`${baseUrl}${path}@1x.avif 1x, ${baseUrl}${path}@2x.avif 2x`
     )
     source(
       type="image/webp"
-      srcset=`${path}@1x.webp 1x, ${path}@2x.webp 2x`
+      srcset=`${baseUrl}${path}@1x.webp 1x, ${baseUrl}${path}@2x.webp 2x`
     )
     img(
       class=className
@@ -38,7 +38,7 @@ mixin picture2x({ image, width, height, altText, className })
 //- simple vector image
 mixin svg({ name, width, height, className })
   if name.includes('/img')
-    img(class=className || null src=name width=width height=height alt="")
+    img(class=className || null src=`${baseUrl}${name}` width=width height=height alt="")
   else
     svg(class=className || null width=width height=height)
-      use(xlink:href=`img/sprite.svg#${name}`)
+      use(xlink:href=`${baseUrl}/img/sprite.svg#${name}`)
