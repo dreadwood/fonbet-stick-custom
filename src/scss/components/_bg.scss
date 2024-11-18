@@ -126,7 +126,7 @@
   height: $apx-150;
   background-color: $color-black;
   translate: -#{$apx-500};
-  @media (height <= 1050px) {
+  @include ultra-wide {
     bottom: -#{$apx-11};
   }
   @include mobile {
@@ -144,7 +144,7 @@
   height: $apx-289;
   background-color: $color-black;
   translate: -#{$apx-290} $apx-290;
-  @media (height <= 1050px) {
+  @include ultra-wide {
     bottom: -#{$apx-200};
   }
   @include mobile {
@@ -345,7 +345,7 @@
   height: $apx-408;
   background-color: $color-carmine-red;
   translate: -#{$apx-408} $apx-408;
-  @media (height <= 1050px) {
+  @include ultra-wide {
     bottom: -#{$apx-110};
     left: #{$apx-80};
   }
