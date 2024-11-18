@@ -21,6 +21,7 @@ lerna-debug.log*
 # production
 /build
 # /dist
+dist*
 /dist-ssr
 /temp
 dist.zip

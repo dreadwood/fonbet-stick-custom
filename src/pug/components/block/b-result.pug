@@ -5,7 +5,7 @@ mixin b-result({ isDemo, isHide, className })
     .b-result__field.js-set-result-field
       if isDemo
         .b-result__demo
-          +picture({ image: "./img/stick.png", width: 1520, height: 375 })
+          +picture({ image: "/img/stick.png", width: 1520, height: 375 })
       else
         .b-result__result
           img.b-result__stick.js-set-result-stick(src="./img/sticks/stick-empty-red.webp")

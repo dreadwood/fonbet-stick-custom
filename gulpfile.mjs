@@ -138,17 +138,20 @@ const jsVendor = () => {
 }
 
 const html = () => {
-  return gulp
-    .src('src/pug/pages/**/*.pug')
-    .pipe(plumber())
-    .pipe(
-      pug({
-        pretty: true,
-        basedir: 'src/pug',
-        locals: { baseUrl }
-      })
-    )
-    .pipe(gulp.dest('dist'))
+  return (
+    gulp
+      // .src('src/pug/pages/**/*.pug')
+      .src('src/pug/pages/index.pug')
+      .pipe(plumber())
+      .pipe(
+        pug({
+          pretty: true,
+          basedir: 'src/pug',
+          locals: { baseUrl }
+        })
+      )
+      .pipe(gulp.dest('dist'))
+  )
 }
 
 const refresh = (done) => {
