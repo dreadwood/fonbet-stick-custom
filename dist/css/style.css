@@ -225,7 +225,7 @@ input[type=file].visually-hidden {
   text-transform: uppercase;
   background-color: rgba(0, 0, 0, 0.5);
 }
-@media (max-height: 950px) {
+@media (aspect-ratio > 16/9) {
   .b-customizer {
     font-size: 1.354158vw;
     line-height: 1.2;
@@ -249,7 +249,7 @@ input[type=file].visually-hidden {
   border: 0.781245vw solid #222b36;
   border-radius: 2.135403vw;
 }
-@media (max-height: 950px) {
+@media (aspect-ratio > 16/9) {
   .b-customizer__dialog {
     padding: 3.12498vw 2.08332vw 2.08332vw 2.08332vw;
   }
@@ -272,7 +272,7 @@ input[type=file].visually-hidden {
 .b-customizer__title span {
   color: #e80024;
 }
-@media (max-height: 950px) {
+@media (aspect-ratio > 16/9) {
   .b-customizer__title {
     font-size: 5.2083vw;
     line-height: 0.82;
@@ -289,7 +289,7 @@ input[type=file].visually-hidden {
   max-width: 39.06225vw;
   margin: 0.312498vw auto 1.354158vw auto;
 }
-@media (max-height: 950px) {
+@media (aspect-ratio > 16/9) {
   .b-customizer__subtitle {
     margin-top: 0;
     margin-bottom: 1.04166vw;
@@ -678,7 +678,7 @@ input[type=file].visually-hidden {
   background-image: linear-gradient(104.38deg, #e80024 48.55%, #222b36 100.64%);
   border-radius: 1.406241vw;
 }
-@media (max-height: 950px) {
+@media (aspect-ratio > 16/9) {
   .b-result__field {
     margin-top: 2.08332vw;
   }
@@ -831,7 +831,7 @@ input[type=file].visually-hidden {
 .b-set__content.fifth {
   display: block;
 }
-@media (max-height: 950px) {
+@media (aspect-ratio > 16/9) {
   .b-set__content {
     height: 43.74972vw;
   }
@@ -1484,7 +1484,7 @@ input[type=file].visually-hidden {
   background-color: #a7a7a7;
   border-radius: 1.406241vw;
 }
-@media (max-height: 950px) {
+@media (aspect-ratio > 16/9) {
   .b-window__field {
     height: 37.49976vw;
   }
