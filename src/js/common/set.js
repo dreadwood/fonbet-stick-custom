@@ -72,7 +72,7 @@
       const container = document.querySelector('.js-set')
       if (!container) return
 
-      console.log(this)
+      // console.log(this)
 
       this.stepEl = document.querySelector('.js-set-step')
       this.titleEl = document.querySelector('.js-set-title')

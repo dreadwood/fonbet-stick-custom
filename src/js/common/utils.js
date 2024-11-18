@@ -88,5 +88,21 @@ window.utils = {
       }
     })
     btn.blur()
+  },
+
+  /**
+   * wrapper for fetch
+   * @param {string} URL
+   * @param {Object} data
+   * @returns
+   */
+  async fetchData(URL, data) {
+    const res = await fetch(URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+
+    return res
   }
 }

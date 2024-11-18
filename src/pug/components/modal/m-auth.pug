@@ -11,21 +11,21 @@ mixin m-auth-script({})
 
 mixin m-auth({ isShow, className })
   - const linkLogin = "https://fon.bet/authProcess/login/"
-  - const linkPersonalData = "#"
-  - const linkInfo = "#"
-  - const linkRules = "#"
-  - const linkAd = "#"
+  //- - const linkPersonalData = "#"
+  //- - const linkInfo = "#"
+  //- - const linkRules = "#"
+  //- - const linkAd = "#"
   //- +m-auth-script({})
-  .overlay(class=isShow && "show")
+  .overlay.js-auth-overlay(class=isShow && "show")
     .m-auth.js-auth
-      button.m-auth__close
+      button.m-auth__close.js-auth-close
       .m-auth__bg
         .m-auth__img-coin
           +picture2x({ image: "./img/auth-coin@1x.png", width: 355, height: 353 })
         .m-auth__img-ovetchkin
           +picture2x({ image: "./img/auth-ovetchkin@1x.png", width: 256, height: 375 })
       .m-auth__text.sup Для участия в великой погоне войдите в свой аккаунт
-      a.m-auth__login(href=linkLogin) Войти с fonbet
+      a.m-auth__login(href=linkLogin target="_blank") Войти с fonbet
       .m-auth__text.sub Или зарегистрируйтесь
       .m-auth__container(
         id="registrationContainer"
@@ -34,9 +34,10 @@ mixin m-auth({ isShow, className })
         data-promo-id=""
         data-ignore-label="true"
         data-locale="ru"
+        data-mode="dark"
         data-layout="4"
       )
-        form.m-auth__form.js-auth-form
+        //- form.m-auth__form.js-auth-form
           .m-auth__el.js-auth-el-tel
             label.m-auth__label(for="auth_tel") Номер телефона
             input.m-auth__field(type="tel" id="auth_tel" name="tel" placeholder="+7 (9XX) XXX XX XX")

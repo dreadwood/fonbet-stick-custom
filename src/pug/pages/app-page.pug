@@ -1,11 +1,19 @@
 extends /elements/layout-page
-
+include /components/block/b-loading
 include /components/block/b-start
 include /components/block/b-set
+include /components/modal/m-auth
 
 block data
   - title = "Template"
 
+block libjs
+  +m-auth-script({})
+
 block content
-  +b-start({ isHide: false })
+  +b-loading({ isHide: false })
+  +b-start({ isHide: true })
   +b-set({ isHide: true })
+
+block modal
+  +m-auth({ isShow: false })

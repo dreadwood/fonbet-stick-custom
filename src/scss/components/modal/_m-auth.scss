@@ -1,34 +1,42 @@
+/* stylelint-disable declaration-no-important */
 .m-auth {
   position: relative;
   display: grid;
   justify-items: center;
   width: 100%;
-  max-width: $apx-870;
+  // max-width: $apx-870;
+  max-width: 870px;
   margin: auto;
-  padding: $apx-62 $apx-32 $apx-62 $apx-32;
+  // padding: $apx-62 $apx-32 $apx-62 $apx-32;
+  padding: 62px 32px 62px 32px;
   font-family: $font-default;
-  font-size: $apx-12;
+  // font-size: $apx-12;
+  font-size: 12px;
   line-height: 1;
   font-weight: 400;
   text-align: left;
   color: $color-white;
-  // background-color: $color-green-blue;
-  // border-radius: $apx-20;
-  @include mobile {
-    max-width: $apx-m-525 * 2;
-    padding: $apx-m-176 $apx-m-16 $apx-m-574 * 2 $apx-m-16;
-    font-size: $apx-m-27;
-    line-height: $apx-m-36;
-    // border-radius: $apx-m-60;
+  @include mobile-px {
+    // max-width: $apx-m-525 * 2;
+    max-width: none;
+    // padding: $apx-m-176 $apx-m-16 $apx-m-574 * 2 $apx-m-16;
+    padding: 60px 20px 398px 20px;
+    // font-size: $apx-m-27;
+    font-size: 10px;
+    // line-height: $apx-m-36;
+    line-height: 13px;
   }
 }
 .m-auth__close {
   @include transition(scale, rotate);
   position: absolute;
   top: $apx-32;
-  right: $apx-15;
+  top: 32px;
+  // right: $apx-15;
+  right: 15px;
   display: block;
-  width: $apx-40;
+  // width: $apx-40;
+  width: 40px;
   aspect-ratio: 1 / 1;
   margin: 0;
   padding: 0;
@@ -41,10 +49,13 @@
     top: 50%;
     left: 50%;
     display: block;
-    width: $apx-27;
-    height: $apx-4;
+    // width: $apx-27;
+    width: 27px;
+    // height: $apx-4;
+    height: 4px;
     background-color: $color-white;
-    border-radius: $apx-2;
+    // border-radius: $apx-2;
+    border-radius: 2px;
     translate: -50% -50%;
   }
   &::before {
@@ -55,18 +66,24 @@
   }
   &:hover,
   &:focus-visible {
-    rotate: 180deg;
+    // rotate: 180deg;
     scale: 1.2;
   }
-  @include mobile {
-    top: $apx-m-30;
-    right: $apx-m-30;
-    width: $apx-m-90;
+  @include mobile-px {
+    // top: $apx-m-30;
+    top: 11px;
+    // right: $apx-m-30;
+    right: 11px;
+    // width: $apx-m-90;
+    width: 31px;
     &::before,
     &::after {
-      width: $apx-m-64;
-      height: $apx-m-10;
-      border-radius: $apx-m-5;
+      // width: $apx-m-64;
+      width: 22px;
+      // height: $apx-m-10;
+      height: 3px;
+      // border-radius: $apx-m-5;
+      border-radius: 2px;
     }
   }
 }
@@ -76,69 +93,94 @@
   overflow: hidden;
   background-color: $color-green-blue;
   inset: 0;
-  border-radius: $apx-20;
-  @include mobile {
+  // border-radius: $apx-20;
+  border-radius: 20px;
+  @include mobile-px {
     border-radius: $apx-m-60;
   }
 }
 .m-auth__img-coin {
   position: absolute;
-  bottom: -#{$apx-102};
-  left: -#{$apx-135};
-  width: $apx-355;
-  height: $apx-353;
+  // bottom: -#{$apx-102};
+  bottom: -102px;
+  // left: -#{$apx-135};
+  // left: -135px;
+  left: calc(50% - 390px);
+  // width: $apx-355;
+  width: 355px;
+  // height: $apx-353;
+  height: 353px;
+  translate: -50%;
   img {
     width: 100%;
     height: 100%;
     object-fit: contain;
   }
-  @include mobile {
-    right: -#{$apx-435};
-    bottom: $apx-495;
-    left: auto;
+  @include mobile-px {
+    // right: -#{$apx-435};
+    // bottom: $apx-495;
+    bottom: 80px;
+    // left: auto;
+    left: calc(50% + 186px);
     width: max-content;
-    height: $apx-m-540;
+    // height: $apx-m-540;
+    height: 200px;
   }
 }
 .m-auth__img-ovetchkin {
   position: absolute;
-  right: -#{$apx-65};
-  bottom: -#{$apx-36};
-  width: $apx-256;
-  height: $apx-375;
+  // right: -#{$apx-65};
+  // right: -65px;
+  right: calc(50% - 370px);
+  // bottom: -#{$apx-36};
+  bottom: -36px;
+  // width: $apx-256;
+  width: 256px;
+  // height: $apx-375;
+  height: 375px;
+  translate: 50%;
   img {
     width: 100%;
     height: 100%;
     object-fit: contain;
   }
-  @include mobile {
-    right: $apx-m-140;
-    bottom: 0;
+  @include mobile-px {
+    // right: $apx-m-140;
+    right: 50%;
+    // bottom: 0;
+    bottom: -54px;
     width: max-content;
-    height: $apx-m-564 * 2;
+    // height: $apx-m-564 * 2;
+    height: 438px;
+    translate: 50%;
   }
 }
 .m-auth__text {
   font-family: $font-title;
-  font-size: $apx-60;
+  // font-size: $apx-60;
+  font-size: 60px;
   line-height: 1;
   font-weight: 700;
   text-align: center;
   text-transform: uppercase;
   &.sup {
-    margin-bottom: $apx-13;
+    margin-bottom: 13px;
   }
   &.sub {
-    margin-top: $apx-50;
+    margin-top: 50px;
   }
-  @include mobile {
-    font-size: $apx-m-84;
-    line-height: $apx-m-114;
+  @include mobile-px {
+    // font-size: $apx-m-84;
+    font-size: 29px;
+    // line-height: $apx-m-114;
+    line-height: 40px;
     &.sup {
-      margin-bottom: $apx-m-46;
+      // margin-bottom: $apx-m-46;
+      margin-bottom: 16px;
     }
     &.sub {
-      margin-top: $apx-m-136;
+      // margin-top: $apx-m-136;
+      margin-top: 46px;
     }
   }
 }
@@ -146,12 +188,16 @@
   @include transition(background-color, color);
   display: block;
   width: max-content;
-  min-width: $apx-360;
+  // min-width: $apx-360;
+  min-width: 360px;
   margin: 0;
-  padding: $apx-20;
+  // padding: $apx-20;
+  padding: 20px;
   font-family: $font-default;
-  font-size: $apx-26;
-  line-height: $apx-40;
+  // font-size: $apx-26;
+  font-size: 26px;
+  // line-height: $apx-40;
+  line-height: 40px;
   font-weight: 700;
   text-align: center;
   color: $color-carmine-red;
@@ -159,274 +205,304 @@
   text-decoration: none;
   background-color: $color-white;
   border: 0;
-  border-radius: $apx-5;
+  // border-radius: $apx-5;
+  border-radius: 5px;
   &:not([disabled]):hover,
   &:not([disabled]):focus-visible {
     color: $color-green-blue;
     background-color: $color-gray-961;
   }
-  @include mobile {
-    min-width: $apx-m-840;
-    padding: $apx-m-80 $apx-m-30;
-    font-size: $apx-m-60;
-    line-height: $apx-m-80;
-    border-radius: $apx-m-15;
+  @include mobile-px {
+    // min-width: $apx-m-840;
+    min-width: 292px;
+    // padding: $apx-m-80 $apx-m-30;
+    padding: 28px 12px;
+    // font-size: $apx-m-60;
+    font-size: 21px;
+    // line-height: $apx-m-80;
+    line-height: 28px;
+    // border-radius: $apx-m-15;
+    border-radius: 6px;
   }
 }
 .m-auth__container {
-  width: $apx-490;
-  margin-top: $apx-15;
-  @include mobile {
-    width: $apx-m-840;
-    margin-top: $apx-m-58;
+  // width: $apx-490;
+  width: 490px;
+  // margin-top: $apx-15;
+  margin-top: 15px;
+  div[data-name="edit__label"] {
+    color: $color-white;
   }
-}
-.m-auth__form {
-  display: grid;
-  gap: $apx-26;
-  width: 100%;
-  @include mobile {
-    gap: $apx-m-72;
-  }
-}
-.m-auth__el {
-  display: grid;
-  &.error {
-    .m-auth__error {
-      display: block;
-    }
-    .m-auth__description {
-      display: none;
-    }
-    .m-auth__field {
-      background-color: transparentize($color-indian-red, 0.9);
-      border-color: $color-indian-red;
-    }
-    .m-auth__checkbox-icon {
-      background-color: transparentize($color-indian-red, 0.9);
-      border-color: $color-indian-red;
-    }
-  }
-}
-.m-auth__label {
-  margin-bottom: $apx-12;
-  font-size: $apx-16;
-  line-height: 1;
-  font-weight: 500;
-  text-transform: uppercase;
-  @include mobile {
-    margin-bottom: $apx-m-36;
-    font-size: $apx-m-48;
-    line-height: 1;
-  }
-}
-.m-auth__field {
-  @include transition(color, background-color, border-color);
-  display: block;
-  width: 100%;
-  padding: $apx-20 $apx-30 $apx-14 $apx-30;
-  font-family: $font-default;
-  font-size: $apx-18;
-  line-height: $apx-24;
-  font-weight: 700;
-  text-align: left;
-  color: $color-white;
-  text-transform: uppercase;
-  background-color: $color-black;
-  border: $apx-1 solid transparent;
-  border-radius: $apx-5;
-  outline: none;
-  appearance: none;
-  &::placeholder {
-    font: inherit;
-    color: $color-gray-769;
-  }
-  &::-webkit-credentials-auto-fill-button {
-    // for hidden key icon in safari
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 1px;
-    height: 1px;
-    opacity: 0;
-  }
-  &[type="number"]::-webkit-outer-spin-button, // webkit
-  &[type="number"]::-webkit-inner-spin-button {
-    margin: 0;
-    appearance: none;
-  }
-  &[type="number"] {
-    // firefox
-    appearance: textfield;
-  }
-  &:hover,
-  &:focus-visible {
-    // border-color: $color-hero;
-  }
-  @include mobile {
-    padding: $apx-m-48 $apx-m-96;
-    font-size: $apx-m-54;
-    line-height: $apx-m-78;
-    border-width: $apx-m-1;
-    border-radius: $apx-m-15;
-  }
-}
-.m-auth__field-pass {
-  position: relative;
-  button[data-field-show] {
-    @include transition(color);
-    position: absolute;
-    top: 50%;
-    right: $apx-10;
-    display: block;
-    width: $apx-20;
-    height: $apx-20;
-    margin: 0;
-    padding: 0;
-    color: transparentize($color-gray-769, 0.5);
-    background-color: transparent;
-    border: 0;
-    translate: 0 -50%;
-    svg {
-      width: 100%;
-      height: 100%;
-      fill: currentcolor;
-    }
-    .eye-cross {
-      display: none;
-    }
-    &.show {
-      .eye {
-        display: none;
-      }
-      .eye-cross {
-        display: block;
-      }
-    }
-    &:hover,
-    &:focus-visible {
-      color: $color-gray-769;
-    }
-  }
-}
-.m-auth__error {
-  display: none;
-  margin-top: $apx-6;
-  font-size: $apx-12;
-  line-height: 1;
-  color: $color-indian-red;
-  @include mobile {
-    margin-top: $apx-m-24;
-    font-size: $apx-m-42;
-    line-height: 1;
-  }
-}
-.m-auth__description {
-  margin-top: $apx-6;
-  font-size: $apx-12;
-  line-height: 1;
-  color: $color-dark-telegray;
-  @include mobile {
-    margin-top: $apx-m-24;
-    font-size: $apx-m-42;
-    line-height: 1;
-  }
-}
-.m-auth__checkbox {
-  display: flex;
-  align-items: flex-start;
-  gap: $apx-11;
-  color: $color-gray-667;
-  cursor: pointer;
-  // &.error {
-  //   .m-auth__checkbox-icon {
-  //     background-color: transparentize($color-indian-red, 0.9);
-  //     border-color: $color-indian-red;
-  //   }
-  // }
-  input:checked + .m-auth__checkbox-icon {
-    background-color: $color-black;
-    border-color: transparent;
-    svg {
-      display: block;
-    }
-  }
-  @include mobile {
-    gap: $apx-m-33;
-  }
-}
-.m-auth__checkbox-icon {
-  display: grid;
-  flex-shrink: 0;
-  place-items: center;
-  width: $apx-18;
-  background-color: $color-black;
-  aspect-ratio: 1 / 1;
-  border: $apx-1 solid transparent;
-  svg {
-    display: none;
-  }
-  @include mobile {
-    width: $apx-m-60;
-    border-width: $apx-m-1;
-  }
-}
-.m-auth__checkbox-text {
-  min-height: $apx-20;
-  a[href] {
-    @include transition(color);
-    line-height: 1.2;
-    font-weight: 500;
-    text-decoration: underline;
+  button[data-name="button _mode_dark"] {
+    padding: 20px;
+    font-family: $font-default;
+    font-size: 26px;
+    line-height: 40px;
+    font-weight: 700;
+    text-transform: uppercase;
+    background-color: $color-carmine-red !important;
+    background-image: $gradient-red;
+    background-size: cover;
+    background-position: 0 0;
+    border: none;
+    border-radius: 5px !important;
     &:not([disabled]):hover,
     &:not([disabled]):focus-visible {
-      color: $color-white;
+      background-image: none;
     }
   }
-  @include mobile {
-    min-height: $apx-m-20;
-  }
-}
-.m-auth__submit {
-  position: relative;
-  z-index: 1;
-  display: block;
-  width: 100%;
-  margin: 0;
-  padding: $apx-20;
-  overflow: hidden;
-  font-family: $font-default;
-  font-size: $apx-26;
-  line-height: $apx-40;
-  font-weight: 700;
-  text-align: center;
-  color: $color-white;
-  text-transform: uppercase;
-  text-decoration: none;
-  background-color: $color-carmine-red;
-  border: 0;
-  border-radius: $apx-5;
-  .m-auth__submit-gradient {
-    @include transition(scale);
-    position: absolute;
-    inset: 0;
-    background-image: $gradient-red;
-    transform-origin: right center;
-  }
-  .m-auth__submit-text {
-    position: relative;
-    z-index: 1;
-  }
-  &:not([disabled]):hover,
-  &:not([disabled]):focus-visible {
-    .m-auth__submit-gradient {
-      scale: 2 1;
+  @include mobile-px {
+    // width: $apx-m-840;
+    width: auto;
+    // margin-top: $apx-m-58;
+    margin-top: 20px;
+    button[data-name="button _mode_dark"] {
+      font-size: 26px;
+      line-height: 40px;
     }
   }
-  @include mobile {
-    padding: $apx-m-80 $apx-m-40;
-    font-size: $apx-m-60;
-    line-height: $apx-m-80;
-    border-radius: $apx-m-15;
-  }
 }
+
+// .m-auth__form {
+//   display: grid;
+//   gap: $apx-26;
+//   width: 100%;
+//   @include mobile {
+//     gap: $apx-m-72;
+//   }
+// }
+// .m-auth__el {
+//   display: grid;
+//   &.error {
+//     .m-auth__error {
+//       display: block;
+//     }
+//     .m-auth__description {
+//       display: none;
+//     }
+//     .m-auth__field {
+//       background-color: transparentize($color-indian-red, 0.9);
+//       border-color: $color-indian-red;
+//     }
+//     .m-auth__checkbox-icon {
+//       background-color: transparentize($color-indian-red, 0.9);
+//       border-color: $color-indian-red;
+//     }
+//   }
+// }
+// .m-auth__label {
+//   margin-bottom: $apx-12;
+//   font-size: $apx-16;
+//   line-height: 1;
+//   font-weight: 500;
+//   text-transform: uppercase;
+//   @include mobile {
+//     margin-bottom: $apx-m-36;
+//     font-size: $apx-m-48;
+//     line-height: 1;
+//   }
+// }
+// .m-auth__field {
+//   @include transition(color, background-color, border-color);
+//   display: block;
+//   width: 100%;
+//   padding: $apx-20 $apx-30 $apx-14 $apx-30;
+//   font-family: $font-default;
+//   font-size: $apx-18;
+//   line-height: $apx-24;
+//   font-weight: 700;
+//   text-align: left;
+//   color: $color-white;
+//   text-transform: uppercase;
+//   background-color: $color-black;
+//   border: $apx-1 solid transparent;
+//   border-radius: $apx-5;
+//   outline: none;
+//   appearance: none;
+//   &::placeholder {
+//     font: inherit;
+//     color: $color-gray-769;
+//   }
+//   &::-webkit-credentials-auto-fill-button {
+//     // for hidden key icon in safari
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 1px;
+//     height: 1px;
+//     opacity: 0;
+//   }
+//   &[type="number"]::-webkit-outer-spin-button, // webkit
+//   &[type="number"]::-webkit-inner-spin-button {
+//     margin: 0;
+//     appearance: none;
+//   }
+//   &[type="number"] {
+//     // firefox
+//     appearance: textfield;
+//   }
+//   &:hover,
+//   &:focus-visible {
+//     // border-color: $color-hero;
+//   }
+//   @include mobile {
+//     padding: $apx-m-48 $apx-m-96;
+//     font-size: $apx-m-54;
+//     line-height: $apx-m-78;
+//     border-width: $apx-m-1;
+//     border-radius: $apx-m-15;
+//   }
+// }
+// .m-auth__field-pass {
+//   position: relative;
+//   button[data-field-show] {
+//     @include transition(color);
+//     position: absolute;
+//     top: 50%;
+//     right: $apx-10;
+//     display: block;
+//     width: $apx-20;
+//     height: $apx-20;
+//     margin: 0;
+//     padding: 0;
+//     color: transparentize($color-gray-769, 0.5);
+//     background-color: transparent;
+//     border: 0;
+//     translate: 0 -50%;
+//     svg {
+//       width: 100%;
+//       height: 100%;
+//       fill: currentcolor;
+//     }
+//     .eye-cross {
+//       display: none;
+//     }
+//     &.show {
+//       .eye {
+//         display: none;
+//       }
+//       .eye-cross {
+//         display: block;
+//       }
+//     }
+//     &:hover,
+//     &:focus-visible {
+//       color: $color-gray-769;
+//     }
+//   }
+// }
+// .m-auth__error {
+//   display: none;
+//   margin-top: $apx-6;
+//   font-size: $apx-12;
+//   line-height: 1;
+//   color: $color-indian-red;
+//   @include mobile {
+//     margin-top: $apx-m-24;
+//     font-size: $apx-m-42;
+//     line-height: 1;
+//   }
+// }
+// .m-auth__description {
+//   margin-top: $apx-6;
+//   font-size: $apx-12;
+//   line-height: 1;
+//   color: $color-dark-telegray;
+//   @include mobile {
+//     margin-top: $apx-m-24;
+//     font-size: $apx-m-42;
+//     line-height: 1;
+//   }
+// }
+// .m-auth__checkbox {
+//   display: flex;
+//   align-items: flex-start;
+//   gap: $apx-11;
+//   color: $color-gray-667;
+//   cursor: pointer;
+//   input:checked + .m-auth__checkbox-icon {
+//     background-color: $color-black;
+//     border-color: transparent;
+//     svg {
+//       display: block;
+//     }
+//   }
+//   @include mobile {
+//     gap: $apx-m-33;
+//   }
+// }
+// .m-auth__checkbox-icon {
+//   display: grid;
+//   flex-shrink: 0;
+//   place-items: center;
+//   width: $apx-18;
+//   background-color: $color-black;
+//   aspect-ratio: 1 / 1;
+//   border: $apx-1 solid transparent;
+//   svg {
+//     display: none;
+//   }
+//   @include mobile {
+//     width: $apx-m-60;
+//     border-width: $apx-m-1;
+//   }
+// }
+// .m-auth__checkbox-text {
+//   min-height: $apx-20;
+//   a[href] {
+//     @include transition(color);
+//     line-height: 1.2;
+//     font-weight: 500;
+//     text-decoration: underline;
+//     &:not([disabled]):hover,
+//     &:not([disabled]):focus-visible {
+//       color: $color-white;
+//     }
+//   }
+//   @include mobile {
+//     min-height: $apx-m-20;
+//   }
+// }
+// .m-auth__submit {
+//   position: relative;
+//   z-index: 1;
+//   display: block;
+//   width: 100%;
+//   margin: 0;
+//   padding: $apx-20;
+//   overflow: hidden;
+//   font-family: $font-default;
+//   font-size: $apx-26;
+//   line-height: $apx-40;
+//   font-weight: 700;
+//   text-align: center;
+//   color: $color-white;
+//   text-transform: uppercase;
+//   text-decoration: none;
+//   background-color: $color-carmine-red;
+//   border: 0;
+//   border-radius: $apx-5;
+//   .m-auth__submit-gradient {
+//     @include transition(scale);
+//     position: absolute;
+//     inset: 0;
+//     background-image: $gradient-red;
+//     transform-origin: right center;
+//   }
+//   .m-auth__submit-text {
+//     position: relative;
+//     z-index: 1;
+//   }
+//   &:not([disabled]):hover,
+//   &:not([disabled]):focus-visible {
+//     .m-auth__submit-gradient {
+//       scale: 2 1;
+//     }
+//   }
+//   @include mobile {
+//     padding: $apx-m-80 $apx-m-40;
+//     font-size: $apx-m-60;
+//     line-height: $apx-m-80;
+//     border-radius: $apx-m-15;
+//   }
+// }

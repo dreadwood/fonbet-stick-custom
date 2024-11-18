@@ -30,7 +30,9 @@ const copy = () => {
         'src/img/**/*.{webm,webp,avif,jpg,jpeg,png,svg}',
         'src/favicon/**/*',
         'src/favicon.ico',
-        'src/robots.txt'
+        'src/robots.txt',
+        'src/settings.js',
+        'src/urls.json'
       ],
       { base: 'src', encoding: false }
     )
@@ -106,7 +108,7 @@ const js = () => {
         }
       })
     )
-    .pipe(order(['utils.js', '*.js']))
+    .pipe(order(['utils.js', 'pin.js', '*.js']))
     .pipe(concat(`script.js`))
     .pipe(gulp.dest('dist/js'))
     .pipe(uglify.default())
