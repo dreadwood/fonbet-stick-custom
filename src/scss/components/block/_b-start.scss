@@ -30,7 +30,8 @@
 }
 .b-start__img {
   position: absolute;
-  bottom: -#{$apx-2};
+  // bottom: -#{$apx-2};
+  bottom: 0;
   left: 50%;
   z-index: 2;
   // width: $apx-1550;
