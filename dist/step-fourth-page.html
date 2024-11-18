@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta name="robots" content="noindex, nofollow"/>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Template</title>
+    <link rel="icon" href="/favicon.ico" sizes="32x32"/>
+    <link rel="icon" href="/favicon/favicon.png" type="image/png"/>
+    <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png"/>
+    <link rel="stylesheet" href="css/style.css"/>
+  </head>
+  <body>
+    <div class="b-set">
+      <div class="bg">
+        <div class="bg__line fourth-1"></div>
+        <div class="bg__line fourth-2"></div>
+        <div class="bg__line fourth-3"></div>
+        <div class="bg__line fourth-4"></div>
+        <div class="bg__line fourth-5"></div>
+        <div class="bg__line fourth-6"></div>
+      </div>
+      <div class="b-set__content">
+        <div class="b-set__left">
+          <div class="b-set__step">4</div>
+          <div class="b-set__wrp">
+            <div class="b-set__title">Персонализация</div>
+            <div class="b-name b-set__name">
+              <label class="b-name__label" for="name">Введи свое имя или прозвище:</label>
+              <input class="b-name__field js-window-name-input" type="text" id="name" placeholder="Alex ovechkin"/>
+              <div class="b-name__subfield">Используй латиницу, цифры и спецсимволы. Не более 14 символов</div>
+            </div>
+          </div>
+        </div>
+        <div class="b-window b-set__window">
+          <div class="b-window__field"><img class="b-window__img fourth" src="./img/demo-step-4.png"/>
+          </div>
+          <div class="b-window__control">
+          </div>
+          <button class="b-window__nav prev">
+            <svg width="65" height="88">
+              <use xlink:href="img/sprite.svg#nav-arrow-prev"></use>
+            </svg>
+          </button>
+          <button class="b-window__nav next">
+            <svg width="65" height="88">
+              <use xlink:href="img/sprite.svg#nav-arrow-next"></use>
+            </svg>
+          </button>
+        </div>
+        <button class="btn black b-set__btn-prev" type="button">Назад</button>
+        <button class="btn b-set__btn-next" type="button">Далее</button>
+      </div>
+    </div>
+    <script src="js/vendor.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>

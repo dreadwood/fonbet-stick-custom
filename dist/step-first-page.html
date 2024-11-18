@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta name="robots" content="noindex, nofollow"/>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Template</title>
+    <link rel="icon" href="/favicon.ico" sizes="32x32"/>
+    <link rel="icon" href="/favicon/favicon.png" type="image/png"/>
+    <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png"/>
+    <link rel="stylesheet" href="css/style.css"/>
+  </head>
+  <body>
+    <div class="b-set">
+      <div class="bg">
+        <div class="bg__line first-1"></div>
+        <div class="bg__line first-2"></div>
+        <div class="bg__line first-3"></div>
+        <div class="bg__line first-4"></div>
+        <div class="bg__line first-5"></div>
+        <div class="bg__line first-6"></div>
+        <div class="bg__line first-7"></div>
+      </div>
+      <div class="b-set__content">
+        <div class="b-set__left">
+          <div class="b-set__step">1</div>
+          <div class="b-set__wrp">
+            <div class="b-set__title">Цвет</div>
+            <div class="b-set__color red">красный</div>
+            <div class="b-set__text">Выбери основной цвет клюшки для кастомизации. <br> <br> Если ты потом захочешь его поменять, воспользуйся кнопкой «Назад» на следующих экранах.</div>
+          </div>
+        </div>
+        <div class="b-window b-set__window">
+          <div class="b-window__field"><img class="b-window__img first" src="./img/demo-step-1.png"/>
+          </div>
+          <div class="b-window__control">
+            <div class="b-window__pag color">
+              <div class="b-window__pag-list">
+                <button class="b-window__pag-color red"></button>
+                <button class="b-window__pag-color white"></button>
+                <button class="b-window__pag-color black"></button>
+                <button class="b-window__pag-color carbon"></button>
+              </div>
+              <div class="b-window__pag-name">Цвет</div>
+            </div>
+          </div>
+          <button class="b-window__nav prev">
+            <svg width="65" height="88">
+              <use xlink:href="img/sprite.svg#nav-arrow-prev"></use>
+            </svg>
+          </button>
+          <button class="b-window__nav next">
+            <svg width="65" height="88">
+              <use xlink:href="img/sprite.svg#nav-arrow-next"></use>
+            </svg>
+          </button>
+        </div>
+        <button class="btn b-set__btn-next" type="button">Далее</button>
+        <button class="btn b-set__btn-save" type="button">Сохранить дизайн</button>
+      </div>
+    </div>
+    <script src="js/vendor.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
