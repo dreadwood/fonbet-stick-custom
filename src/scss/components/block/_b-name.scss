@@ -61,7 +61,7 @@
     max-width: $apx-m-620;
     margin-top: $apx-m-13;
     padding: $apx-m-6 $apx-m-29 $apx-m-2 $apx-m-29;
-    font-size: $apx-m-37;
+    font-size: max($apx-m-37, 16px);
     line-height: $apx-m-50;
     border-width: $apx-m-5;
     border-radius: $apx-m-27;

@@ -24,11 +24,17 @@
   }
   @include ultra-wide {
     height: $apx-840;
+    &.fifth {
+      height: $apx-820;
+    }
   }
   @include mobile {
     display: block;
     width: $apx-m-820;
     height: $apx-m-813 * 2;
+    &.fifth {
+      height: $apx-m-813 * 2;
+    }
   }
 }
 .b-set__left {
@@ -62,7 +68,6 @@
   font-weight: 700;
   color: $color-black;
   @include mobile {
-    // margin-top: -#{$apx-m-40};
     margin-top: 0;
     margin-bottom: -#{$apx-m-84};
     font-size: $apx-m-275;
@@ -70,10 +75,17 @@
   }
 }
 .b-set__wrp {
-  // width: $apx-650;
-  // @include mobile {
-  //   width: auto;
-  // }
+  @include mobile {
+    &.first {
+      .b-set__title {
+        margin-bottom: -#{$apx-m-15};
+      }
+      .b-set__color {
+        margin-bottom: -#{$apx-m-9};
+        line-height: 1.3;
+      }
+    }
+  }
 }
 .b-set__title {
   font-size: $apx-55;
@@ -94,7 +106,7 @@
   @include mobile {
     margin-top: 0;
     font-size: $apx-m-60;
-    line-height: 1.1;
+    line-height: 1.31;
   }
 }
 .b-set__text {
@@ -106,8 +118,13 @@
   text-align: left;
   color: $color-green-blue;
   text-transform: uppercase;
-  mix-blend-mode: difference;
-  filter: invert(100%);
+  // mix-blend-mode: difference;
+  // filter: invert(100%);
+  animation-name: b-text-blend-mode;
+  animation-duration: 0.1s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
   @include mobile {
     margin-top: $apx-m-6;
     font-size: $apx-m-30;
@@ -184,5 +201,12 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes b-text-blend-mode {
+  100% {
+    mix-blend-mode: difference;
+    filter: invert(100%);
   }
 }
