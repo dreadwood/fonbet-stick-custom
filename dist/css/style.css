@@ -1190,6 +1190,11 @@ input[type=file].visually-hidden {
   -o-object-position: center bottom;
      object-position: center bottom;
 }
+@media (aspect-ratio > 16/9) {
+  .b-start__img img {
+    width: 70.31205vw;
+  }
+}
 @media (max-width: 1080px) {
   .b-start__img {
     position: absolute;
@@ -1208,6 +1213,11 @@ input[type=file].visually-hidden {
   max-height: 57.135051vw;
   padding: 3.906225vw 8.593695vw;
   transform-origin: center bottom;
+}
+@media (aspect-ratio > 16/9) {
+  .b-start__content {
+    padding: 2.864565vw 8.593695vw;
+  }
 }
 @media (max-width: 1080px) {
   .b-start__content {
@@ -1259,6 +1269,13 @@ input[type=file].visually-hidden {
   animation-timing-function: ease-in-out;
   animation-delay: 0.7s;
   animation-fill-mode: forwards;
+}
+@media (aspect-ratio > 16/9) {
+  .b-start__title {
+    margin-top: 2.08332vw;
+    font-size: 13.54158vw;
+    line-height: 0.85;
+  }
 }
 @media (max-width: 1080px) {
   .b-start__title {
@@ -1342,6 +1359,11 @@ input[type=file].visually-hidden {
   margin-top: 1.354158vw;
   animation-delay: 0.6s;
 }
+@media (aspect-ratio > 16/9) {
+  .b-start__ribbon.second {
+    margin-top: 1.04166vw;
+  }
+}
 @media (max-width: 1080px) {
   .b-start__ribbon {
     -moz-column-gap: 2.592604vw;
@@ -1415,6 +1437,11 @@ input[type=file].visually-hidden {
   animation-delay: 0.8s;
   translate: 200%;
   animation-fill-mode: forwards;
+}
+@media (aspect-ratio > 16/9) {
+  .b-start__btn {
+    margin-top: 1.406241vw;
+  }
 }
 @media (max-width: 1080px) {
   .b-start__btn {
