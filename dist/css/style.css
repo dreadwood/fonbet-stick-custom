@@ -1557,8 +1557,8 @@ input[type=file].visually-hidden {
   width: max-content;
   height: 100%;
   translate: -50%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .b-window__img img {
   width: auto;
@@ -2491,7 +2491,7 @@ input[type=file].visually-hidden {
   background-color: #000000;
   translate: -26.0415vw;
 }
-@media (height <= 1050px) {
+@media (aspect-ratio > 16/9) {
   .bg__line.first-2 {
     bottom: -0.572913vw;
   }
@@ -2514,7 +2514,7 @@ input[type=file].visually-hidden {
   background-color: #000000;
   translate: -15.10407vw 15.10407vw;
 }
-@media (height <= 1050px) {
+@media (aspect-ratio > 16/9) {
   .bg__line.first-3 {
     bottom: -10.4166vw;
   }
@@ -2748,7 +2748,7 @@ input[type=file].visually-hidden {
   background-color: #e80024;
   translate: -21.249864vw 21.249864vw;
 }
-@media (height <= 1050px) {
+@media (aspect-ratio > 16/9) {
   .bg__line.third-3 {
     bottom: -5.72913vw;
     left: 4.16664vw;
