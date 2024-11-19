@@ -20,11 +20,11 @@
 
     // pattern
     if (data.shaft_texture === '0') {
-      pattern.setAttribute('hidden', 'hidden')
+      window.utils.hideEl(pattern)
     } else {
       const patternColor = data.shaft_color || 'black'
       pattern.src = `./img/sticks/pattern-${patternColor}-${data.shaft_texture}.webp`
-      pattern.removeAttribute('hidden')
+      window.utils.showEl(pattern)
     }
 
     // blade

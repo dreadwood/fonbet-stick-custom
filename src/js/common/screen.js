@@ -2,8 +2,6 @@
  * screen.js
  */
 ;(() => {
-  const GET_STICK_URL = 'https://xcomfeed.com/fonbet/great8/get-stick'
-
   /** @type {HTMLDivElement | null} */
   const loadingScreen = document.querySelector('.js-loading')
   /** @type {HTMLDivElement | null} */
@@ -31,14 +29,14 @@
   }
 
   const showStartScreen = () => {
-    loadingScreen.setAttribute('hidden', 'hidden')
-    startScreen.removeAttribute('hidden')
+    window.utils.hideEl(loadingScreen)
+    window.utils.showEl(startScreen)
   }
 
   const showResultScreen = () => {
-    startScreen.setAttribute('hidden', 'hidden')
-    loadingScreen.setAttribute('hidden', 'hidden')
-    resultScreen.removeAttribute('hidden')
+    window.utils.hideEl(startScreen)
+    window.utils.hideEl(loadingScreen)
+    window.utils.showEl(resultScreen)
   }
 
   const onEscKeydown = (evt) => {
@@ -58,8 +56,8 @@
   }
 
   const openSet = () => {
-    startScreen.setAttribute('hidden', 'hidden')
-    setScreen.removeAttribute('hidden')
+    window.utils.hideEl(startScreen)
+    window.utils.showEl(setScreen)
   }
 
   const init = async () => {
@@ -69,7 +67,10 @@
       const req = { pin: clientId }
 
       try {
-        const data = await window.utils.fetchData(GET_STICK_URL, req)
+        const data = await window.utils.fetchData(
+          window.const.GET_STICK_URL,
+          req
+        )
 
         if (data.status === 200) {
           const res = await data.json()
@@ -106,7 +107,10 @@
       const req = { pin: clientId }
 
       try {
-        const data = await window.utils.fetchData(GET_STICK_URL, req)
+        const data = await window.utils.fetchData(
+          window.const.GET_STICK_URL,
+          req
+        )
 
         if (data.status === 200) {
           const res = await data.json()

@@ -3,6 +3,8 @@
 window.const = {
   clientId: null,
 
+  END_DATE: '14.12.2024',
+
   STICK_SEND_URL: 'https://xcomfeed.com/fonbet/great8/stick-send',
   GET_STICK_URL: 'https://xcomfeed.com/fonbet/great8/get-stick',
 

@@ -1,7 +1,7 @@
 mixin b-result({ isDemo, isHide, className })
   .b-result.finish.js-set-result(hidden=isHide class=className)
-    .b-result__title Твой дизайн
-    .b-result__text Отличный результат! #[br] Обязательно проверь, все ли правильно: после этого шага изменить дизайн будет нельзя. А&nbsp;если тебе нужно внести изменения, вернись на нужный шаг с помощью кнопки «НАЗАД».
+    .b-result__title.js-set-result-title Твой дизайн
+    .b-result__text.js-set-result-text Отличный результат! #[br] Обязательно проверь, все ли правильно: после этого шага изменить дизайн будет нельзя. А&nbsp;если тебе нужно внести изменения, вернись на нужный шаг с помощью кнопки «НАЗАД».
     .b-result__field.js-set-result-field
       if isDemo
         .b-result__demo

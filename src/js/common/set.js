@@ -85,21 +85,24 @@
 
       if (this.step === 6) {
         this.updateWindowResult()
-        this.setBtnSave.removeAttribute('hidden')
-        this.setBtnReturn.setAttribute('hidden', 'hidden')
+        window.utils.showEl(this.setBtnSave)
+        window.utils.hideEl(this.setBtnReturn)
       }
     },
 
     updateSetBtnsNavigation() {
-      if (this.step !== 1) this.showEl(this.setBtnPrev)
-      else this.hideEl(this.setBtnPrev)
-
-      if (this.step === 5) {
-        this.hideEl(this.setBtnSave)
-        this.showEl(this.setBtnNext)
+      if (this.step !== 1) {
+        window.utils.showEl(this.setBtnPrev)
+      } else {
+        window.utils.hideEl(this.setBtnPrev)
       }
 
-      if (this.step === 6) this.hideEl(this.setBtnNext)
+      if (this.step === 5) {
+        window.utils.hideEl(this.setBtnSave)
+        window.utils.showEl(this.setBtnNext)
+      }
+
+      if (this.step === 6) window.utils.hideEl(this.setBtnNext)
 
       this.changeCssClass('.js-set-btn-prev')
       this.changeCssClass('.js-set-btn-next')
@@ -210,11 +213,11 @@
         })
 
         if (this.stickPatternType === 0) {
-          imgPattern.setAttribute('hidden', 'hidden')
+          window.utils.hideEl(imgPattern)
         } else {
           const color = window.const.STICK_PATTERN_COLOR[this.stickPatternColor]
           imgPattern.src = `./img/sticks/pattern-${color}-${this.stickPatternType}.webp`
-          imgPattern.removeAttribute('hidden')
+          window.utils.showEl(imgPattern)
         }
       }
 
@@ -371,12 +374,12 @@
 
       // pattern
       if (this.stickPatternType === 0) {
-        pattern.setAttribute('hidden', 'hidden')
+        window.utils.hideEl(pattern)
       } else {
         const patternColor =
           window.const.STICK_PATTERN_COLOR[this.stickPatternColor]
         pattern.src = `./img/sticks/pattern-${patternColor}-${this.stickPatternType}.webp`
-        pattern.removeAttribute('hidden')
+        window.utils.showEl(pattern)
       }
 
       // blade
@@ -413,11 +416,12 @@
 
     async saveResult() {
       const clientId = window.userInfo.getClientID()
+
       const modalBet = document.querySelector('.js-bet')
 
-      this.hideEl(this.setBtnPrev)
-      this.hideEl(this.setBtnSave)
-      this.showEl(this.setBtnReturn)
+      window.utils.hideEl(this.setBtnPrev)
+      window.utils.hideEl(this.setBtnSave)
+      window.utils.showEl(this.setBtnReturn)
 
       try {
         const req = {
@@ -441,7 +445,7 @@
         if (data.ok) {
           modalBet.classList.add('show')
           document.body.classList.add('scroll-lock')
-          this.showEl(this.setBtnReturn)
+          window.utils.showEl(this.setBtnReturn)
         }
       } catch (error) {
         console.error(error)
@@ -452,20 +456,16 @@
       } catch (error) {
         console.error(error)
       }
+
+      this.updateResuteScreenContent()
     },
 
-    /**
-     * @param {HTMLElement} el
-     */
-    showEl(el) {
-      el.removeAttribute('hidden')
-    },
+    updateResuteScreenContent() {
+      const resultTitle = document.querySelector('.js-set-result-title')
+      const resultText = document.querySelector('.js-set-result-text')
 
-    /**
-     * @param {HTMLElement} el
-     */
-    hideEl(el) {
-      el.setAttribute('hidden', 'hidden')
+      resultTitle.textContent = 'Твой дизайн'
+      resultText.textContent = `Отличный результат! Совсем скоро мы подведем итоги и объявим победителей, которые выиграют Верную подругу Великой погони! Жди результатов ${window.const.END_DATE}.`
     },
 
     /**
@@ -477,9 +477,9 @@
 
       contents.forEach((it) => {
         if (it.classList.contains(window.const.STEPS[this.step])) {
-          it.removeAttribute('hidden')
+          window.utils.showEl(it)
         } else {
-          it.setAttribute('hidden', 'hidden')
+          window.utils.hideEl(it)
         }
       })
     },
