@@ -469,6 +469,7 @@ window.utils = {
   }
 
   const showResultScreen = () => {
+    startScreen.setAttribute('hidden', 'hidden')
     loadingScreen.setAttribute('hidden', 'hidden')
     resultScreen.removeAttribute('hidden')
   }
@@ -545,6 +546,7 @@ window.utils = {
 
           window.result(res.data)
           showResultScreen()
+          closeModal()
         } else {
           closeModal()
           openSet()
