@@ -633,7 +633,6 @@ input[type=file].visually-hidden {
 }
 
 .b-result {
-  overflow: hidden;
   font-family: "CeraPro", sans-serif;
   font-size: 1.56249vw;
   line-height: 2.08332vw;
@@ -811,6 +810,7 @@ input[type=file].visually-hidden {
   width: 100%;
   min-height: 100%;
   padding: 1.04166vw;
+  overflow: hidden;
   text-transform: uppercase;
   background-color: #f5f5f5;
 }

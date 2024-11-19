@@ -1,94 +1,54 @@
 'use strict'
 
-window.utils = {
+window.const = {
   clientId: null,
 
-  /**
-   * add/remove css class of button
-   * @param {HTMLButtonElement} btn
-   * @param {String} toggleClassName
-   */
-  toggleCssClass(btn, toggleClassName) {
-    if (!btn) {
-      throw new Error('toggleCssClass: button not passed to parameters')
-    }
+  END_DATE: '14.12.2024',
 
-    if (typeof toggleClassName !== 'string') {
-      throw new Error(
-        'toggleCssClass: toggleClassName is not passed or is not a string'
-      )
-    }
+  STICK_SEND_URL: 'https://xcomfeed.com/fonbet/great8/stick-send',
+  GET_STICK_URL: 'https://xcomfeed.com/fonbet/great8/get-stick',
 
-    btn.classList.toggle(toggleClassName)
-    btn.blur()
+  STEPS: {
+    1: 'first',
+    2: 'second',
+    3: 'third',
+    4: 'fourth',
+    5: 'fifth',
+    6: 'finish'
   },
 
-  /**
-   * add/remove css class of specified elements
-   * @param {HTMLButtonElement} btn
-   * @param {String} nodeClassName
-   * @param {String} toggleClassName
-   */
-  toggleCssClassNodes(btn, nodeClassName, toggleClassName) {
-    if (!btn) {
-      throw new Error('toggleCssClassNodes: button not passed to parameters')
-    }
-
-    if (
-      typeof nodeClassName !== 'string' ||
-      typeof toggleClassName !== 'string'
-    ) {
-      throw new Error(
-        `toggleCssClassNodes: nodeClassName or toggleClassName are not passed or is not a string`
-      )
-    }
-
-    const nodes = document.querySelectorAll(`.${nodeClassName}`)
-
-    if (nodes.length === 0) {
-      throw new Error(
-        `toggleCssClassNodes: nodes with class ${nodeClassName} do not exist`
-      )
-    }
-
-    nodes.forEach((node) => node.classList.toggle(toggleClassName))
-    btn.blur()
+  TITLES: {
+    1: 'Цвет',
+    2: 'Шафт',
+    3: 'Покрытие крюка',
+    4: 'Персонализация',
+    5: 'Технические характеристики'
   },
 
-  /**
-   * add/remove attribute hidden for nodes with className
-   * @param {HTMLButtonElement} btn
-   * @param {String} nodeClassName
-   */
-  toggleVisibleNodes(btn, nodeClassName) {
-    if (!btn) {
-      throw new Error('toggleVisibleNodes: button not passed to parameters')
-    }
-
-    if (typeof nodeClassName !== 'string') {
-      throw new Error(
-        'toggleVisibleNodes: nodeClassName is not passed or is not a string'
-      )
-    }
-
-    const nodes = document.querySelectorAll(`.${nodeClassName}`)
-
-    if (nodes.length === 0) {
-      throw new Error(
-        `toggleVisibleNodes: nodes with class ${nodeClassName} do not exist`
-      )
-    }
-
-    nodes.forEach((node) => {
-      if (node.hasAttribute('hidden')) {
-        node.removeAttribute('hidden')
-      } else {
-        node.setAttribute('hidden', 'hidden')
-      }
-    })
-    btn.blur()
+  COLORS: {
+    red: 'красный',
+    white: 'белый',
+    black: 'черный',
+    carbon: 'карбон'
   },
 
+  TEXTURE: {
+    matte: 'матовое',
+    normal: 'обычное',
+    glossy: 'глянцевое',
+    glitter: 'Зернистое'
+  },
+
+  STICK_COLOR: ['red', 'white', 'black', 'carbon'],
+
+  STICK_PATTERN_COLOR: ['red', 'white', 'black', 'chrome', 'reflective'],
+
+  STICK_PATTERN_TYPE: [0, 1, 2, 3, 4, 5, 6],
+
+  BLADE_TEXTURE: ['normal', 'glossy', 'matte', 'glitter']
+}
+
+window.utils = {
   /**
    * wrapper for fetch
    * @param {string} URL
@@ -103,6 +63,38 @@ window.utils = {
     })
 
     return res
+  },
+
+  /**
+   * show html element
+   * @param {HTMLElement} el
+   */
+  showEl(el) {
+    el.removeAttribute('hidden')
+  },
+
+  /**
+   * hide html element
+   * @param {HTMLElement} el
+   */
+  hideEl(el) {
+    el.setAttribute('hidden', 'hidden')
+  },
+
+  /**
+   * @param {HTMLElement} el
+   */
+  showModal(el) {
+    el.classList.add('show')
+    document.body.classList.add('scroll-lock')
+  },
+
+  /**
+   * @param {HTMLElement} el
+   */
+  closeModal(el) {
+    el.classList.remove('show')
+    document.body.classList.remove('scroll-lock')
   }
 }
 
@@ -392,8 +384,6 @@ window.utils = {
  * result.js
  */
 ;(() => {
-  const STICK_COLOR = ['red', 'white', 'black', 'carbon']
-
   const container = document.querySelector('.js-result-end-container')
   const stick = container.querySelector('.js-set-result-stick')
   const pattern = container.querySelector('.js-set-result-pattern')
@@ -402,7 +392,8 @@ window.utils = {
 
   const showFinishScreen = (data) => {
     const stickNameColor =
-      data.color_stick === STICK_COLOR[0] || data.color_stick === STICK_COLOR[1]
+      data.color_stick === window.const.STICK_COLOR[0] ||
+      data.color_stick === window.const.STICK_COLOR[1]
         ? 'black'
         : 'white'
 
@@ -411,11 +402,11 @@ window.utils = {
 
     // pattern
     if (data.shaft_texture === '0') {
-      pattern.setAttribute('hidden', 'hidden')
+      window.utils.hideEl(pattern)
     } else {
       const patternColor = data.shaft_color || 'black'
       pattern.src = `./img/sticks/pattern-${patternColor}-${data.shaft_texture}.webp`
-      pattern.removeAttribute('hidden')
+      window.utils.showEl(pattern)
     }
 
     // blade
@@ -435,8 +426,6 @@ window.utils = {
  * screen.js
  */
 ;(() => {
-  const GET_STICK_URL = 'https://xcomfeed.com/fonbet/great8/get-stick'
-
   /** @type {HTMLDivElement | null} */
   const loadingScreen = document.querySelector('.js-loading')
   /** @type {HTMLDivElement | null} */
@@ -464,14 +453,14 @@ window.utils = {
   }
 
   const showStartScreen = () => {
-    loadingScreen.setAttribute('hidden', 'hidden')
-    startScreen.removeAttribute('hidden')
+    window.utils.hideEl(loadingScreen)
+    window.utils.showEl(startScreen)
   }
 
   const showResultScreen = () => {
-    startScreen.setAttribute('hidden', 'hidden')
-    loadingScreen.setAttribute('hidden', 'hidden')
-    resultScreen.removeAttribute('hidden')
+    window.utils.hideEl(startScreen)
+    window.utils.hideEl(loadingScreen)
+    window.utils.showEl(resultScreen)
   }
 
   const onEscKeydown = (evt) => {
@@ -491,8 +480,8 @@ window.utils = {
   }
 
   const openSet = () => {
-    startScreen.setAttribute('hidden', 'hidden')
-    setScreen.removeAttribute('hidden')
+    window.utils.hideEl(startScreen)
+    window.utils.showEl(setScreen)
   }
 
   const init = async () => {
@@ -502,7 +491,10 @@ window.utils = {
       const req = { pin: clientId }
 
       try {
-        const data = await window.utils.fetchData(GET_STICK_URL, req)
+        const data = await window.utils.fetchData(
+          window.const.GET_STICK_URL,
+          req
+        )
 
         if (data.status === 200) {
           const res = await data.json()
@@ -539,7 +531,10 @@ window.utils = {
       const req = { pin: clientId }
 
       try {
-        const data = await window.utils.fetchData(GET_STICK_URL, req)
+        const data = await window.utils.fetchData(
+          window.const.GET_STICK_URL,
+          req
+        )
 
         if (data.status === 200) {
           const res = await data.json()
@@ -581,50 +576,12 @@ window.utils = {
  * set.js
  */
 ;(() => {
-  const STEPS = {
-    1: 'first',
-    2: 'second',
-    3: 'third',
-    4: 'fourth',
-    5: 'fifth',
-    6: 'finish'
-  }
-
-  const TITLES = {
-    1: 'Цвет',
-    2: 'Шафт',
-    3: 'Покрытие крюка',
-    4: 'Персонализация',
-    5: 'Технические характеристики'
-  }
-
-  const COLORS = {
-    red: 'красный',
-    white: 'белый',
-    black: 'черный',
-    carbon: 'карбон'
-  }
-
-  const TEXTURE = {
-    matte: 'матовое',
-    normal: 'обычное',
-    glossy: 'глянцевое',
-    glitter: 'Зернистое'
-  }
-
-  const STICK_SEND_URL = 'https://xcomfeed.com/fonbet/great8/stick-send'
-
-  const STICK_COLOR = ['red', 'white', 'black', 'carbon']
-  const STICK_PATTERN_COLOR = ['red', 'white', 'black', 'chrome', 'reflective']
-  const STICK_PATTERN_TYPE = [0, 1, 2, 3, 4, 5, 6]
-  const BLADE_TEXTURE = ['normal', 'glossy', 'matte', 'glitter']
-
-  const stepNames = Object.values(STEPS)
+  const stepNames = Object.values(window.const.STEPS)
 
   const state = {
     step: 1,
 
-    stickColor: STICK_COLOR[0],
+    stickColor: window.const.STICK_COLOR[0],
     stickPatternColor: 0,
     stickPatternType: 0,
     stickBladeColor: 0,
@@ -647,6 +604,12 @@ window.utils = {
     setBtnSave: null,
     /** @type {HTMLLinkElement | null} */
     setBtnReturn: null,
+    /** @type {HTMLDivElement | null} */
+    modalBet: null,
+    /** @type {HTMLDivElement | null} */
+    modalShare: null,
+    /** @type {HTMLDivElement | null} */
+    modalScore: null,
 
     init() {
       const container = document.querySelector('.js-set')
@@ -658,6 +621,10 @@ window.utils = {
       this.setBtnNext = document.querySelector('.js-set-btn-next')
       this.setBtnSave = document.querySelector('.js-set-btn-save')
       this.setBtnReturn = document.querySelector('.js-set-btn-return')
+
+      this.modalBet = document.querySelector('.js-modal-bet')
+      this.modalShare = document.querySelector('.js-modal-share')
+      this.modalScore = document.querySelector('.js-modal-score')
 
       this.setBtnPrev.addEventListener('click', () => this.prevStep())
       this.setBtnNext.addEventListener('click', () => this.nextStep())
@@ -671,6 +638,7 @@ window.utils = {
 
       this.initModalBet()
       this.initModalScore()
+      this.initModalShare()
     },
 
     prevStep() {
@@ -693,7 +661,7 @@ window.utils = {
 
     updateScreen() {
       this.stepEl.textContent = this.step
-      this.titleEl.textContent = TITLES[this.step]
+      this.titleEl.textContent = window.const.TITLES[this.step]
 
       this.changeCssClass('.js-set-content')
       this.changeCssClass('.js-set-wrp')
@@ -702,21 +670,24 @@ window.utils = {
 
       if (this.step === 6) {
         this.updateWindowResult()
-        this.setBtnSave.removeAttribute('hidden')
-        this.setBtnReturn.setAttribute('hidden', 'hidden')
+        window.utils.showEl(this.setBtnSave)
+        window.utils.hideEl(this.setBtnReturn)
       }
     },
 
     updateSetBtnsNavigation() {
-      if (this.step !== 1) this.showEl(this.setBtnPrev)
-      else this.hideEl(this.setBtnPrev)
-
-      if (this.step === 5) {
-        this.hideEl(this.setBtnSave)
-        this.showEl(this.setBtnNext)
+      if (this.step !== 1) {
+        window.utils.showEl(this.setBtnPrev)
+      } else {
+        window.utils.hideEl(this.setBtnPrev)
       }
 
-      if (this.step === 6) this.hideEl(this.setBtnNext)
+      if (this.step === 5) {
+        window.utils.hideEl(this.setBtnSave)
+        window.utils.showEl(this.setBtnNext)
+      }
+
+      if (this.step === 6) window.utils.hideEl(this.setBtnNext)
 
       this.changeCssClass('.js-set-btn-prev')
       this.changeCssClass('.js-set-btn-next')
@@ -737,11 +708,13 @@ window.utils = {
       const label = containerFourth.querySelector('.js-window-name-label')
 
       const changeSlide = () => {
-        const index = STICK_COLOR.findIndex((el) => el === this.stickColor)
+        const index = window.const.STICK_COLOR.findIndex(
+          (el) => el === this.stickColor
+        )
         if (index === 0) {
           btnPrev.setAttribute('disabled', 'disabled')
           btnNext.removeAttribute('disabled')
-        } else if (index + 1 === STICK_COLOR.length) {
+        } else if (index + 1 === window.const.STICK_COLOR.length) {
           btnPrev.removeAttribute('disabled')
           btnNext.setAttribute('disabled', 'disabled')
         } else {
@@ -752,11 +725,11 @@ window.utils = {
         img.src = `./img/sticks/stick-${this.stickColor}.webp`
         imgSecond.src = `./img/sticks/shaft-${this.stickColor}.webp`
         imgFourth.src = `./img/sticks/end-${this.stickColor}.webp`
-        nameColor.textContent = COLORS[this.stickColor]
+        nameColor.textContent = window.const.COLORS[this.stickColor]
 
         this.stickNameColor =
-          this.stickColor === STICK_COLOR[0] ||
-          this.stickColor === STICK_COLOR[1]
+          this.stickColor === window.const.STICK_COLOR[0] ||
+          this.stickColor === window.const.STICK_COLOR[1]
             ? 'black'
             : 'white'
         label.style = `color: ${this.stickNameColor};`
@@ -770,18 +743,22 @@ window.utils = {
       })
 
       btnPrev.addEventListener('click', () => {
-        const index = STICK_COLOR.findIndex((el) => el === this.stickColor)
+        const index = window.const.STICK_COLOR.findIndex(
+          (el) => el === this.stickColor
+        )
 
-        const color = STICK_COLOR[index - 1]
+        const color = window.const.STICK_COLOR[index - 1]
         this.stickColor = color
 
         changeSlide()
       })
 
       btnNext.addEventListener('click', () => {
-        const index = STICK_COLOR.findIndex((el) => el === this.stickColor)
+        const index = window.const.STICK_COLOR.findIndex(
+          (el) => el === this.stickColor
+        )
 
-        const color = STICK_COLOR[index + 1]
+        const color = window.const.STICK_COLOR[index + 1]
         this.stickColor = color
 
         changeSlide()
@@ -801,7 +778,10 @@ window.utils = {
         if (this.stickPatternType === 0) {
           btnPrev.setAttribute('disabled', 'disabled')
           btnNext.removeAttribute('disabled')
-        } else if (this.stickPatternType + 1 === STICK_PATTERN_TYPE.length) {
+        } else if (
+          this.stickPatternType + 1 ===
+          window.const.STICK_PATTERN_TYPE.length
+        ) {
           btnPrev.removeAttribute('disabled')
           btnNext.setAttribute('disabled', 'disabled')
         } else {
@@ -818,11 +798,11 @@ window.utils = {
         })
 
         if (this.stickPatternType === 0) {
-          imgPattern.setAttribute('hidden', 'hidden')
+          window.utils.hideEl(imgPattern)
         } else {
-          const color = STICK_PATTERN_COLOR[this.stickPatternColor]
+          const color = window.const.STICK_PATTERN_COLOR[this.stickPatternColor]
           imgPattern.src = `./img/sticks/pattern-${color}-${this.stickPatternType}.webp`
-          imgPattern.removeAttribute('hidden')
+          window.utils.showEl(imgPattern)
         }
       }
 
@@ -866,7 +846,10 @@ window.utils = {
         if (this.stickBladeTexture === 0) {
           btnPrev.setAttribute('disabled', 'disabled')
           btnNext.removeAttribute('disabled')
-        } else if (this.stickBladeTexture + 1 === BLADE_TEXTURE.length) {
+        } else if (
+          this.stickBladeTexture + 1 ===
+          window.const.BLADE_TEXTURE.length
+        ) {
           btnPrev.removeAttribute('disabled')
           btnNext.setAttribute('disabled', 'disabled')
         } else {
@@ -882,10 +865,10 @@ window.utils = {
           }
         })
 
-        const color = STICK_COLOR[this.stickBladeColor]
-        const texture = BLADE_TEXTURE[this.stickBladeTexture]
+        const color = window.const.STICK_COLOR[this.stickBladeColor]
+        const texture = window.const.BLADE_TEXTURE[this.stickBladeTexture]
 
-        nameTexture.textContent = TEXTURE[BLADE_TEXTURE[this.stickBladeTexture]]
+        nameTexture.textContent = window.const.TEXTURE[texture]
         pagText.textContent = `Покрытие крюка ${this.stickBladeTexture + 1}/4`
         img.src = `./img/sticks/blade-${color}-${texture}.webp`
       }
@@ -937,29 +920,45 @@ window.utils = {
     },
 
     initModalBet() {
-      const modalBet = document.querySelector('.js-bet')
-      const modalBetBtn = modalBet.querySelector('.js-bet-btn')
-      const modalScore = document.querySelector('.js-score')
+      const modalBetBtn = this.modalBet.querySelector('.js-modal-bet-btn')
 
       modalBetBtn.addEventListener('click', () => {
-        modalBet.classList.remove('show')
-        modalScore.classList.add('show')
+        window.utils.closeModal(this.modalBet)
+        window.utils.showModal(this.modalShare)
+      })
+    },
+
+    initModalShare() {
+      const btnShare = this.modalShare.querySelector(
+        '.js-modal-share-btn-share'
+      )
+      const btnSite = this.modalShare.querySelector('.js-modal-share-btn-site')
+
+      const openNextModal = () => {
+        window.utils.closeModal(this.modalShare)
+        window.utils.showModal(this.modalScore)
+      }
+
+      btnShare.addEventListener('click', () => openNextModal())
+      btnSite.addEventListener('click', () => openNextModal())
+
+      this.modalShare.addEventListener('click', (evt) => {
+        if (evt.target === this.modalShare) {
+          openNextModal()
+        }
       })
     },
 
     initModalScore() {
-      const modalScore = document.querySelector('.js-score')
-      const modalScoreBtn = document.querySelector('.js-score-close')
+      const btnClose = this.modalScore.querySelector('.js-score-btn-close')
 
-      modalScoreBtn.addEventListener('click', () => {
-        modalScore.classList.remove('show')
-        document.body.classList.remove('scroll-lock')
-      })
+      btnClose.addEventListener('click', () =>
+        window.utils.closeModal(this.modalScore)
+      )
 
-      modalScore.addEventListener('click', (evt) => {
-        if (evt.target === modalScore) {
-          modalScore.classList.remove('show')
-          document.body.classList.remove('scroll-lock')
+      this.modalScore.addEventListener('click', (evt) => {
+        if (evt.target === this.modalScore) {
+          window.utils.closeModal(this.modalScore)
         }
       })
     },
@@ -976,16 +975,17 @@ window.utils = {
 
       // pattern
       if (this.stickPatternType === 0) {
-        pattern.setAttribute('hidden', 'hidden')
+        window.utils.hideEl(pattern)
       } else {
-        const patternColor = STICK_PATTERN_COLOR[this.stickPatternColor]
+        const patternColor =
+          window.const.STICK_PATTERN_COLOR[this.stickPatternColor]
         pattern.src = `./img/sticks/pattern-${patternColor}-${this.stickPatternType}.webp`
-        pattern.removeAttribute('hidden')
+        window.utils.showEl(pattern)
       }
 
       // blade
-      const bladeColor = STICK_COLOR[this.stickBladeColor]
-      const bladeTexture = BLADE_TEXTURE[this.stickBladeTexture]
+      const bladeColor = window.const.STICK_COLOR[this.stickBladeColor]
+      const bladeTexture = window.const.BLADE_TEXTURE[this.stickBladeTexture]
       blade.src = `./img/sticks/blade-${bladeColor}-${bladeTexture}.webp`
 
       // name
@@ -1017,32 +1017,33 @@ window.utils = {
 
     async saveResult() {
       const clientId = window.userInfo.getClientID()
-      const modalBet = document.querySelector('.js-bet')
 
-      this.hideEl(this.setBtnPrev)
-      this.hideEl(this.setBtnSave)
-      this.showEl(this.setBtnReturn)
+      window.utils.hideEl(this.setBtnPrev)
+      window.utils.hideEl(this.setBtnSave)
+      window.utils.showEl(this.setBtnReturn)
+
+      const req = {
+        pin: clientId || window.const.clientId,
+        color_stick: this.stickColor,
+        shaft_texture: this.stickPatternType,
+        shaft_color: window.const.STICK_PATTERN_COLOR[this.stickPatternColor],
+        color_hook: window.const.STICK_COLOR[this.stickBladeColor],
+        hook_cover: window.const.BLADE_TEXTURE[this.stickBladeTexture],
+        text: this.stickName,
+        grip: this.stickFormGrip,
+        flex: this.stickFormFlex,
+        deflection_point: ''
+      }
 
       try {
-        const req = {
-          pin: clientId || window.utils.clientId,
-          color_stick: this.stickColor,
-          shaft_texture: this.stickPatternType,
-          shaft_color: STICK_PATTERN_COLOR[this.stickPatternColor],
-          color_hook: STICK_COLOR[this.stickBladeColor],
-          hook_cover: BLADE_TEXTURE[this.stickBladeTexture],
-          text: this.stickName,
-          grip: this.stickFormGrip,
-          flex: this.stickFormFlex,
-          deflection_point: ''
-        }
-
-        const data = await window.utils.fetchData(STICK_SEND_URL, req)
+        const data = await window.utils.fetchData(
+          window.const.STICK_SEND_URL,
+          req
+        )
 
         if (data.ok) {
-          modalBet.classList.add('show')
-          document.body.classList.add('scroll-lock')
-          this.showEl(this.setBtnReturn)
+          window.utils.showModal(this.modalBet)
+          window.utils.showEl(this.setBtnReturn)
         }
       } catch (error) {
         console.error(error)
@@ -1053,20 +1054,16 @@ window.utils = {
       } catch (error) {
         console.error(error)
       }
+
+      this.updateResuteScreenContent()
     },
 
-    /**
-     * @param {HTMLElement} el
-     */
-    showEl(el) {
-      el.removeAttribute('hidden')
-    },
+    updateResuteScreenContent() {
+      const resultTitle = document.querySelector('.js-set-result-title')
+      const resultText = document.querySelector('.js-set-result-text')
 
-    /**
-     * @param {HTMLElement} el
-     */
-    hideEl(el) {
-      el.setAttribute('hidden', 'hidden')
+      resultTitle.textContent = 'Твой дизайн'
+      resultText.textContent = `Отличный результат! Совсем скоро мы подведем итоги и объявим победителей, которые выиграют Верную подругу Великой погони! Жди результатов ${window.const.END_DATE}.`
     },
 
     /**
@@ -1077,10 +1074,10 @@ window.utils = {
       const contents = document.querySelectorAll(selector)
 
       contents.forEach((it) => {
-        if (it.classList.contains(STEPS[this.step])) {
-          it.removeAttribute('hidden')
+        if (it.classList.contains(window.const.STEPS[this.step])) {
+          window.utils.showEl(it)
         } else {
-          it.setAttribute('hidden', 'hidden')
+          window.utils.hideEl(it)
         }
       })
     },
@@ -1093,7 +1090,7 @@ window.utils = {
       const el = document.querySelector(selector)
 
       stepNames.forEach((it) => {
-        if (it !== STEPS[this.step]) {
+        if (it !== window.const.STEPS[this.step]) {
           el.classList.remove(it)
         } else {
           el.classList.add(it)
