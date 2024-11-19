@@ -5,6 +5,7 @@
   width: 100%;
   min-height: 100%;
   padding: $apx-20;
+  overflow: hidden;
   text-transform: uppercase;
   background-color: $color-gray-961;
   @include mobile {
@@ -22,13 +23,6 @@
   &.fifth {
     display: block;
   }
-  // @media (aspect-ratio > 16/9) {
-  //   // background-color: tomato;
-  //   height: $apx-840;
-  //   &.fifth {
-  //     height: $apx-820;
-  //   }
-  // }
   @include ultra-wide {
     height: $apx-840;
     &.fifth {
@@ -187,9 +181,6 @@
   }
   @include mobile {
     width: $apx-m-230;
-    // &.finish {
-    //   width: max-content;
-    // }
   }
 }
 .b-set__btn-save,
@@ -197,9 +188,6 @@
   position: absolute;
   right: 0;
   bottom: 0;
-  // &:not(.finish) {
-  //   display: none;
-  // }
 }
 
 @keyframes b-set-btn {

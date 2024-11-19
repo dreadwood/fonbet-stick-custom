@@ -2,8 +2,6 @@
  * result.js
  */
 ;(() => {
-  const STICK_COLOR = ['red', 'white', 'black', 'carbon']
-
   const container = document.querySelector('.js-result-end-container')
   const stick = container.querySelector('.js-set-result-stick')
   const pattern = container.querySelector('.js-set-result-pattern')
@@ -12,7 +10,8 @@
 
   const showFinishScreen = (data) => {
     const stickNameColor =
-      data.color_stick === STICK_COLOR[0] || data.color_stick === STICK_COLOR[1]
+      data.color_stick === window.const.STICK_COLOR[0] ||
+      data.color_stick === window.const.STICK_COLOR[1]
         ? 'black'
         : 'white'
 

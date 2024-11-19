@@ -2,50 +2,12 @@
  * set.js
  */
 ;(() => {
-  const STEPS = {
-    1: 'first',
-    2: 'second',
-    3: 'third',
-    4: 'fourth',
-    5: 'fifth',
-    6: 'finish'
-  }
-
-  const TITLES = {
-    1: 'Цвет',
-    2: 'Шафт',
-    3: 'Покрытие крюка',
-    4: 'Персонализация',
-    5: 'Технические характеристики'
-  }
-
-  const COLORS = {
-    red: 'красный',
-    white: 'белый',
-    black: 'черный',
-    carbon: 'карбон'
-  }
-
-  const TEXTURE = {
-    matte: 'матовое',
-    normal: 'обычное',
-    glossy: 'глянцевое',
-    glitter: 'Зернистое'
-  }
-
-  const STICK_SEND_URL = 'https://xcomfeed.com/fonbet/great8/stick-send'
-
-  const STICK_COLOR = ['red', 'white', 'black', 'carbon']
-  const STICK_PATTERN_COLOR = ['red', 'white', 'black', 'chrome', 'reflective']
-  const STICK_PATTERN_TYPE = [0, 1, 2, 3, 4, 5, 6]
-  const BLADE_TEXTURE = ['normal', 'glossy', 'matte', 'glitter']
-
-  const stepNames = Object.values(STEPS)
+  const stepNames = Object.values(window.const.STEPS)
 
   const state = {
     step: 1,
 
-    stickColor: STICK_COLOR[0],
+    stickColor: window.const.STICK_COLOR[0],
     stickPatternColor: 0,
     stickPatternType: 0,
     stickBladeColor: 0,
@@ -114,7 +76,7 @@
 
     updateScreen() {
       this.stepEl.textContent = this.step
-      this.titleEl.textContent = TITLES[this.step]
+      this.titleEl.textContent = window.const.TITLES[this.step]
 
       this.changeCssClass('.js-set-content')
       this.changeCssClass('.js-set-wrp')
@@ -158,11 +120,13 @@
       const label = containerFourth.querySelector('.js-window-name-label')
 
       const changeSlide = () => {
-        const index = STICK_COLOR.findIndex((el) => el === this.stickColor)
+        const index = window.const.STICK_COLOR.findIndex(
+          (el) => el === this.stickColor
+        )
         if (index === 0) {
           btnPrev.setAttribute('disabled', 'disabled')
           btnNext.removeAttribute('disabled')
-        } else if (index + 1 === STICK_COLOR.length) {
+        } else if (index + 1 === window.const.STICK_COLOR.length) {
           btnPrev.removeAttribute('disabled')
           btnNext.setAttribute('disabled', 'disabled')
         } else {
@@ -173,11 +137,11 @@
         img.src = `./img/sticks/stick-${this.stickColor}.webp`
         imgSecond.src = `./img/sticks/shaft-${this.stickColor}.webp`
         imgFourth.src = `./img/sticks/end-${this.stickColor}.webp`
-        nameColor.textContent = COLORS[this.stickColor]
+        nameColor.textContent = window.const.COLORS[this.stickColor]
 
         this.stickNameColor =
-          this.stickColor === STICK_COLOR[0] ||
-          this.stickColor === STICK_COLOR[1]
+          this.stickColor === window.const.STICK_COLOR[0] ||
+          this.stickColor === window.const.STICK_COLOR[1]
             ? 'black'
             : 'white'
         label.style = `color: ${this.stickNameColor};`
@@ -191,18 +155,22 @@
       })
 
       btnPrev.addEventListener('click', () => {
-        const index = STICK_COLOR.findIndex((el) => el === this.stickColor)
+        const index = window.const.STICK_COLOR.findIndex(
+          (el) => el === this.stickColor
+        )
 
-        const color = STICK_COLOR[index - 1]
+        const color = window.const.STICK_COLOR[index - 1]
         this.stickColor = color
 
         changeSlide()
       })
 
       btnNext.addEventListener('click', () => {
-        const index = STICK_COLOR.findIndex((el) => el === this.stickColor)
+        const index = window.const.STICK_COLOR.findIndex(
+          (el) => el === this.stickColor
+        )
 
-        const color = STICK_COLOR[index + 1]
+        const color = window.const.STICK_COLOR[index + 1]
         this.stickColor = color
 
         changeSlide()
@@ -222,7 +190,10 @@
         if (this.stickPatternType === 0) {
           btnPrev.setAttribute('disabled', 'disabled')
           btnNext.removeAttribute('disabled')
-        } else if (this.stickPatternType + 1 === STICK_PATTERN_TYPE.length) {
+        } else if (
+          this.stickPatternType + 1 ===
+          window.const.STICK_PATTERN_TYPE.length
+        ) {
           btnPrev.removeAttribute('disabled')
           btnNext.setAttribute('disabled', 'disabled')
         } else {
@@ -241,7 +212,7 @@
         if (this.stickPatternType === 0) {
           imgPattern.setAttribute('hidden', 'hidden')
         } else {
-          const color = STICK_PATTERN_COLOR[this.stickPatternColor]
+          const color = window.const.STICK_PATTERN_COLOR[this.stickPatternColor]
           imgPattern.src = `./img/sticks/pattern-${color}-${this.stickPatternType}.webp`
           imgPattern.removeAttribute('hidden')
         }
@@ -287,7 +258,10 @@
         if (this.stickBladeTexture === 0) {
           btnPrev.setAttribute('disabled', 'disabled')
           btnNext.removeAttribute('disabled')
-        } else if (this.stickBladeTexture + 1 === BLADE_TEXTURE.length) {
+        } else if (
+          this.stickBladeTexture + 1 ===
+          window.const.BLADE_TEXTURE.length
+        ) {
           btnPrev.removeAttribute('disabled')
           btnNext.setAttribute('disabled', 'disabled')
         } else {
@@ -303,10 +277,10 @@
           }
         })
 
-        const color = STICK_COLOR[this.stickBladeColor]
-        const texture = BLADE_TEXTURE[this.stickBladeTexture]
+        const color = window.const.STICK_COLOR[this.stickBladeColor]
+        const texture = window.const.BLADE_TEXTURE[this.stickBladeTexture]
 
-        nameTexture.textContent = TEXTURE[BLADE_TEXTURE[this.stickBladeTexture]]
+        nameTexture.textContent = window.const.TEXTURE[texture]
         pagText.textContent = `Покрытие крюка ${this.stickBladeTexture + 1}/4`
         img.src = `./img/sticks/blade-${color}-${texture}.webp`
       }
@@ -399,14 +373,15 @@
       if (this.stickPatternType === 0) {
         pattern.setAttribute('hidden', 'hidden')
       } else {
-        const patternColor = STICK_PATTERN_COLOR[this.stickPatternColor]
+        const patternColor =
+          window.const.STICK_PATTERN_COLOR[this.stickPatternColor]
         pattern.src = `./img/sticks/pattern-${patternColor}-${this.stickPatternType}.webp`
         pattern.removeAttribute('hidden')
       }
 
       // blade
-      const bladeColor = STICK_COLOR[this.stickBladeColor]
-      const bladeTexture = BLADE_TEXTURE[this.stickBladeTexture]
+      const bladeColor = window.const.STICK_COLOR[this.stickBladeColor]
+      const bladeTexture = window.const.BLADE_TEXTURE[this.stickBladeTexture]
       blade.src = `./img/sticks/blade-${bladeColor}-${bladeTexture}.webp`
 
       // name
@@ -446,19 +421,22 @@
 
       try {
         const req = {
-          pin: clientId || window.utils.clientId,
+          pin: clientId || window.const.clientId,
           color_stick: this.stickColor,
           shaft_texture: this.stickPatternType,
-          shaft_color: STICK_PATTERN_COLOR[this.stickPatternColor],
-          color_hook: STICK_COLOR[this.stickBladeColor],
-          hook_cover: BLADE_TEXTURE[this.stickBladeTexture],
+          shaft_color: window.const.STICK_PATTERN_COLOR[this.stickPatternColor],
+          color_hook: window.const.STICK_COLOR[this.stickBladeColor],
+          hook_cover: window.const.BLADE_TEXTURE[this.stickBladeTexture],
           text: this.stickName,
           grip: this.stickFormGrip,
           flex: this.stickFormFlex,
           deflection_point: ''
         }
 
-        const data = await window.utils.fetchData(STICK_SEND_URL, req)
+        const data = await window.utils.fetchData(
+          window.const.STICK_SEND_URL,
+          req
+        )
 
         if (data.ok) {
           modalBet.classList.add('show')
@@ -498,7 +476,7 @@
       const contents = document.querySelectorAll(selector)
 
       contents.forEach((it) => {
-        if (it.classList.contains(STEPS[this.step])) {
+        if (it.classList.contains(window.const.STEPS[this.step])) {
           it.removeAttribute('hidden')
         } else {
           it.setAttribute('hidden', 'hidden')
@@ -514,7 +492,7 @@
       const el = document.querySelector(selector)
 
       stepNames.forEach((it) => {
-        if (it !== STEPS[this.step]) {
+        if (it !== window.const.STEPS[this.step]) {
           el.classList.remove(it)
         } else {
           el.classList.add(it)
