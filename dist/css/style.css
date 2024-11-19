@@ -633,6 +633,7 @@ input[type=file].visually-hidden {
 }
 
 .b-result {
+  overflow: hidden;
   font-family: "CeraPro", sans-serif;
   font-size: 1.56249vw;
   line-height: 2.08332vw;
@@ -1527,7 +1528,7 @@ input[type=file].visually-hidden {
 .b-window__name {
   position: absolute;
   top: 6.77079vw;
-  left: calc(50% - 0.416664vw);
+  left: calc(50% - 0.208332vw);
   z-index: 1;
   font-family: "CeraPro", sans-serif;
   font-size: 2.187486vw;
@@ -2947,6 +2948,12 @@ input[type=file].visually-hidden {
   background-color: #000000;
   translate: -2.760399vw 2.760399vw;
 }
+@media (aspect-ratio > 16/9) {
+  .bg__line.fifth-1 {
+    height: 0.52083vw;
+    translate: -0.52083vw 0.52083vw;
+  }
+}
 @media (max-width: 1080px) {
   .bg__line.fifth-1 {
     left: 19.907495vw;
@@ -2964,6 +2971,12 @@ input[type=file].visually-hidden {
   background-color: #000000;
   translate: -10.624932vw 10.624932vw;
 }
+@media (aspect-ratio > 16/9) {
+  .bg__line.fifth-2 {
+    height: 5.72913vw;
+    translate: -5.72913vw 5.72913vw;
+  }
+}
 @media (max-width: 1080px) {
   .bg__line.fifth-2 {
     left: -12.96302vw;
@@ -2980,6 +2993,12 @@ input[type=file].visually-hidden {
   height: 6.24996vw;
   background-color: #e80024;
   translate: -6.24996vw 6.24996vw;
+}
+@media (aspect-ratio > 16/9) {
+  .bg__line.fifth-3 {
+    height: 3.12498vw;
+    translate: -3.12498vw 3.12498vw;
+  }
 }
 @media (max-width: 1080px) {
   .bg__line.fifth-3 {

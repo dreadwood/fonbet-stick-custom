@@ -1,8 +1,7 @@
 'use strict'
 
 window.utils = {
-  BREAKPOINT_MOBILE: '(max-width: 767px)',
-  BREAKPOINT_TABLET: '(max-width: 1023px)',
+  clientId: null,
 
   /**
    * add/remove css class of button
@@ -499,9 +498,7 @@ window.utils = {
     const clientId = window.userInfo.getClientID()
 
     if (clientId) {
-      const req = {
-        pin: clientId
-      }
+      const req = { pin: clientId }
 
       try {
         const data = await window.utils.fetchData(GET_STICK_URL, req)
@@ -511,7 +508,6 @@ window.utils = {
 
           window.result(res.data)
           showResultScreen()
-          console.log(res.data)
         } else {
           showStartScreen()
         }
@@ -534,11 +530,30 @@ window.utils = {
     }
   })
 
-  document.addEventListener('registrationCompleted', function (event) {
-    var clientId = event.detail.clientId
+  document.addEventListener('registrationCompleted', async (event) => {
+    const clientId = event.detail.clientId
+
     if (clientId) {
-      closeModal()
-      openSet()
+      window.utils.clientId = clientId
+      const req = { pin: clientId }
+
+      try {
+        const data = await window.utils.fetchData(GET_STICK_URL, req)
+
+        if (data.status === 200) {
+          const res = await data.json()
+
+          window.result(res.data)
+          showResultScreen()
+        } else {
+          closeModal()
+          openSet()
+        }
+      } catch (error) {
+        console.error(error)
+        closeModal()
+        openSet()
+      }
     }
   })
 
@@ -985,8 +1000,6 @@ window.utils = {
       try {
         const canvas = await html2canvas(resultField, { backgroundColor: null })
 
-        console.log(canvas)
-
         const link = document.createElement('a')
         link.href = canvas.toDataURL('image/png')
         link.download = 'result.png'
@@ -1009,10 +1022,8 @@ window.utils = {
       this.showEl(this.setBtnReturn)
 
       try {
-        await this.renderStick()
-
         const req = {
-          pin: clientId,
+          pin: clientId || window.utils.clientId,
           color_stick: this.stickColor,
           shaft_texture: this.stickPatternType,
           shaft_color: STICK_PATTERN_COLOR[this.stickPatternColor],
@@ -1026,13 +1037,17 @@ window.utils = {
 
         const data = await window.utils.fetchData(STICK_SEND_URL, req)
 
-        console.log(modalBet)
-
         if (data.ok) {
           modalBet.classList.add('show')
           document.body.classList.add('scroll-lock')
           this.showEl(this.setBtnReturn)
         }
+      } catch (error) {
+        console.error(error)
+      }
+
+      try {
+        this.renderStick()
       } catch (error) {
         console.error(error)
       }
