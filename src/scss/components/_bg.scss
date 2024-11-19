@@ -508,6 +508,10 @@
   height: $apx-53;
   background-color: $color-black;
   translate: -#{$apx-53} $apx-53;
+  @include ultra-wide {
+    height: $apx-10;
+    translate: -#{$apx-10} $apx-10;
+  }
   @include mobile {
     left: $apx-m-215;
     width: $apx-m-168;
@@ -522,6 +526,10 @@
   height: $apx-204;
   background-color: $color-black;
   translate: -#{$apx-204} $apx-204;
+  @include ultra-wide {
+    height: $apx-110;
+    translate: -#{$apx-110} $apx-110;
+  }
   @include mobile {
     left: -#{$apx-m-140};
     width: $apx-m-510;
@@ -536,6 +544,10 @@
   height: $apx-120;
   background-color: $color-carmine-red;
   translate: -#{$apx-120} $apx-120;
+  @include ultra-wide {
+    height: $apx-60;
+    translate: -#{$apx-60} $apx-60;
+  }
   @include mobile {
     bottom: $apx-m-274;
     left: $apx-m-396;

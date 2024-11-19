@@ -423,8 +423,6 @@
       try {
         const canvas = await html2canvas(resultField, { backgroundColor: null })
 
-        console.log(canvas)
-
         const link = document.createElement('a')
         link.href = canvas.toDataURL('image/png')
         link.download = 'result.png'
@@ -447,10 +445,8 @@
       this.showEl(this.setBtnReturn)
 
       try {
-        await this.renderStick()
-
         const req = {
-          pin: clientId,
+          pin: clientId || window.utils.clientId,
           color_stick: this.stickColor,
           shaft_texture: this.stickPatternType,
           shaft_color: STICK_PATTERN_COLOR[this.stickPatternColor],
@@ -464,13 +460,17 @@
 
         const data = await window.utils.fetchData(STICK_SEND_URL, req)
 
-        console.log(modalBet)
-
         if (data.ok) {
           modalBet.classList.add('show')
           document.body.classList.add('scroll-lock')
           this.showEl(this.setBtnReturn)
         }
+      } catch (error) {
+        console.error(error)
+      }
+
+      try {
+        this.renderStick()
       } catch (error) {
         console.error(error)
       }

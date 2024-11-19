@@ -65,9 +65,7 @@
     const clientId = window.userInfo.getClientID()
 
     if (clientId) {
-      const req = {
-        pin: clientId
-      }
+      const req = { pin: clientId }
 
       try {
         const data = await window.utils.fetchData(GET_STICK_URL, req)
@@ -77,7 +75,6 @@
 
           window.result(res.data)
           showResultScreen()
-          console.log(res.data)
         } else {
           showStartScreen()
         }
@@ -100,11 +97,30 @@
     }
   })
 
-  document.addEventListener('registrationCompleted', function (event) {
-    var clientId = event.detail.clientId
+  document.addEventListener('registrationCompleted', async (event) => {
+    const clientId = event.detail.clientId
+
     if (clientId) {
-      closeModal()
-      openSet()
+      window.utils.clientId = clientId
+      const req = { pin: clientId }
+
+      try {
+        const data = await window.utils.fetchData(GET_STICK_URL, req)
+
+        if (data.status === 200) {
+          const res = await data.json()
+
+          window.result(res.data)
+          showResultScreen()
+        } else {
+          closeModal()
+          openSet()
+        }
+      } catch (error) {
+        console.error(error)
+        closeModal()
+        openSet()
+      }
     }
   })
 
