@@ -29,5 +29,21 @@ window.utils = {
    */
   hideEl(el) {
     el.setAttribute('hidden', 'hidden')
+  },
+
+  /**
+   * @param {HTMLElement} el
+   */
+  showModal(el) {
+    el.classList.add('show')
+    document.body.classList.add('scroll-lock')
+  },
+
+  /**
+   * @param {HTMLElement} el
+   */
+  closeModal(el) {
+    el.classList.remove('show')
+    document.body.classList.remove('scroll-lock')
   }
 }

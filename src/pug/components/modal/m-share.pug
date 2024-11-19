@@ -1,14 +1,15 @@
 include /components/button/btn
 
 mixin m-share({ isShow, className })
-  .overlay(class=isShow && "show")
+  .overlay.js-modal-share(class=isShow && "show")
     .m-white.share(class=className)
       .m-white__title.desktop #[span Поделись своим] #[br] дизайном
       .m-white__title.mobile #[span Поделись] #[br] своим дизайном
       .m-white__text Покажи друзьям, что&nbsp;у&nbsp;тебя&nbsp;получилось!
       +btn({
         text: "Поделиться",
-        className: "m-white__btn"
+        href: linkShare,
+        className: "m-white__btn js-modal-share-btn-share"
       })
-      button.m-white__link Вернуться в Великую Погоню
+      a(href=linkGreat8Fonbet target="_blank").m-white__link.js-modal-share-btn-site Вернуться в Великую Погоню
 

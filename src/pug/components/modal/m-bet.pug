@@ -1,7 +1,7 @@
 include /components/button/btn
 
 mixin m-bet({ isShow, className })
-  .overlay.js-bet(class=isShow && "show")
+  .overlay.js-modal-bet(class=isShow && "show")
     .m-white(class=className)
       .m-white__title Выиграй #[br] #[span клюшку!]
       .m-white__text.desktop Сделай ставку на хоккей от 500 рублей, поделись своим дизайном в соцсетях — и получи шанс выиграть свою кастомизированную клюшку! #[br] Мы подведем итоги розыгрыша #{endData}!
@@ -9,5 +9,5 @@ mixin m-bet({ isShow, className })
       +btn({
         text: "Сделать ставку",
         href: "https://fon.bet/sports/hockey/114545",
-        className: "m-white__btn js-bet-btn"
+        className: "m-white__btn js-modal-bet-btn"
       })

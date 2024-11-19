@@ -30,6 +30,12 @@
     setBtnSave: null,
     /** @type {HTMLLinkElement | null} */
     setBtnReturn: null,
+    /** @type {HTMLDivElement | null} */
+    modalBet: null,
+    /** @type {HTMLDivElement | null} */
+    modalShare: null,
+    /** @type {HTMLDivElement | null} */
+    modalScore: null,
 
     init() {
       const container = document.querySelector('.js-set')
@@ -41,6 +47,10 @@
       this.setBtnNext = document.querySelector('.js-set-btn-next')
       this.setBtnSave = document.querySelector('.js-set-btn-save')
       this.setBtnReturn = document.querySelector('.js-set-btn-return')
+
+      this.modalBet = document.querySelector('.js-modal-bet')
+      this.modalShare = document.querySelector('.js-modal-share')
+      this.modalScore = document.querySelector('.js-modal-score')
 
       this.setBtnPrev.addEventListener('click', () => this.prevStep())
       this.setBtnNext.addEventListener('click', () => this.nextStep())
@@ -54,6 +64,7 @@
 
       this.initModalBet()
       this.initModalScore()
+      this.initModalShare()
     },
 
     prevStep() {
@@ -335,29 +346,45 @@
     },
 
     initModalBet() {
-      const modalBet = document.querySelector('.js-bet')
-      const modalBetBtn = modalBet.querySelector('.js-bet-btn')
-      const modalScore = document.querySelector('.js-score')
+      const modalBetBtn = this.modalBet.querySelector('.js-modal-bet-btn')
 
       modalBetBtn.addEventListener('click', () => {
-        modalBet.classList.remove('show')
-        modalScore.classList.add('show')
+        window.utils.closeModal(this.modalBet)
+        window.utils.showModal(this.modalShare)
+      })
+    },
+
+    initModalShare() {
+      const btnShare = this.modalShare.querySelector(
+        '.js-modal-share-btn-share'
+      )
+      const btnSite = this.modalShare.querySelector('.js-modal-share-btn-site')
+
+      const openNextModal = () => {
+        window.utils.closeModal(this.modalShare)
+        window.utils.showModal(this.modalScore)
+      }
+
+      btnShare.addEventListener('click', () => openNextModal())
+      btnSite.addEventListener('click', () => openNextModal())
+
+      this.modalShare.addEventListener('click', (evt) => {
+        if (evt.target === this.modalShare) {
+          openNextModal()
+        }
       })
     },
 
     initModalScore() {
-      const modalScore = document.querySelector('.js-score')
-      const modalScoreBtn = document.querySelector('.js-score-close')
+      const btnClose = this.modalScore.querySelector('.js-score-btn-close')
 
-      modalScoreBtn.addEventListener('click', () => {
-        modalScore.classList.remove('show')
-        document.body.classList.remove('scroll-lock')
-      })
+      btnClose.addEventListener('click', () =>
+        window.utils.closeModal(this.modalScore)
+      )
 
-      modalScore.addEventListener('click', (evt) => {
-        if (evt.target === modalScore) {
-          modalScore.classList.remove('show')
-          document.body.classList.remove('scroll-lock')
+      this.modalScore.addEventListener('click', (evt) => {
+        if (evt.target === this.modalScore) {
+          window.utils.closeModal(this.modalScore)
         }
       })
     },
@@ -417,34 +444,31 @@
     async saveResult() {
       const clientId = window.userInfo.getClientID()
 
-      const modalBet = document.querySelector('.js-bet')
-
       window.utils.hideEl(this.setBtnPrev)
       window.utils.hideEl(this.setBtnSave)
       window.utils.showEl(this.setBtnReturn)
 
-      try {
-        const req = {
-          pin: clientId || window.const.clientId,
-          color_stick: this.stickColor,
-          shaft_texture: this.stickPatternType,
-          shaft_color: window.const.STICK_PATTERN_COLOR[this.stickPatternColor],
-          color_hook: window.const.STICK_COLOR[this.stickBladeColor],
-          hook_cover: window.const.BLADE_TEXTURE[this.stickBladeTexture],
-          text: this.stickName,
-          grip: this.stickFormGrip,
-          flex: this.stickFormFlex,
-          deflection_point: ''
-        }
+      const req = {
+        pin: clientId || window.const.clientId,
+        color_stick: this.stickColor,
+        shaft_texture: this.stickPatternType,
+        shaft_color: window.const.STICK_PATTERN_COLOR[this.stickPatternColor],
+        color_hook: window.const.STICK_COLOR[this.stickBladeColor],
+        hook_cover: window.const.BLADE_TEXTURE[this.stickBladeTexture],
+        text: this.stickName,
+        grip: this.stickFormGrip,
+        flex: this.stickFormFlex,
+        deflection_point: ''
+      }
 
+      try {
         const data = await window.utils.fetchData(
           window.const.STICK_SEND_URL,
           req
         )
 
         if (data.ok) {
-          modalBet.classList.add('show')
-          document.body.classList.add('scroll-lock')
+          window.utils.showModal(this.modalBet)
           window.utils.showEl(this.setBtnReturn)
         }
       } catch (error) {
