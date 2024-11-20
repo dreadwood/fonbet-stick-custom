@@ -10,15 +10,14 @@ mixin m-auth-script({})
   script(src="https://fon.bet/settings.js" onload="init()")
 
 mixin m-auth({ isShow, className })
-  - const linkLogin = "https://fon.bet/authProcess/login/"
   //- - const linkPersonalData = "#"
   //- - const linkInfo = "#"
   //- - const linkRules = "#"
   //- - const linkAd = "#"
   //- +m-auth-script({})
-  .overlay.js-auth-overlay(class=isShow && "show")
-    .m-auth.js-auth
-      button.m-auth__close.js-auth-close
+  .overlay.js-modal-auth(class=isShow && "show")
+    .m-auth
+      button.m-auth__close.js-modal-auth-btn-close
       .m-auth__bg
         .m-auth__img-coin
           +picture2x({ image: "/img/auth-coin@1x.png", width: 355, height: 353 })

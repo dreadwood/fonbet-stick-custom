@@ -110,7 +110,7 @@ const js = () => {
         }
       })
     )
-    .pipe(order(['const.js', 'utils.js', 'pin.js', '*.js']))
+    .pipe(order(['const.js', 'utils.js', 'pin.js', 'modal.js', '*.js']))
     .pipe(concat(`script.js`))
     .pipe(gulp.dest('dist/js'))
     .pipe(uglify.default())

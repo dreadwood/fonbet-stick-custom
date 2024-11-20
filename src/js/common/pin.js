@@ -3,18 +3,18 @@
  */
 ;(() => {
   // auth start
-  var regFlag = false
+  let regFlag = false
 
-  var refreshIntervalId = setInterval(function () {
+  let refreshIntervalId = setInterval(() => {
     if (typeof window.registrationApi !== 'undefined') regFlag = true
     if (regFlag) {
       clearInterval(refreshIntervalId)
       document.dispatchEvent(new Event('registrationInit'))
       // console.log('window.registrationApi', window.registrationApi)
-      registrationApi.onRegistrationStateChanged = function (state) {
+      registrationApi.onRegistrationStateChanged = (state) => {
         console.log('registrationApi state', state)
       }
-      registrationApi.onRegistrationCompleted = function (clientId) {
+      registrationApi.onRegistrationCompleted = (clientId) => {
         document.dispatchEvent(
           new CustomEvent('registrationCompleted', {
             detail: { clientId: clientId }

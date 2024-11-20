@@ -11,11 +11,11 @@
   /** @type {HTMLDivElement | null} */
   const resultScreen = document.querySelector('.js-result-end')
   /** @type {HTMLDivElement | null} */
-  const modalAuth = document.querySelector('.js-auth-overlay')
+  const modalAuth = document.querySelector('.js-modal-auth')
   /** @type {HTMLButtonElement | null} */
   const startBtn = document.querySelector('.js-start-btn')
   /** @type {HTMLButtonElement | null} */
-  const closeBtn = document.querySelector('.js-auth-close')
+  const modalAuthCloseBtn = modalAuth.querySelector('.js-modal-auth-btn-close')
 
   if (
     !loadingScreen ||
@@ -23,7 +23,7 @@
     !setScreen ||
     !startBtn ||
     !modalAuth ||
-    !closeBtn
+    !modalAuthCloseBtn
   ) {
     return
   }
@@ -44,14 +44,12 @@
   }
 
   const openModal = () => {
-    modalAuth.classList.add('show')
-    document.body.classList.add('scroll-lock')
+    window.utils.showModal(modalAuth)
     document.addEventListener('keydown', onEscKeydown)
   }
 
   const closeModal = () => {
-    modalAuth.classList.remove('show')
-    document.body.classList.remove('scroll-lock')
+    window.utils.closeModal(modalAuth)
     document.removeEventListener('keydown', onEscKeydown)
   }
 
@@ -89,18 +87,18 @@
     }
   }
 
-  document.addEventListener('userInfoUpdated', (event) => {
-    console.log('User info updated:', event.detail)
-    console.log('Previous Client ID:', event.detail.prevClientId)
-    console.log('Current Client ID:', event.detail.clientId)
-    if (event.detail.clientId !== event.detail.prevClientId) {
+  document.addEventListener('userInfoUpdated', (evt) => {
+    console.log('User info updated:', evt.detail)
+    console.log('Previous Client ID:', evt.detail.prevClientId)
+    console.log('Current Client ID:', evt.detail.clientId)
+    if (evt.detail.clientId !== evt.detail.prevClientId) {
       closeModal()
       openSet()
     }
   })
 
-  document.addEventListener('registrationCompleted', async (event) => {
-    const clientId = event.detail.clientId
+  document.addEventListener('registrationCompleted', async (evt) => {
+    const clientId = evt.detail.clientId
 
     if (clientId) {
       window.utils.clientId = clientId
@@ -139,7 +137,7 @@
     }
   })
 
-  closeBtn.addEventListener('click', () => closeModal())
+  modalAuthCloseBtn.addEventListener('click', () => closeModal())
 
   modalAuth.addEventListener('click', (evt) => {
     if (evt.target === modalAuth) closeModal()

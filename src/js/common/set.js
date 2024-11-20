@@ -14,7 +14,6 @@
     stickBladeTexture: 0,
     stickName: '',
     stickNameColor: 'black',
-
     stickFormGrip: 'right',
     stickFormFlex: '90',
 
@@ -62,9 +61,9 @@
       this.initWindowFourth()
       this.initWindowFifth()
 
-      this.initModalBet()
-      this.initModalScore()
-      this.initModalShare()
+      window.modal.initBet(this.modalBet, this.modalShare)
+      window.modal.initShare(this.modalShare, this.modalScore)
+      window.modal.initScore(this.modalScore)
     },
 
     prevStep() {
@@ -342,50 +341,6 @@
       form.addEventListener('change', () => {
         this.stickFormGrip = form.elements.grip.value
         this.stickFormFlex = +form.elements.flex.value
-      })
-    },
-
-    initModalBet() {
-      const modalBetBtn = this.modalBet.querySelector('.js-modal-bet-btn')
-
-      modalBetBtn.addEventListener('click', () => {
-        window.utils.closeModal(this.modalBet)
-        window.utils.showModal(this.modalShare)
-      })
-    },
-
-    initModalShare() {
-      const btnShare = this.modalShare.querySelector(
-        '.js-modal-share-btn-share'
-      )
-      const btnSite = this.modalShare.querySelector('.js-modal-share-btn-site')
-
-      const openNextModal = () => {
-        window.utils.closeModal(this.modalShare)
-        window.utils.showModal(this.modalScore)
-      }
-
-      btnShare.addEventListener('click', () => openNextModal())
-      btnSite.addEventListener('click', () => openNextModal())
-
-      this.modalShare.addEventListener('click', (evt) => {
-        if (evt.target === this.modalShare) {
-          openNextModal()
-        }
-      })
-    },
-
-    initModalScore() {
-      const btnClose = this.modalScore.querySelector('.js-score-btn-close')
-
-      btnClose.addEventListener('click', () =>
-        window.utils.closeModal(this.modalScore)
-      )
-
-      this.modalScore.addEventListener('click', (evt) => {
-        if (evt.target === this.modalScore) {
-          window.utils.closeModal(this.modalScore)
-        }
       })
     },
 

@@ -661,10 +661,10 @@
   translate: $apx-300 0;
   @include mobile {
     top: 0;
-    right: -#{$apx-m-16};
+    right: -#{$apx-m-26};
     width: $apx-m-260;
-    height: $apx-m-157;
-    translate: $apx-m-157 -#{$apx-m-157};
+    height: $apx-m-137;
+    translate: $apx-m-137 -#{$apx-m-137};
   }
 }
 .bg__line.finish-5 {
@@ -677,9 +677,9 @@
   @include mobile {
     top: 0;
     right: -#{$apx-m-14};
-    width: $apx-m-320;
-    height: $apx-m-320;
-    translate: $apx-m-320 -#{$apx-m-320};
+    width: $apx-m-270;
+    height: $apx-m-270;
+    translate: $apx-m-270 -#{$apx-m-270};
   }
 }
 .bg__line.finish-6 {
@@ -691,8 +691,8 @@
   animation-duration: 1.4s;
   translate: $apx-300 -#{$apx-300};
   @include mobile {
-    top: $apx-m-246;
-    right: -#{$apx-m-24};
+    top: $apx-m-206;
+    right: -#{$apx-m-34};
     width: $apx-m-140;
     height: $apx-m-79;
     translate: $apx-m-200;
