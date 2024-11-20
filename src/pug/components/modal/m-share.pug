@@ -3,13 +3,12 @@ include /components/button/btn
 mixin m-share({ isShow, className })
   .overlay.js-modal-share(class=isShow && "show")
     .m-white.share(class=className)
-      .m-white__title.desktop #[span Поделись своим] #[br] дизайном
-      .m-white__title.mobile #[span Поделись] #[br] своим дизайном
-      .m-white__text Покажи друзьям, что&nbsp;у&nbsp;тебя&nbsp;получилось!
+      button.m-white__close.js-modal-share-btn-close
+      .m-white__title #[span Поделись] #[br] верной подругой!
+      .m-white__text Покажи друзьям великую погоню за призами!
       +btn({
         text: "Поделиться",
         href: linkShare,
         className: "m-white__btn js-modal-share-btn-share"
       })
       a.m-white__link.js-modal-share-btn-site(href=linkGreat8Fonbet target="_blank") Вернуться в Великую Погоню
-

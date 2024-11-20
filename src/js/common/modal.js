@@ -3,6 +3,35 @@
  */
 ;(() => {
   window.modal = {
+    initAuth(modalAuth) {
+      /** @type {HTMLButtonElement | null} */
+      const btnClose = modalAuth.querySelector('.js-modal-auth-btn-close')
+
+      const onEscKeydown = (evt) => {
+        if (evt.key === 'Escape') closeModal()
+      }
+
+      const openModal = () => {
+        window.utils.showModal(modalAuth)
+        document.addEventListener('keydown', onEscKeydown)
+      }
+
+      const closeModal = () => {
+        window.utils.closeModal(modalAuth)
+        document.removeEventListener('keydown', onEscKeydown)
+      }
+
+      btnClose.addEventListener('click', () => closeModal())
+
+      modalAuth.addEventListener('click', (evt) => {
+        if (evt.target === modalAuth) {
+          closeModal()
+        }
+      })
+
+      return [openModal, closeModal]
+    },
+
     /**
      * @param {HTMLDivElement} modalBet
      * @param {HTMLDivElement} modalShare
@@ -22,6 +51,8 @@
      * @param {HTMLDivElement} modalScore
      */
     initShare(modalShare, modalScore) {
+      /** @type {HTMLButtonElement | null} */
+      const btnClose = modalShare.querySelector('.js-modal-share-btn-close')
       /** @type {HTMLLinkElement | null} */
       const btnShare = modalShare.querySelector('.js-modal-share-btn-share')
       /** @type {HTMLLinkElement | null} */
@@ -34,6 +65,7 @@
 
       btnShare.addEventListener('click', () => openNextModal())
       btnSite.addEventListener('click', () => openNextModal())
+      btnClose.addEventListener('click', () => openNextModal())
 
       modalShare.addEventListener('click', (evt) => {
         if (evt.target === modalShare) {
@@ -47,7 +79,7 @@
      */
     initScore(modalScore) {
       /** @type {HTMLButtonElement | null} */
-      const btnClose = modalScore.querySelector('.js-score-btn-close')
+      const btnClose = modalScore.querySelector('.js-modal-score-btn-close')
 
       btnClose.addEventListener('click', () =>
         window.utils.closeModal(modalScore)

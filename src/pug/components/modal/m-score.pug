@@ -1,6 +1,6 @@
 mixin m-score({ isShow, className })
   .overlay.js-modal-score(class=isShow && "show")
     .m-red(class=className)
-      button.m-red__close.js-score-btn-close
+      button.m-red__close.js-modal-score-btn-close
       .m-red__title #[span Твои 1000 баллов] Великой погони начислены!
       .m-red__text Жди результаты розыгрыша #[br] #{endData}
