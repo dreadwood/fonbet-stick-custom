@@ -1163,6 +1163,8 @@ input[type=file].visually-hidden {
 }
 @media (max-width: 1080px) {
   .b-start {
+    height: auto;
+    min-height: 100%;
     font-size: 3.518534vw;
     line-height: 1.2;
   }
@@ -1340,7 +1342,7 @@ input[type=file].visually-hidden {
   position: relative;
   z-index: 3;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   -moz-column-gap: 1.354158vw;
        column-gap: 1.354158vw;
   width: -moz-max-content;
@@ -3131,10 +3133,10 @@ input[type=file].visually-hidden {
 @media (max-width: 1080px) {
   .bg__line.finish-4 {
     top: 0;
-    right: -1.481488vw;
+    right: -2.407418vw;
     width: 24.07418vw;
-    height: 14.537101vw;
-    translate: 14.537101vw -14.537101vw;
+    height: 12.685241vw;
+    translate: 12.685241vw -12.685241vw;
   }
 }
 
@@ -3150,9 +3152,9 @@ input[type=file].visually-hidden {
   .bg__line.finish-5 {
     top: 0;
     right: -1.296302vw;
-    width: 29.62976vw;
-    height: 29.62976vw;
-    translate: 29.62976vw -29.62976vw;
+    width: 25.00011vw;
+    height: 25.00011vw;
+    translate: 25.00011vw -25.00011vw;
   }
 }
 
@@ -3167,8 +3169,8 @@ input[type=file].visually-hidden {
 }
 @media (max-width: 1080px) {
   .bg__line.finish-6 {
-    top: 22.777878vw;
-    right: -2.222232vw;
+    top: 19.074158vw;
+    right: -3.148162vw;
     width: 12.96302vw;
     height: 7.314847vw;
     translate: 18.5186vw;
