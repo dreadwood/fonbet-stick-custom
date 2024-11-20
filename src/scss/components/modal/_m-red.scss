@@ -4,7 +4,7 @@
   flex-shrink: 0;
   width: $apx-978;
   margin: auto;
-  padding: $apx-178 $apx-50 $apx-76 $apx-50;
+  padding: $apx-162 $apx-50 $apx-76 $apx-50;
   font-family: $font-default;
   font-size: $apx-23;
   line-height: 1.2;
@@ -25,7 +25,7 @@
   @include mobile {
     --box-shadow-blur: $apx-m-20;
     width: $apx-m-818;
-    padding: $apx-m-186 $apx-m-20 $apx-m-140 $apx-m-20;
+    padding: $apx-m-171 $apx-m-20 $apx-m-140 $apx-m-20;
     font-size: $apx-m-30;
     line-height: 1.2;
     border-width: $apx-m-15;
@@ -94,10 +94,9 @@
   }
 }
 .m-red__text {
-  margin-top: $apx-23;
+  margin-top: $apx-41;
   color: $color-white;
   @include mobile {
-    margin-top: $apx-m-8;
-    margin-top: 0;
+    margin-top: $apx-m-12;
   }
 }

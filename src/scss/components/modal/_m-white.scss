@@ -3,7 +3,7 @@
   flex-shrink: 0;
   width: $apx-978;
   margin: auto;
-  padding: $apx-141 $apx-60 $apx-76 $apx-60;
+  padding: $apx-124 $apx-60 $apx-80 $apx-60;
   font-family: $font-default;
   font-size: $apx-23;
   line-height: 1.2;
@@ -27,7 +27,7 @@
       line-height: 0.95;
     }
     .m-white__text {
-      margin-top: $apx-30;
+      margin-top: $apx-46;
     }
     .m-white__btn {
       min-width: $apx-332;
@@ -36,20 +36,20 @@
   }
   @include mobile {
     width: $apx-m-818;
-    padding: $apx-m-92 $apx-m-20 $apx-m-80 $apx-m-20;
+    padding: $apx-m-76 $apx-m-20 $apx-m-80 $apx-m-20;
     font-size: $apx-m-30;
     line-height: 1.2;
     border-width: $apx-m-15;
     border-radius: $apx-m-41;
     &.share {
-      padding-top: $apx-m-133;
-      padding-bottom: $apx-m-68;
+      padding-top: $apx-m-118;
+      padding-bottom: $apx-m-72;
       .m-white__title {
         line-height: 0.95;
       }
       .m-white__text {
         width: $apx-m-540;
-        margin-top: $apx-m-6;
+        margin-top: $apx-m-22;
         margin-right: auto;
         margin-left: auto;
       }
@@ -82,12 +82,12 @@
   }
 }
 .m-white__text {
-  margin-top: $apx-20;
+  margin-top: $apx-36;
   &.mobile {
     display: none;
   }
   @include mobile {
-    margin-top: $apx-m-3;
+    margin-top: $apx-m-20;
     &.desktop {
       display: none;
     }

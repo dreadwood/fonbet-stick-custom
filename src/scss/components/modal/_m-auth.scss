@@ -8,7 +8,7 @@
   max-width: 870px;
   margin: auto;
   // padding: $apx-62 $apx-32 $apx-62 $apx-32;
-  padding: 62px 32px 62px 32px;
+  padding: 54px 32px 62px 32px;
   font-family: $font-default;
   // font-size: $apx-12;
   font-size: 12px;
@@ -164,10 +164,10 @@
   text-align: center;
   text-transform: uppercase;
   &.sup {
-    margin-bottom: 13px;
+    margin-bottom: 21px;
   }
   &.sub {
-    margin-top: 50px;
+    margin-top: 43px;
   }
   @include mobile-px {
     // font-size: $apx-m-84;
@@ -176,7 +176,7 @@
     line-height: 40px;
     &.sup {
       // margin-bottom: $apx-m-46;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
     &.sub {
       // margin-top: $apx-m-136;

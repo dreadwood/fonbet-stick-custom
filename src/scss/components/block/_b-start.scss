@@ -81,7 +81,7 @@
   @include mobile {
     max-height: none;
     margin: auto;
-    padding: $apx-m-156 $apx-m-123 $apx-m-117 $apx-m-123;
+    padding: $apx-m-156 $apx-m-123 $apx-m-115 $apx-m-123;
     overflow: hidden;
   }
 }
@@ -111,7 +111,7 @@
 .b-start__title {
   position: relative;
   width: 100%;
-  margin-top: $apx-60;
+  margin-top: $apx-20;
   margin-bottom: 0;
   font-family: $font-title;
   font-size: $apx-274;
@@ -124,12 +124,12 @@
   animation-delay: 0.7s;
   animation-fill-mode: forwards;
   @include ultra-wide {
-    margin-top: $apx-40;
+    margin-top: $apx-20;
     font-size: $apx-260;
     line-height: 0.85;
   }
   @include mobile {
-    margin-top: $apx-m-76;
+    margin-top: $apx-m-46;
     font-size: $apx-m-200;
     line-height: 0.85;
     text-align: left;
@@ -165,7 +165,7 @@
   }
   @include mobile {
     width: auto;
-    margin-top: 0;
+    margin-top: $apx-m-30;
     p {
       &:not(:first-child) {
         margin-top: $apx-m-46;
@@ -183,12 +183,11 @@
   position: relative;
   z-index: 3;
   display: flex;
-  // align-items: flex-end;
-  align-items: center;
+  align-items: flex-end;
   column-gap: $apx-26;
   width: max-content;
   margin-right: -#{$apx-165};
-  padding: $apx-16 $apx-150 $apx-31 $apx-32;
+  padding: $apx-20 $apx-150 $apx-26 $apx-32;
   background-color: $color-green-blue;
   border-radius: $apx-27 0 0 $apx-27;
   animation-name: start-ribbon;
@@ -219,12 +218,14 @@
 }
 .b-start__ribbon-num {
   flex-shrink: 0;
-  margin-bottom: -#{$apx-42};
+  margin-top: -#{$apx-22};
+  margin-bottom: -#{$apx-22};
   font-family: $font-title;
   font-size: $apx-137;
   line-height: 1.1;
   @include mobile {
-    margin-bottom: -#{$apx-m-42};
+    margin-top: -#{$apx-m-22};
+    margin-bottom: -#{$apx-m-22};
     font-size: $apx-m-137;
     line-height: 1.1;
   }
@@ -236,11 +237,13 @@
   }
 }
 .b-start__ribbon-title {
+  margin-bottom: $apx-10;
   font-family: $font-title;
   font-size: $apx-30;
   line-height: 1.1;
   color: $color-carmine-red;
   @include mobile {
+    margin-bottom: -#{$apx-m-4};
     font-size: $apx-m-38;
     line-height: 1.1;
   }
@@ -269,7 +272,7 @@
   }
   @include mobile {
     min-width: $apx-m-462;
-    margin-top: $apx-m-18;
+    margin-top: $apx-m-19;
     padding-top: $apx-m-32;
     padding-bottom: $apx-m-32;
   }

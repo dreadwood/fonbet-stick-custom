@@ -39,7 +39,7 @@
   }
 }
 .b-set__left {
-  padding-top: $apx-52;
+  padding-top: $apx-13;
   &.finish {
     display: none;
   }
@@ -62,7 +62,6 @@
   }
 }
 .b-set__step {
-  margin-bottom: -#{$apx-28};
   font-family: $font-title;
   font-size: $apx-274;
   line-height: 1;
@@ -70,7 +69,7 @@
   color: $color-black;
   @include mobile {
     margin-top: 0;
-    margin-bottom: -#{$apx-m-84};
+    margin-bottom: -#{$apx-m-44};
     font-size: $apx-m-275;
     line-height: 1.1;
   }
