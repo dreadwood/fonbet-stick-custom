@@ -199,6 +199,35 @@ window.utils = {
  */
 ;(() => {
   window.modal = {
+    initAuth(modalAuth) {
+      /** @type {HTMLButtonElement | null} */
+      const btnClose = modalAuth.querySelector('.js-modal-auth-btn-close')
+
+      const onEscKeydown = (evt) => {
+        if (evt.key === 'Escape') closeModal()
+      }
+
+      const openModal = () => {
+        window.utils.showModal(modalAuth)
+        document.addEventListener('keydown', onEscKeydown)
+      }
+
+      const closeModal = () => {
+        window.utils.closeModal(modalAuth)
+        document.removeEventListener('keydown', onEscKeydown)
+      }
+
+      btnClose.addEventListener('click', () => closeModal())
+
+      modalAuth.addEventListener('click', (evt) => {
+        if (evt.target === modalAuth) {
+          closeModal()
+        }
+      })
+
+      return [openModal, closeModal]
+    },
+
     /**
      * @param {HTMLDivElement} modalBet
      * @param {HTMLDivElement} modalShare
@@ -218,6 +247,8 @@ window.utils = {
      * @param {HTMLDivElement} modalScore
      */
     initShare(modalShare, modalScore) {
+      /** @type {HTMLButtonElement | null} */
+      const btnClose = modalShare.querySelector('.js-modal-share-btn-close')
       /** @type {HTMLLinkElement | null} */
       const btnShare = modalShare.querySelector('.js-modal-share-btn-share')
       /** @type {HTMLLinkElement | null} */
@@ -230,6 +261,7 @@ window.utils = {
 
       btnShare.addEventListener('click', () => openNextModal())
       btnSite.addEventListener('click', () => openNextModal())
+      btnClose.addEventListener('click', () => openNextModal())
 
       modalShare.addEventListener('click', (evt) => {
         if (evt.target === modalShare) {
@@ -243,7 +275,7 @@ window.utils = {
      */
     initScore(modalScore) {
       /** @type {HTMLButtonElement | null} */
-      const btnClose = modalScore.querySelector('.js-score-btn-close')
+      const btnClose = modalScore.querySelector('.js-modal-score-btn-close')
 
       btnClose.addEventListener('click', () =>
         window.utils.closeModal(modalScore)
@@ -316,19 +348,12 @@ window.utils = {
   const modalAuth = document.querySelector('.js-modal-auth')
   /** @type {HTMLButtonElement | null} */
   const startBtn = document.querySelector('.js-start-btn')
-  /** @type {HTMLButtonElement | null} */
-  const modalAuthCloseBtn = modalAuth.querySelector('.js-modal-auth-btn-close')
 
-  if (
-    !loadingScreen ||
-    !startScreen ||
-    !setScreen ||
-    !startBtn ||
-    !modalAuth ||
-    !modalAuthCloseBtn
-  ) {
+  if (!loadingScreen || !startScreen || !setScreen || !startBtn || !modalAuth) {
     return
   }
+
+  const [openAuthModal, closeAuthModal] = window.modal.initAuth(modalAuth)
 
   const showStartScreen = () => {
     window.utils.hideEl(loadingScreen)
@@ -339,20 +364,6 @@ window.utils = {
     window.utils.hideEl(startScreen)
     window.utils.hideEl(loadingScreen)
     window.utils.showEl(resultScreen)
-  }
-
-  const onEscKeydown = (evt) => {
-    if (evt.key === 'Escape') closeModal()
-  }
-
-  const openModal = () => {
-    window.utils.showModal(modalAuth)
-    document.addEventListener('keydown', onEscKeydown)
-  }
-
-  const closeModal = () => {
-    window.utils.closeModal(modalAuth)
-    document.removeEventListener('keydown', onEscKeydown)
   }
 
   const openSet = () => {
@@ -394,7 +405,7 @@ window.utils = {
     console.log('Previous Client ID:', evt.detail.prevClientId)
     console.log('Current Client ID:', evt.detail.clientId)
     if (evt.detail.clientId !== evt.detail.prevClientId) {
-      closeModal()
+      closeAuthModal()
       openSet()
     }
   })
@@ -417,14 +428,14 @@ window.utils = {
 
           window.result(res.data)
           showResultScreen()
-          closeModal()
+          closeAuthModal()
         } else {
-          closeModal()
+          closeAuthModal()
           openSet()
         }
       } catch (error) {
         console.error(error)
-        closeModal()
+        closeAuthModal()
         openSet()
       }
     }
@@ -435,14 +446,8 @@ window.utils = {
     if (clientId) {
       openSet()
     } else {
-      openModal()
+      openAuthModal()
     }
-  })
-
-  modalAuthCloseBtn.addEventListener('click', () => closeModal())
-
-  modalAuth.addEventListener('click', (evt) => {
-    if (evt.target === modalAuth) closeModal()
   })
 
   init()
