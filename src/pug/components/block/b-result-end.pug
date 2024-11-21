@@ -3,16 +3,41 @@ mixin b-result-end({ isHide, className })
     +bg-finish({ isHide: false })
     .b-set__content
       .b-result.finish.js-result-end-container(class=className)
-        .b-result__title Твой дизайн
-        .b-result__text Отличный результат! Совсем скоро мы подведем итоги и объявим победителей, которые выиграют Верную подругу Великой погони! Жди результатов #{endData}.
-        .b-result__field.js-set-result-field
+        .b-result__title.js-result-title-text Твой дизайн
+        .b-result__text.js-result-msg-text Отличный результат! Совсем скоро мы подведем итоги и объявим победителей, которые выиграют Верную подругу Великой погони! Жди результатов #{endData}.
+        .b-result__field.js-result-field
           .b-result__result
-            img.b-result__stick.js-set-result-stick(src="./img/sticks/stick-empty-red.webp")
-            img.b-result__pattern.js-set-result-pattern(src="./img/sticks/pattern-black-4.webp" hidden)
-            img.b-result__blade.js-set-result-blade(src="./img/sticks/blade-red-normal.webp")
-          .b-result__name.js-set-result-name
+
+            //- stick color
+            each color, i in ["red", "white", "black", "carbon"]
+              img.b-result__stick.js-result-stick(
+                class=color
+                src=`./img/sticks/stick-empty-${color}.webp`
+                hidden=(i !== 0)
+              )
+
+            //- stick pattern
+            each color in ["red", "white", "black", "chrome", "reflective"]
+              each type, j in [1, 2, 3, 4, 5, 6]
+                img.b-result__pattern.js-result-pattern(
+                  class=`${color}-${j + 1}`
+                  src=`./img/sticks/pattern-${color}-${type}.webp`
+                  hidden
+                )
+
+            //- stick blade
+            each color, i in ["red", "white", "black", "carbon"]
+              each texture, j in ["normal", "glossy", "matte", "glitter"]
+                img.b-result__blade.js-result-blade(
+                  class=`${color}-${texture}`
+                  src=`./img/sticks/blade-${color}-${texture}.webp`
+                  hidden=(i !== 0 && j !== 0)
+                )
+
+          //- stick name
+          .b-result__name.js-result-name-text
       +btn({
         text: "Вернуться к погоне",
-        href: "https://fon.bet/promo/thegr8chase/",
+        href: linkGreat8Fonbet,
         className: "b-set__btn-return"
       })

@@ -31,10 +31,9 @@ const copy = () => {
         'src/fonts/**/*.{woff,woff2}',
         'src/img/**/*.{webm,webp,avif,jpg,jpeg,png,svg}',
         'src/favicon/**/*',
-        'src/favicon.ico',
-        'src/robots.txt',
-        'src/settings.js',
-        'src/urls.json'
+        'src/robots.txt'
+        // 'src/settings.js',
+        // 'src/urls.json'
       ],
       { base: 'src', encoding: false }
     )

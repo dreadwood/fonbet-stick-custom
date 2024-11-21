@@ -1,8 +1,22 @@
 mixin window-second({ isHide, className })
   .b-window.second.js-widow(hidden=isHide class=className)
     .b-window__field
-      img.b-window__img.js-widow-img(src="./img/sticks/shaft-red.webp")
-      img.b-window__img.pattern.js-widow-pattern(src="./img/sticks/pattern-black-1.webp" hidden)
+      each color, i in ["red", "white", "black", "carbon"]
+        img.b-window__img.js-widow-img(
+          class=color
+          src=`./img/sticks/shaft-${color}.webp`
+          hidden=(i !== 0)
+        )
+      //- img.b-window__img.js-widow-img(src="./img/sticks/shaft-red.webp")
+
+      each color, i in ["red", "white", "black", "chrome", "reflective"]
+        each type, j in [1, 2, 3, 4, 5, 6]
+          img.b-window__img.pattern.js-widow-pattern(
+            class=`${color}-${j + 1}`
+            src=`./img/sticks/pattern-${color}-${type}.webp`
+            hidden
+          )
+      //- img.b-window__img.pattern.js-widow-pattern(src="./img/sticks/pattern-black-1.webp" hidden)
     .b-window__shaft.js-widow-color-list
       button.b-window__color-btn.reflective(data-color="4")
       button.b-window__color-btn.chrome(data-color="3")

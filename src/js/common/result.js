@@ -3,10 +3,11 @@
  */
 ;(() => {
   const container = document.querySelector('.js-result-end-container')
-  const stick = container.querySelector('.js-set-result-stick')
-  const pattern = container.querySelector('.js-set-result-pattern')
-  const blade = container.querySelector('.js-set-result-blade')
-  const name = container.querySelector('.js-set-result-name')
+  const stickList = container.querySelectorAll('.js-result-stick')
+  const patternList = container.querySelectorAll('.js-result-pattern')
+  const bladeList = container.querySelectorAll('.js-result-blade')
+
+  const name = container.querySelector('.js-result-name-text')
 
   const showFinishScreen = (data) => {
     const stickNameColor =
@@ -16,21 +17,39 @@
         : 'white'
 
     // stick
-    stick.src = `./img/sticks/stick-empty-${data.color_stick}.webp`
+    stickList.forEach((it) => {
+      if (it.classList.contains(data.color_stick)) {
+        window.utils.showEl(it)
+      } else {
+        window.utils.hideEl(it)
+      }
+    })
 
     // pattern
     if (data.shaft_texture === '0') {
-      window.utils.hideEl(pattern)
+      patternList.forEach((it) => window.utils.hideEl(it))
     } else {
-      const patternColor = data.shaft_color || 'black'
-      pattern.src = `./img/sticks/pattern-${patternColor}-${data.shaft_texture}.webp`
-      window.utils.showEl(pattern)
+      const patternColor = data.shaft_color || 'red'
+      const patternClass = `${patternColor}-${data.shaft_texture}`
+
+      patternList.forEach((it) => {
+        if (it.classList.contains(patternClass)) {
+          window.utils.showEl(it)
+        } else {
+          window.utils.hideEl(it)
+        }
+      })
     }
 
     // blade
-    const bladeColor = data.color_hook
-    const bladeTexture = data.hook_cover
-    blade.src = `./img/sticks/blade-${bladeColor}-${bladeTexture}.webp`
+    const bladeClass = `${data.color_hook}-${data.hook_cover}`
+    bladeList.forEach((it) => {
+      if (it.classList.contains(bladeClass)) {
+        window.utils.showEl(it)
+      } else {
+        window.utils.hideEl(it)
+      }
+    })
 
     // name
     name.textContent = data.text
