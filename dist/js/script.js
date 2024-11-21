@@ -5,6 +5,8 @@ window.const = {
 
   END_DATE: '14.12.2024',
 
+  GET_USER_INFO_URL: 'https://xcomfeed.com/fonbet/great8/get-user-info',
+  REGISTER_USER_URL: 'https://xcomfeed.com/fonbet/great8/register-user',
   STICK_SEND_URL: 'https://xcomfeed.com/fonbet/great8/stick-send',
   GET_STICK_URL: 'https://xcomfeed.com/fonbet/great8/get-stick',
 
@@ -228,6 +230,21 @@ window.utils = {
       return [openModal, closeModal]
     },
 
+    initStep(modalStep) {
+      /** @type {HTMLButtonElement | null} */
+      const btnAgree = modalStep.querySelector('.js-modal-step-btn-agree')
+
+      const openModal = () => {
+        window.utils.showModal(modalStep)
+      }
+
+      const closeModal = () => {
+        window.utils.closeModal(modalStep)
+      }
+
+      return [openModal, closeModal, btnAgree]
+    },
+
     /**
      * @param {HTMLDivElement} modalBet
      * @param {HTMLDivElement} modalShare
@@ -365,14 +382,25 @@ window.utils = {
   const resultScreen = document.querySelector('.js-result-end')
   /** @type {HTMLDivElement | null} */
   const modalAuth = document.querySelector('.js-modal-auth')
+  /** @type {HTMLDivElement | null} */
+  const modalStep = document.querySelector('.js-modal-step')
   /** @type {HTMLButtonElement | null} */
   const startBtn = document.querySelector('.js-start-btn')
 
-  if (!loadingScreen || !startScreen || !setScreen || !startBtn || !modalAuth) {
+  if (
+    !loadingScreen ||
+    !startScreen ||
+    !setScreen ||
+    !startBtn ||
+    !modalAuth ||
+    !modalStep
+  ) {
     return
   }
 
   const [openAuthModal, closeAuthModal] = window.modal.initAuth(modalAuth)
+  const [openStepModal, closeStepModal, btnAgree] =
+    window.modal.initStep(modalStep)
 
   const showStartScreen = () => {
     window.utils.hideEl(loadingScreen)
@@ -385,9 +413,69 @@ window.utils = {
     window.utils.showEl(resultScreen)
   }
 
-  const openSet = () => {
+  const openSetScreen = () => {
     window.utils.hideEl(startScreen)
     window.utils.showEl(setScreen)
+  }
+
+  const checkRegistration = async (req) => {
+    try {
+      const res = await window.utils.fetchData(
+        window.const.GET_USER_INFO_URL,
+        req
+      )
+
+      if (res.status === 200) {
+        const data = await res.json()
+
+        return !data.error
+      } else {
+        console.error('Не удалось проверить инфо ВП. Pin:', req.pin)
+        return false
+      }
+    } catch (error) {
+      console.error('Ошибка проверки инфо ВП (catch). Pin:', req.pin, error)
+      return false
+    }
+  }
+
+  const registration = async (req) => {
+    try {
+      const res = await window.utils.fetchData(
+        window.const.REGISTER_USER_URL,
+        req
+      )
+
+      if (res.status === 200) {
+        const data = await res.json()
+
+        return data.error
+      } else {
+        console.error('Не удалось зарегистрировать ВП. Pin:', req.pin)
+      }
+    } catch (error) {
+      console.error('Ошибка регистрации ВП (catch). Pin:', req.pin, error)
+      return false
+    }
+  }
+
+  const getStickInfo = async (req) => {
+    try {
+      const res = await window.utils.fetchData(window.const.GET_STICK_URL, req)
+
+      if (res.status === 200) {
+        return await res.json()
+      }
+
+      return false
+    } catch (error) {
+      // console.error(
+      //   'Ошибка при получении данных клюшки (catch). Pin:',
+      //   req.pin,
+      //   error
+      // )
+      return false
+    }
   }
 
   const init = async () => {
@@ -395,28 +483,16 @@ window.utils = {
 
     if (clientId) {
       const req = { pin: clientId }
+      const stickInfo = await getStickInfo(req)
 
-      try {
-        const data = await window.utils.fetchData(
-          window.const.GET_STICK_URL,
-          req
-        )
-
-        if (data.status === 200) {
-          const res = await data.json()
-
-          window.result(res.data)
-          showResultScreen()
-        } else {
-          showStartScreen()
-        }
-      } catch (error) {
-        console.error(error)
-        showStartScreen()
+      if (stickInfo) {
+        window.result(stickInfo.data)
+        showResultScreen()
+        return
       }
-    } else {
-      showStartScreen()
     }
+
+    showStartScreen()
   }
 
   document.addEventListener('userInfoUpdated', (evt) => {
@@ -424,8 +500,10 @@ window.utils = {
     console.log('Previous Client ID:', evt.detail.prevClientId)
     console.log('Current Client ID:', evt.detail.clientId)
     if (evt.detail.clientId !== evt.detail.prevClientId) {
-      closeAuthModal()
-      openSet()
+      // location.reload()
+      // closeAuthModal()
+      // closeStepModal()
+      // openSetScreen()
     }
   })
 
@@ -436,36 +514,67 @@ window.utils = {
       window.utils.clientId = clientId
       const req = { pin: clientId }
 
-      try {
-        const data = await window.utils.fetchData(
-          window.const.GET_STICK_URL,
-          req
-        )
+      const isReg = await checkRegistration(req)
 
-        if (data.status === 200) {
-          const res = await data.json()
-
-          window.result(res.data)
-          showResultScreen()
-          closeAuthModal()
-        } else {
-          closeAuthModal()
-          openSet()
-        }
-      } catch (error) {
-        console.error(error)
+      if (!isReg) {
         closeAuthModal()
-        openSet()
+        openStepModal()
+        return
       }
+
+      const stickInfo = await getStickInfo(req)
+
+      if (stickInfo) {
+        window.result(stickInfo.data)
+        closeAuthModal()
+        closeStepModal()
+        showResultScreen()
+        return
+      }
+
+      closeAuthModal()
+      closeStepModal()
+      openSetScreen()
     }
   })
 
-  startBtn.addEventListener('click', () => {
+  startBtn.addEventListener('click', async () => {
     const clientId = window.userInfo.getClientID()
-    if (clientId) {
-      openSet()
-    } else {
+
+    if (!clientId) {
       openAuthModal()
+      return
+    }
+
+    const req = { pin: clientId }
+    const isReg = await checkRegistration(req)
+
+    console.log('isReg', isReg)
+
+    if (isReg) {
+      closeAuthModal()
+      closeStepModal()
+      openSetScreen()
+    } else {
+      openStepModal()
+    }
+  })
+
+  btnAgree.addEventListener('click', async () => {
+    const req = { pin: window.utils.clientId }
+    await registration(req)
+
+    const stickInfo = await getStickInfo(req)
+
+    if (stickInfo) {
+      window.result(stickInfo.data)
+      closeAuthModal()
+      closeStepModal()
+      showResultScreen()
+    } else {
+      closeAuthModal()
+      closeStepModal()
+      openSetScreen()
     }
   })
 
