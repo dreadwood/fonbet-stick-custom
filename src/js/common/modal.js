@@ -32,6 +32,21 @@
       return [openModal, closeModal]
     },
 
+    initStep(modalStep) {
+      /** @type {HTMLButtonElement | null} */
+      const btnAgree = modalStep.querySelector('.js-modal-step-btn-agree')
+
+      const openModal = () => {
+        window.utils.showModal(modalStep)
+      }
+
+      const closeModal = () => {
+        window.utils.closeModal(modalStep)
+      }
+
+      return [openModal, closeModal, btnAgree]
+    },
+
     /**
      * @param {HTMLDivElement} modalBet
      * @param {HTMLDivElement} modalShare

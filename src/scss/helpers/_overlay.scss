@@ -4,7 +4,7 @@
   z-index: 9;
   display: none;
   flex-direction: column;
-  padding: $apx-20;
+  padding: max($apx-20, 20px);
   overflow: scroll;
   background-color: transparentize($color-black, 0.5);
   inset: 0;

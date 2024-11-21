@@ -1,0 +1,8 @@
+include /components/button/btn
+
+mixin m-step({ isShow, className })
+  .overlay.js-modal-step(class=isShow && "show")
+    .m-step(class=className)
+      .m-step__title Один шаг до брони
+      .m-step__text Дай своё согласие #[br] на #[a(href="#") обработку персональных данных]
+      burron.m-step__btn.js-modal-step-btn-agree Согласен

@@ -5,6 +5,8 @@ window.const = {
 
   END_DATE: '14.12.2024',
 
+  GET_USER_INFO_URL: 'https://xcomfeed.com/fonbet/great8/get-user-info',
+  REGISTER_USER_URL: 'https://xcomfeed.com/fonbet/great8/register-user',
   STICK_SEND_URL: 'https://xcomfeed.com/fonbet/great8/stick-send',
   GET_STICK_URL: 'https://xcomfeed.com/fonbet/great8/get-stick',
 
