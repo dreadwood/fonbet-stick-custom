@@ -295,10 +295,11 @@ window.utils = {
  */
 ;(() => {
   const container = document.querySelector('.js-result-end-container')
-  const stick = container.querySelector('.js-set-result-stick')
-  const pattern = container.querySelector('.js-set-result-pattern')
-  const blade = container.querySelector('.js-set-result-blade')
-  const name = container.querySelector('.js-set-result-name')
+  const stickList = container.querySelectorAll('.js-result-stick')
+  const patternList = container.querySelectorAll('.js-result-pattern')
+  const bladeList = container.querySelectorAll('.js-result-blade')
+
+  const name = container.querySelector('.js-result-name-text')
 
   const showFinishScreen = (data) => {
     const stickNameColor =
@@ -308,21 +309,39 @@ window.utils = {
         : 'white'
 
     // stick
-    stick.src = `./img/sticks/stick-empty-${data.color_stick}.webp`
+    stickList.forEach((it) => {
+      if (it.classList.contains(data.color_stick)) {
+        window.utils.showEl(it)
+      } else {
+        window.utils.hideEl(it)
+      }
+    })
 
     // pattern
     if (data.shaft_texture === '0') {
-      window.utils.hideEl(pattern)
+      patternList.forEach((it) => window.utils.hideEl(it))
     } else {
-      const patternColor = data.shaft_color || 'black'
-      pattern.src = `./img/sticks/pattern-${patternColor}-${data.shaft_texture}.webp`
-      window.utils.showEl(pattern)
+      const patternColor = data.shaft_color || 'red'
+      const patternClass = `${patternColor}-${data.shaft_texture}`
+
+      patternList.forEach((it) => {
+        if (it.classList.contains(patternClass)) {
+          window.utils.showEl(it)
+        } else {
+          window.utils.hideEl(it)
+        }
+      })
     }
 
     // blade
-    const bladeColor = data.color_hook
-    const bladeTexture = data.hook_cover
-    blade.src = `./img/sticks/blade-${bladeColor}-${bladeTexture}.webp`
+    const bladeClass = `${data.color_hook}-${data.hook_cover}`
+    bladeList.forEach((it) => {
+      if (it.classList.contains(bladeClass)) {
+        window.utils.showEl(it)
+      } else {
+        window.utils.hideEl(it)
+      }
+    })
 
     // name
     name.textContent = data.text
@@ -484,12 +503,22 @@ window.utils = {
     setBtnSave: null,
     /** @type {HTMLLinkElement | null} */
     setBtnReturn: null,
+
     /** @type {HTMLDivElement | null} */
     modalBet: null,
     /** @type {HTMLDivElement | null} */
     modalShare: null,
     /** @type {HTMLDivElement | null} */
     modalScore: null,
+
+    /** @type {HTMLDivElement | null} */
+    windowFirst: null,
+    /** @type {HTMLDivElement | null} */
+    windowSecond: null,
+    /** @type {HTMLDivElement | null} */
+    windowThird: null,
+    /** @type {HTMLDivElement | null} */
+    windowFourth: null,
 
     init() {
       const container = document.querySelector('.js-set')
@@ -505,6 +534,11 @@ window.utils = {
       this.modalBet = document.querySelector('.js-modal-bet')
       this.modalShare = document.querySelector('.js-modal-share')
       this.modalScore = document.querySelector('.js-modal-score')
+
+      this.windowFirst = document.querySelector('.js-widow.first')
+      this.windowSecond = document.querySelector('.js-widow.second')
+      this.windowThird = document.querySelector('.js-widow.third')
+      this.windowFourth = document.querySelector('.js-widow.fourth')
 
       this.setBtnPrev.addEventListener('click', () => this.prevStep())
       this.setBtnNext.addEventListener('click', () => this.nextStep())
@@ -574,18 +608,96 @@ window.utils = {
       this.changeCssClass('.js-set-btn-save')
     },
 
+    updateWindow() {
+      const stickList = this.windowFirst.querySelectorAll('.js-widow-img')
+      const shaftList = this.windowSecond.querySelectorAll('.js-widow-img')
+      const patternList =
+        this.windowSecond.querySelectorAll('.js-widow-pattern')
+      const bladeList = this.windowThird.querySelectorAll('.js-widow-blade')
+      const nameStickList = this.windowFourth.querySelectorAll(
+        '.js-widow-name-stick'
+      )
+      const nameLabel = this.windowFourth.querySelector('.js-window-name-label')
+
+      const stickColorText = document.querySelector(
+        '.js-widow-color-stick-name'
+      )
+      const bladeTextureText = document.querySelector(
+        '.js-widow-blade-texture-name'
+      )
+
+      // stick
+      stickList.forEach((it) => {
+        if (it.classList.contains(this.stickColor)) {
+          window.utils.showEl(it)
+        } else {
+          window.utils.hideEl(it)
+        }
+      })
+
+      stickColorText.textContent = window.const.COLORS[this.stickColor]
+
+      // shaft & pattern
+      shaftList.forEach((it) => {
+        if (it.classList.contains(this.stickColor)) {
+          window.utils.showEl(it)
+        } else {
+          window.utils.hideEl(it)
+        }
+      })
+
+      if (this.stickPatternType === 0) {
+        patternList.forEach((it) => window.utils.hideEl(it))
+      } else {
+        const patternColor =
+          window.const.STICK_PATTERN_COLOR[this.stickPatternColor]
+        const patternClass = `${patternColor}-${this.stickPatternType}`
+
+        patternList.forEach((it) => {
+          if (it.classList.contains(patternClass)) {
+            window.utils.showEl(it)
+          } else {
+            window.utils.hideEl(it)
+          }
+        })
+      }
+
+      // blade
+      const bladeColor = window.const.STICK_COLOR[this.stickBladeColor]
+      const bladeTexture = window.const.BLADE_TEXTURE[this.stickBladeTexture]
+      const bladeClass = `${bladeColor}-${bladeTexture}`
+
+      bladeList.forEach((it) => {
+        if (it.classList.contains(bladeClass)) {
+          window.utils.showEl(it)
+        } else {
+          window.utils.hideEl(it)
+        }
+      })
+
+      bladeTextureText.textContent = window.const.TEXTURE[bladeTexture]
+
+      // stick name
+      nameStickList.forEach((it) => {
+        if (it.classList.contains(this.stickColor)) {
+          window.utils.showEl(it)
+        } else {
+          window.utils.hideEl(it)
+        }
+      })
+
+      this.stickNameColor =
+        this.stickColor === window.const.STICK_COLOR[0] ||
+        this.stickColor === window.const.STICK_COLOR[1]
+          ? 'black'
+          : 'white'
+      nameLabel.style = `color: ${this.stickNameColor};`
+    },
+
     initWindowFirst() {
-      const container = document.querySelector('.js-widow.first')
-      const containerSecond = document.querySelector('.js-widow.second')
-      const containerFourth = document.querySelector('.js-widow.fourth')
-      const btnPrev = container.querySelector('.js-widow-btn.prev')
-      const btnNext = container.querySelector('.js-widow-btn.next')
-      const img = container.querySelector('.js-widow-img')
-      const imgSecond = containerSecond.querySelector('.js-widow-img')
-      const imgFourth = containerFourth.querySelector('.js-widow-img')
-      const list = container.querySelector('.js-widow-pag-list')
-      const nameColor = document.querySelector('.js-widow-color-stick-name')
-      const label = containerFourth.querySelector('.js-window-name-label')
+      const btnPrev = this.windowFirst.querySelector('.js-widow-btn.prev')
+      const btnNext = this.windowFirst.querySelector('.js-widow-btn.next')
+      const list = this.windowFirst.querySelector('.js-widow-pag-list')
 
       const changeSlide = () => {
         const index = window.const.STICK_COLOR.findIndex(
@@ -602,17 +714,7 @@ window.utils = {
           btnNext.removeAttribute('disabled')
         }
 
-        img.src = `./img/sticks/stick-${this.stickColor}.webp`
-        imgSecond.src = `./img/sticks/shaft-${this.stickColor}.webp`
-        imgFourth.src = `./img/sticks/end-${this.stickColor}.webp`
-        nameColor.textContent = window.const.COLORS[this.stickColor]
-
-        this.stickNameColor =
-          this.stickColor === window.const.STICK_COLOR[0] ||
-          this.stickColor === window.const.STICK_COLOR[1]
-            ? 'black'
-            : 'white'
-        label.style = `color: ${this.stickNameColor};`
+        this.updateWindow()
       }
 
       list.addEventListener('click', (evt) => {
@@ -646,12 +748,10 @@ window.utils = {
     },
 
     initWindowSecond() {
-      const container = document.querySelector('.js-widow.second')
-      const btnPrev = container.querySelector('.js-widow-btn.prev')
-      const btnNext = container.querySelector('.js-widow-btn.next')
-      const imgPattern = container.querySelector('.js-widow-pattern')
-      const listPattern = container.querySelector('.js-widow-pag-list')
-      const listColor = container.querySelector('.js-widow-color-list')
+      const btnPrev = this.windowSecond.querySelector('.js-widow-btn.prev')
+      const btnNext = this.windowSecond.querySelector('.js-widow-btn.next')
+      const listPattern = this.windowSecond.querySelector('.js-widow-pag-list')
+      const listColor = this.windowSecond.querySelector('.js-widow-color-list')
       const pagBtns = listPattern.querySelectorAll('button')
 
       const changePattern = () => {
@@ -677,13 +777,7 @@ window.utils = {
           }
         })
 
-        if (this.stickPatternType === 0) {
-          window.utils.hideEl(imgPattern)
-        } else {
-          const color = window.const.STICK_PATTERN_COLOR[this.stickPatternColor]
-          imgPattern.src = `./img/sticks/pattern-${color}-${this.stickPatternType}.webp`
-          window.utils.showEl(imgPattern)
-        }
+        this.updateWindow()
       }
 
       listColor.addEventListener('click', (evt) => {
@@ -712,13 +806,10 @@ window.utils = {
     },
 
     initWindowThird() {
-      const container = document.querySelector('.js-widow.third')
-      const btnPrev = container.querySelector('.js-widow-btn.prev')
-      const btnNext = container.querySelector('.js-widow-btn.next')
-      const img = container.querySelector('.js-widow-img')
-      const listColor = container.querySelector('.js-widow-color-list')
-      const listTexture = container.querySelector('.js-widow-pag-list')
-      const nameTexture = document.querySelector('.js-widow-blade-texture')
+      const btnPrev = this.windowThird.querySelector('.js-widow-btn.prev')
+      const btnNext = this.windowThird.querySelector('.js-widow-btn.next')
+      const listColor = this.windowThird.querySelector('.js-widow-color-list')
+      const listTexture = this.windowThird.querySelector('.js-widow-pag-list')
       const pagText = document.querySelector('.js-widow-pag-text')
       const pagBtns = listTexture.querySelectorAll('button')
 
@@ -745,12 +836,8 @@ window.utils = {
           }
         })
 
-        const color = window.const.STICK_COLOR[this.stickBladeColor]
-        const texture = window.const.BLADE_TEXTURE[this.stickBladeTexture]
-
-        nameTexture.textContent = window.const.TEXTURE[texture]
         pagText.textContent = `Покрытие крюка ${this.stickBladeTexture + 1}/4`
-        img.src = `./img/sticks/blade-${color}-${texture}.webp`
+        this.updateWindow()
       }
 
       listColor.addEventListener('click', (evt) => {
@@ -779,13 +866,13 @@ window.utils = {
     },
 
     initWindowFourth() {
-      const container = document.querySelector('.js-widow.fourth')
-      const label = container.querySelector('.js-window-name-label')
+      const label = this.windowFourth.querySelector('.js-window-name-label')
       const input = document.querySelector('.js-window-name-input')
 
       input.addEventListener('input', (evt) => {
         const text = evt.target.value.slice(0, 14)
         evt.target.value = text
+
         label.textContent = text
         this.stickName = text
       })
@@ -800,29 +887,50 @@ window.utils = {
     },
 
     updateWindowResult() {
-      const container = document.querySelector('.js-set-result')
-      const stick = container.querySelector('.js-set-result-stick')
-      const pattern = container.querySelector('.js-set-result-pattern')
-      const blade = container.querySelector('.js-set-result-blade')
-      const name = container.querySelector('.js-set-result-name')
+      const container = document.querySelector('.js-result')
+      const stickList = container.querySelectorAll('.js-result-stick')
+      const patternList = container.querySelectorAll('.js-result-pattern')
+      const bladeList = container.querySelectorAll('.js-result-blade')
+      const name = container.querySelector('.js-result-name-text')
 
       // stick
-      stick.src = `./img/sticks/stick-empty-${this.stickColor}.webp`
+      stickList.forEach((it) => {
+        if (it.classList.contains(this.stickColor)) {
+          window.utils.showEl(it)
+        } else {
+          window.utils.hideEl(it)
+        }
+      })
 
       // pattern
       if (this.stickPatternType === 0) {
-        window.utils.hideEl(pattern)
+        patternList.forEach((it) => window.utils.hideEl(it))
       } else {
         const patternColor =
           window.const.STICK_PATTERN_COLOR[this.stickPatternColor]
-        pattern.src = `./img/sticks/pattern-${patternColor}-${this.stickPatternType}.webp`
-        window.utils.showEl(pattern)
+        const patternClass = `${patternColor}-${this.stickPatternType}`
+
+        patternList.forEach((it) => {
+          if (it.classList.contains(patternClass)) {
+            window.utils.showEl(it)
+          } else {
+            window.utils.hideEl(it)
+          }
+        })
       }
 
       // blade
       const bladeColor = window.const.STICK_COLOR[this.stickBladeColor]
       const bladeTexture = window.const.BLADE_TEXTURE[this.stickBladeTexture]
-      blade.src = `./img/sticks/blade-${bladeColor}-${bladeTexture}.webp`
+
+      const bladeClass = `${bladeColor}-${bladeTexture}`
+      bladeList.forEach((it) => {
+        if (it.classList.contains(bladeClass)) {
+          window.utils.showEl(it)
+        } else {
+          window.utils.hideEl(it)
+        }
+      })
 
       // name
       name.textContent = this.stickName
@@ -830,8 +938,8 @@ window.utils = {
     },
 
     async renderStick() {
-      const resultField = document.querySelector('.js-set-result-field')
-      const nameField = document.querySelector('.js-set-result-name')
+      const resultField = document.querySelector('.js-result-field')
+      const nameField = document.querySelector('.js-result-name-text')
 
       nameField.classList.add('print')
 
@@ -895,8 +1003,8 @@ window.utils = {
     },
 
     updateResuteScreenContent() {
-      const resultTitle = document.querySelector('.js-set-result-title')
-      const resultText = document.querySelector('.js-set-result-text')
+      const resultTitle = document.querySelector('.js-result-title-text')
+      const resultText = document.querySelector('.js-result-msg-text')
 
       resultTitle.textContent = 'Твой дизайн'
       resultText.textContent = `Отличный результат! Совсем скоро мы подведем итоги и объявим победителей, которые выиграют Верную подругу Великой погони! Жди результатов ${window.const.END_DATE}.`
