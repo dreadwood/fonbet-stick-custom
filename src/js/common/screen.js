@@ -196,7 +196,7 @@
 
     const stickInfo = await getStickInfo(req)
 
-    if (stickInfo) {
+    if (stickInfo && !stickInfo.error) {
       window.result(stickInfo.data)
       closeAuthModal()
       closeStepModal()
